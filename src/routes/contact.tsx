@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
 import { lab, pi } from "@/data/lab";
-import { sendInquiry } from "@/lib/send-inquiry";
+import { sendInquiry, inquiryMailto } from "@/lib/send-inquiry";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   const [submitted, setSubmitted] = useState<"sent" | "activate" | null>(null);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -32,6 +33,7 @@ function ContactPage() {
       return;
     }
     setSending(true);
+    setSendError(null);
     try {
       const result = await sendInquiry({
         data: {
@@ -50,11 +52,12 @@ function ContactPage() {
           : "Message sent.",
       );
     } catch (err) {
-      toast.error(
+      const message =
         err instanceof Error
           ? err.message
-          : "Could not send. Please email us directly.",
-      );
+          : "Could not send. Please email us directly.";
+      setSendError(message);
+      toast.error(message);
     } finally {
       setSending(false);
     }
@@ -234,6 +237,23 @@ function ContactPage() {
                 <Button type="submit" disabled={sending}>
                   {sending ? "Sending…" : "Send message"}
                 </Button>
+                {sendError && (
+                  <div className="space-y-3 text-sm text-ink-3">
+                    <p>{sendError}</p>
+                    <a
+                      className="link-ink font-medium"
+                      href={inquiryMailto({
+                        name: form.name,
+                        email: form.email,
+                        topic: form.topic,
+                        message: form.message,
+                        source: "contact",
+                      })}
+                    >
+                      Open email app with this message
+                    </a>
+                  </div>
+                )}
               </form>
             )}
           </div>

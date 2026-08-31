@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
 import { lab } from "@/data/lab";
-import { sendInquiry } from "@/lib/send-inquiry";
+import { sendInquiry, inquiryMailto } from "@/lib/send-inquiry";
 
 export const Route = createFileRoute("/participate")({
   component: ParticipatePage,
@@ -50,6 +50,7 @@ const studies = [
 function ParticipatePage() {
   const [submitted, setSubmitted] = useState<"sent" | "activate" | null>(null);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -65,6 +66,7 @@ function ParticipatePage() {
       return;
     }
     setSending(true);
+    setSendError(null);
     try {
       const studyTitle =
         studies.find((s) => s.id === form.study)?.title ?? form.study;
@@ -85,11 +87,12 @@ function ParticipatePage() {
           : "Interest sent. Thank you.",
       );
     } catch (err) {
-      toast.error(
+      const message =
         err instanceof Error
           ? err.message
-          : "Could not send. Please email us directly.",
-      );
+          : "Could not send. Please email us directly.";
+      setSendError(message);
+      toast.error(message);
     } finally {
       setSending(false);
     }
@@ -263,6 +266,25 @@ function ParticipatePage() {
                 <Button type="submit" disabled={sending}>
                   {sending ? "Sending…" : "Submit interest"}
                 </Button>
+                {sendError && (
+                  <div className="space-y-3 text-sm text-ink-3">
+                    <p>{sendError}</p>
+                    <a
+                      className="link-ink font-medium"
+                      href={inquiryMailto({
+                        name: form.name,
+                        email: form.email,
+                        topic:
+                          studies.find((s) => s.id === form.study)?.title ??
+                          form.study,
+                        message: form.message || "(no additional note)",
+                        source: "participate",
+                      })}
+                    >
+                      Open email app with this message
+                    </a>
+                  </div>
+                )}
               </form>
             )}
           </div>
