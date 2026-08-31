@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
 import { lab, pi } from "@/data/lab";
+import { sendInquiry } from "@/lib/send-inquiry";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -14,22 +15,49 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState<"sent" | "activate" | null>(null);
+  const [sending, setSending] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     topic: "general",
     message: "",
+    website: "",
   });
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast.error("Please complete all required fields.");
       return;
     }
-    setSubmitted(true);
-    toast.success("Message received.");
+    setSending(true);
+    try {
+      const result = await sendInquiry({
+        data: {
+          name: form.name,
+          email: form.email,
+          topic: form.topic,
+          message: form.message,
+          source: "contact",
+          website: form.website,
+        },
+      });
+      setSubmitted(result.pendingActivation ? "activate" : "sent");
+      toast.success(
+        result.pendingActivation
+          ? "One confirmation step is required."
+          : "Message sent.",
+      );
+    } catch (err) {
+      toast.error(
+        err instanceof Error
+          ? err.message
+          : "Could not send. Please email us directly.",
+      );
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -102,24 +130,53 @@ function ContactPage() {
           <div className="lg:col-span-7">
             {submitted ? (
               <div className="border border-rule px-6 py-14 text-center">
-                <p className="font-serif text-2xl">Thank you</p>
+                <p className="font-serif text-2xl">
+                  {submitted === "activate" ? "Check your inbox" : "Thank you"}
+                </p>
                 <p className="mx-auto mt-3 max-w-sm text-sm text-ink-3">
-                  For an immediate reply, email{" "}
-                  <a href={`mailto:${lab.email}`} className="link-ink">
-                    {lab.email}
-                  </a>
-                  .
+                  {submitted === "activate" ? (
+                    <>
+                      The first message activates the form. Open the email sent
+                      to{" "}
+                      <a href={`mailto:${lab.email}`} className="link-ink">
+                        {lab.email}
+                      </a>{" "}
+                      (check spam), click the confirmation link, then visitors’
+                      messages will arrive there.
+                    </>
+                  ) : (
+                    <>
+                      Your message was sent to the lab. For an immediate reply
+                      you can also email{" "}
+                      <a href={`mailto:${lab.email}`} className="link-ink">
+                        {lab.email}
+                      </a>
+                      .
+                    </>
+                  )}
                 </p>
                 <Button
                   className="mt-6"
                   variant="outline"
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => setSubmitted(null)}
                 >
                   Send another
                 </Button>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-8">
+                <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                  <label htmlFor="c-website">Website</label>
+                  <input
+                    id="c-website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, website: e.target.value }))
+                    }
+                  />
+                </div>
                 <div className="grid gap-8 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="c-name">Name</Label>
@@ -174,7 +231,9 @@ function ContactPage() {
                     placeholder="How can we help?"
                   />
                 </div>
-                <Button type="submit">Send message</Button>
+                <Button type="submit" disabled={sending}>
+                  {sending ? "Sending…" : "Send message"}
+                </Button>
               </form>
             )}
           </div>

@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
 import { lab } from "@/data/lab";
+import { sendInquiry } from "@/lib/send-inquiry";
 
 export const Route = createFileRoute("/participate")({
   component: ParticipatePage,
@@ -47,22 +48,51 @@ const studies = [
 ];
 
 function ParticipatePage() {
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState<"sent" | "activate" | null>(null);
+  const [sending, setSending] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     study: studies[0].id,
     message: "",
+    website: "",
   });
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim()) {
       toast.error("Please provide your name and email.");
       return;
     }
-    setSubmitted(true);
-    toast.success("Interest recorded. Thank you.");
+    setSending(true);
+    try {
+      const studyTitle =
+        studies.find((s) => s.id === form.study)?.title ?? form.study;
+      const result = await sendInquiry({
+        data: {
+          name: form.name,
+          email: form.email,
+          topic: studyTitle,
+          message: form.message.trim() || "(no additional note)",
+          source: "participate",
+          website: form.website,
+        },
+      });
+      setSubmitted(result.pendingActivation ? "activate" : "sent");
+      toast.success(
+        result.pendingActivation
+          ? "One confirmation step is required."
+          : "Interest sent. Thank you.",
+      );
+    } catch (err) {
+      toast.error(
+        err instanceof Error
+          ? err.message
+          : "Could not send. Please email us directly.",
+      );
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -139,20 +169,44 @@ function ParticipatePage() {
           <div className="lg:col-span-7">
             {submitted ? (
               <div className="border border-rule px-6 py-12 text-center">
-                <p className="font-serif text-2xl">Thank you</p>
+                <p className="font-serif text-2xl">
+                  {submitted === "activate" ? "Check your inbox" : "Thank you"}
+                </p>
                 <p className="mt-3 text-sm text-ink-3">
-                  We recorded your interest.
+                  {submitted === "activate" ? (
+                    <>
+                      Activate the form by clicking the link emailed to{" "}
+                      <a href={`mailto:${lab.email}`} className="link-ink">
+                        {lab.email}
+                      </a>
+                      , then later submissions will reach the lab.
+                    </>
+                  ) : (
+                    "We received your interest and will be in touch if a study matches."
+                  )}
                 </p>
                 <Button
                   className="mt-6"
                   variant="outline"
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => setSubmitted(null)}
                 >
                   Submit another
                 </Button>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-8">
+                <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                  <label htmlFor="p-website">Website</label>
+                  <input
+                    id="p-website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, website: e.target.value }))
+                    }
+                  />
+                </div>
                 <div className="grid gap-8 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full name</Label>
@@ -206,7 +260,9 @@ function ParticipatePage() {
                     placeholder="Eligibility, language, availability…"
                   />
                 </div>
-                <Button type="submit">Submit interest</Button>
+                <Button type="submit" disabled={sending}>
+                  {sending ? "Sending…" : "Submit interest"}
+                </Button>
               </form>
             )}
           </div>
