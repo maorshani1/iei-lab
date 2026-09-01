@@ -1,14 +1,13 @@
-import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { toast } from "sonner";
 import { PageHeader } from "@/components/layout/page-header";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
 import { lab } from "@/data/lab";
-import { sendInquiry, inquiryMailto } from "@/lib/send-inquiry";
 
 export const Route = createFileRoute("/participate")({
   component: ParticipatePage,
+  validateSearch: (raw: Record<string, unknown>): { sent?: boolean } =>
+    raw.sent === "1" || raw.sent === true ? { sent: true } : {},
   head: () => ({
     meta: [{ title: "Participate · IEI Lab" }],
   }),
@@ -48,55 +47,7 @@ const studies = [
 ];
 
 function ParticipatePage() {
-  const [submitted, setSubmitted] = useState<"sent" | "activate" | null>(null);
-  const [sending, setSending] = useState(false);
-  const [sendError, setSendError] = useState<string | null>(null);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    study: studies[0].id,
-    message: "",
-    website: "",
-  });
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim()) {
-      toast.error("Please provide your name and email.");
-      return;
-    }
-    setSending(true);
-    setSendError(null);
-    try {
-      const studyTitle =
-        studies.find((s) => s.id === form.study)?.title ?? form.study;
-      const result = await sendInquiry({
-        data: {
-          name: form.name,
-          email: form.email,
-          topic: studyTitle,
-          message: form.message.trim() || "(no additional note)",
-          source: "participate",
-          website: form.website,
-        },
-      });
-      setSubmitted(result.pendingActivation ? "activate" : "sent");
-      toast.success(
-        result.pendingActivation
-          ? "One confirmation step is required."
-          : "Interest sent. Thank you.",
-      );
-    } catch (err) {
-      const message =
-        err instanceof Error
-          ? err.message
-          : "Could not send. Please email us directly.";
-      setSendError(message);
-      toast.error(message);
-    } finally {
-      setSending(false);
-    }
-  }
+  const { sent } = Route.useSearch();
 
   return (
     <>
@@ -170,83 +121,65 @@ function ParticipatePage() {
             </p>
           </div>
           <div className="lg:col-span-7">
-            {submitted ? (
+            {sent ? (
               <div className="border border-rule px-6 py-12 text-center">
-                <p className="font-serif text-2xl">
-                  {submitted === "activate" ? "Check your inbox" : "Thank you"}
-                </p>
+                <p className="font-serif text-2xl">Thank you</p>
                 <p className="mt-3 text-sm text-ink-3">
-                  {submitted === "activate" ? (
-                    <>
-                      Activate the form by clicking the link emailed to{" "}
-                      <a href={`mailto:${lab.email}`} className="link-ink">
-                        {lab.email}
-                      </a>
-                      , then later submissions will reach the lab.
-                    </>
-                  ) : (
-                    "We received your interest and will be in touch if a study matches."
-                  )}
+                  Your interest was submitted. If nothing arrives, email{" "}
+                  <a href={`mailto:${lab.email}`} className="link-ink">
+                    {lab.email}
+                  </a>
+                  .
                 </p>
-                <Button
-                  className="mt-6"
-                  variant="outline"
-                  onClick={() => setSubmitted(null)}
-                >
-                  Submit another
+                <Button asChild className="mt-6" variant="outline">
+                  <Link to="/participate">Submit another</Link>
                 </Button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="space-y-8">
-                <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-                  <label htmlFor="p-website">Website</label>
-                  <input
-                    id="p-website"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={form.website}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, website: e.target.value }))
-                    }
-                  />
-                </div>
+              <form
+                action={`https://formsubmit.co/${lab.email}`}
+                method="POST"
+                className="space-y-8"
+              >
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://www.maorshani.com/participate?sent=1"
+                />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="IEI Lab study interest"
+                />
+                <input type="hidden" name="_cc" value={lab.emails[1]} />
+                <input
+                  type="text"
+                  name="_honey"
+                  className="absolute -left-[9999px] h-0 w-0"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
                 <div className="grid gap-8 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full name</Label>
-                    <Input
-                      id="name"
-                      value={form.name}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, name: e.target.value }))
-                      }
-                      required
-                    />
+                    <Input id="name" name="name" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={form.email}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, email: e.target.value }))
-                      }
-                      required
-                    />
+                    <Input id="email" name="email" type="email" required />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="study">Study interest</Label>
                   <select
                     id="study"
-                    value={form.study}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, study: e.target.value }))
-                    }
+                    name="study"
                     className="flex h-11 w-full border-0 border-b border-rule bg-transparent text-sm focus:border-ink focus:outline-none"
                   >
                     {studies.map((s) => (
-                      <option key={s.id} value={s.id}>
+                      <option key={s.id} value={s.title}>
                         {s.title}
                       </option>
                     ))}
@@ -256,35 +189,11 @@ function ParticipatePage() {
                   <Label htmlFor="message">Optional note</Label>
                   <Textarea
                     id="message"
-                    value={form.message}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, message: e.target.value }))
-                    }
+                    name="message"
                     placeholder="Eligibility, language, availability…"
                   />
                 </div>
-                <Button type="submit" disabled={sending}>
-                  {sending ? "Sending…" : "Submit interest"}
-                </Button>
-                {sendError && (
-                  <div className="space-y-3 text-sm text-ink-3">
-                    <p>{sendError}</p>
-                    <a
-                      className="link-ink font-medium"
-                      href={inquiryMailto({
-                        name: form.name,
-                        email: form.email,
-                        topic:
-                          studies.find((s) => s.id === form.study)?.title ??
-                          form.study,
-                        message: form.message || "(no additional note)",
-                        source: "participate",
-                      })}
-                    >
-                      Open email app with this message
-                    </a>
-                  </div>
-                )}
+                <Button type="submit">Submit interest</Button>
               </form>
             )}
           </div>
