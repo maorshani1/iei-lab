@@ -101,27 +101,35 @@ function ContactPage() {
               </div>
             ) : (
               <form
-                action={`https://formsubmit.co/${lab.email}`}
+                action="https://api.web3forms.com/submit"
                 method="POST"
                 className="space-y-8"
               >
                 <input
                   type="hidden"
-                  name="_next"
-                  value="https://www.maorshani.com/contact?sent=1"
+                  name="access_key"
+                  value="73d63d5e-259e-4126-a364-625d029ebee1"
                 />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
                 <input
                   type="hidden"
-                  name="_subject"
+                  name="subject"
                   value="IEI Lab website contact"
                 />
-                <input type="hidden" name="_cc" value={lab.emails[1]} />
                 <input
-                  type="text"
-                  name="_honey"
-                  className="absolute -left-[9999px] h-0 w-0"
+                  type="hidden"
+                  name="from_name"
+                  value="IEI Lab website"
+                />
+                <input
+                  type="hidden"
+                  name="redirect"
+                  value="https://www.maorshani.com/contact?sent=1"
+                />
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
                   tabIndex={-1}
                   autoComplete="off"
                 />
