@@ -1,0 +1,276 @@
+[
+  {
+    "slug": "hope-for-what",
+    "title": "Hope for peace and victory in intergroup conflict",
+    "category": "Research insight",
+    "deck": "Four studies distinguish hope for peace from hope for victory, including a panel study spanning 2021 and October 2023.",
+    "sections": [
+      {
+        "heading": "Two forms of hope",
+        "text": "Hope for a negotiated peace and hope for defeating an opponent concern different possible futures. The paper examines these forms of hope separately, asking how each is associated with willingness to compromise, support for extreme war policies, and violent intentions."
+      },
+      {
+        "heading": "The research program",
+        "text": "The first two studies examined associations among Israeli Jewish and Pakistani participants. Study 3 examined profiles of hope in a representative Israeli Jewish sample, identifying people who hoped for peace, victory, or both. These profiles show why the two forms of hope should not be treated as opposite ends of a single scale."
+      },
+      {
+        "heading": "Study 4: 2021 and October 2023",
+        "text": "Study 4 followed 129 Israeli Jewish panel participants from a baseline survey in 2021 to the third week of the 2023 Israel–Hamas war, after the October 7 attacks. Hope for victory, support for extreme war policies, and violent intentions increased, while hope for peace decreased. The interactive mean-score view reproduces the adjusted means in Figure 3. It compares the same panel across two waves, not two independent samples."
+      },
+      {
+        "heading": "Correlations at the two waves",
+        "text": "The explorer also reproduces the within-wave correlations in Table 7. At the 2023 follow-up, hope for peace correlated negatively with support for extreme war policies (r = −.60) and violent intentions (r = −.50), while hope for victory correlated positively with these outcomes (r = .52 and .30, respectively). Visitors can compare both waves and both forms of hope. The display does not test whether the correlations differ significantly across time."
+      },
+      {
+        "heading": "Longitudinal analysis and interpretation",
+        "text": "The paper’s bivariate latent change score models address a separate question: whether changes in hope for victory were associated with parallel changes in support for extreme war policies and violent intentions. The findings supported such associations. Neither a two-wave mean comparison nor an association between changes, however, establishes that changing hope would cause a change in these attitudes. The original paper provides the model specifications and estimates."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Shani et al. (2024), British Journal of Social Psychology",
+        "url": "https://doi.org/10.1111/bjso.12722"
+      }
+    ],
+    "related": "hope",
+    "visual": "hope",
+    "date": "2026-09-08"
+  },
+  {
+    "slug": "living-with-antisemitism",
+    "title": "Antisemitism and psychosocial health among Jews in Germany",
+    "category": "Research insight",
+    "deck": "Reported antisemitic experiences and their associations with wellbeing, anxiety, depression, and social participation in a survey conducted before October 7.",
+    "sections": [
+      {
+        "heading": "The study",
+        "text": "The study surveyed 420 Jews in Germany between December 2022 and March 2023. It distinguished everyday, subtle, and collective antisemitism, perceived prevalence of antisemitism, vigilance, and Jewish identification. Psychological outcomes included subjective wellbeing, anxiety, depression, and social participation. The survey preceded October 7 and should not be read as evidence about changes following the attacks."
+      },
+      {
+        "heading": "Reported experiences",
+        "text": "The response distributions show differences between experiences. Being blamed for Israel’s policies and hearing conspiracy theories about Jews were reported more frequently than poor service in restaurants or stores. The interactive distribution view reproduces the printed percentages for eight selected items in Figure 1 and allows visitors to inspect all response categories rather than reducing experiences to a single percentage."
+      },
+      {
+        "heading": "Associations with outcomes",
+        "text": "Everyday antisemitism was associated with lower subjective wellbeing (r = −.30), lower social participation (r = −.19), higher anxiety (r = .38), and higher depression (r = .35). The interactive correlation view includes everyday, subtle, and collective antisemitism, perceived prevalence, and vigilance, together with their published 95% confidence intervals. It retains nonsignificant associations rather than showing only the strongest findings."
+      },
+      {
+        "heading": "Unadjusted and adjusted results",
+        "text": "The displayed correlations are bivariate associations. The paper also reports regression models that account for demographics and the other focal predictors. Following Holm–Bonferroni adjustment, everyday antisemitism remained significantly associated with all four outcomes, whereas the other focal predictors did not. A correlation in the explorer therefore should not be interpreted as an independent effect in the multivariable models."
+      },
+      {
+        "heading": "What the design can establish",
+        "text": "Because experiences and outcomes were measured in the same survey, the results do not establish causal direction. The distributions describe this study sample rather than population prevalence, and the profile analysis reported in the paper addresses a different question from the correlations. The explorer links to the article and identifies the source of each numerical display."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Shani, Goldberg, & van Zalk (2025), Frontiers in Psychology",
+        "url": "https://doi.org/10.3389/fpsyg.2024.1499295"
+      },
+      {
+        "label": "Shani, Gerber, & Herb (2025), Education after October 7",
+        "url": "https://doi.org/10.1515/9798897830701-005"
+      }
+    ],
+    "related": "antisemitism",
+    "visual": "profiles",
+    "date": "2026-09-08"
+  },
+  {
+    "slug": "inclusivity-and-disagreement",
+    "title": "Inclusivity norms and adolescents’ intergroup attitudes",
+    "category": "Research insight",
+    "deck": "A person can disagree strongly with someone while believing that the person should still be heard and treated with respect.",
+    "sections": [
+      {
+        "heading": "Personal attitudes and perceived social norms",
+        "text": "There is a difference between my willingness to engage with an opposing view and my sense that the people around me expect respectful engagement. The latter is a question about social norms. Our research on inclusivity examines this social environment rather than asking only whether individuals hold favorable attitudes toward other groups."
+      },
+      {
+        "heading": "Evidence across contexts",
+        "text": "A 2026 collaborative study in PNAS Nexus examined 12,041 participants in 12 European countries. Perceived inclusivity norms were associated with tolerance, contact, and cooperation amid polarization. The norms concerned equality-based respect, dialogue, and unity. The study was a preregistered survey, not a randomized intervention, so its associations do not by themselves demonstrate that changing a norm will change behavior."
+      },
+      {
+        "heading": "Why schools are an important setting",
+        "text": "School-based work in the INCLUSIVITY program approaches a related question through peers and social networks. Rather than treating a class as a collection of isolated individuals, it asks how expectations can become visible through relationships. The Together for Tolerance feasibility study and subsequent longitudinal research form part of this broader program. These studies have different designs and should not be treated as interchangeable tests of one intervention."
+      },
+      {
+        "heading": "Implications for intervention",
+        "text": "The practical possibility is not that agreement must precede cooperation. It is that disagreement can take place within shared expectations about how people should be treated. A useful next question is which expectations are credible to students, who communicates them, and whether they remain influential when a disagreement becomes personally important. These are questions for careful intervention research, not assumptions that an attractive message will be enough."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Schäfer et al. (2026), PNAS Nexus",
+        "url": "https://doi.org/10.1093/pnasnexus/pgag087"
+      },
+      {
+        "label": "Shani et al. (2023), Together for Tolerance",
+        "url": "https://doi.org/10.3233/DEV-230342"
+      },
+      {
+        "label": "Shani et al. (2025), Social Inclusion",
+        "url": "https://doi.org/10.17645/si.10122"
+      }
+    ],
+    "related": "",
+    "visual": "network",
+    "date": "2026-09-08"
+  },
+  {
+    "slug": "long-covid-stigma",
+    "title": "Self-compassion and coping with long-COVID stigma",
+    "category": "Research insight",
+    "deck": "Psychological research can examine the social burden of illness without questioning whether the illness is real.",
+    "sections": [
+      {
+        "heading": "The social experience of a condition",
+        "text": "Living with a chronic condition involves more than symptoms. It can also involve explaining limitations, responding to disbelief, and deciding what to disclose. Our long-COVID research asks how these social experiences relate to wellbeing. Its starting point is the experience of people living with the condition, not an attempt to reduce their illness to a psychological explanation."
+      },
+      {
+        "heading": "Self-compassion and self-coldness",
+        "text": "In a survey of 201 adults with long COVID in Germany, we examined stigma alongside self-compassion and self-coldness. The latter concerns a more critical or harsh way of responding to oneself. The study considered these dimensions separately rather than treating the absence of self-criticism as identical to the presence of compassion. It found associations between stigma, self-relating, and wellbeing."
+      },
+      {
+        "heading": "What the study does not establish",
+        "text": "The data were collected at one time point. They cannot determine whether changing self-compassion would improve wellbeing or reduce the effects of stigma. The sample was predominantly female and was not a representative sample of everyone with long COVID. The paper offers evidence about relationships among measured experiences, not an individual prognosis or a clinical treatment recommendation."
+      },
+      {
+        "heading": "Implications and further research",
+        "text": "One question for further research is how illness becomes part of identity. A condition may take up different amounts of space in someone’s sense of self, and this may change over time. Bringing identity and self-relating into the same research program could help distinguish meaningful patterns without implying that patients are responsible for their circumstances. Improving social recognition and understanding remains a separate task from studying personal coping."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Shani & Wübbelt (2025), Health Psychology Open",
+        "url": "https://doi.org/10.1177/20551029251349409"
+      }
+    ],
+    "related": "",
+    "visual": "identity",
+    "date": "2026-09-08"
+  },
+  {
+    "slug": "illness-and-identity",
+    "title": "Illness identity and wellbeing",
+    "category": "Research insight",
+    "deck": "What does it mean to recognize a condition as part of life without letting it become the whole story?",
+    "sections": [
+      {
+        "heading": "Dimensions of illness identity",
+        "text": "People living with the same diagnosis can describe its place in their lives very differently. Illness identity offers a way to investigate those differences. Instead of asking only whether someone has adjusted well or poorly, the approach considers how the condition relates to their wider sense of self."
+      },
+      {
+        "heading": "Evidence from inflammatory bowel disease",
+        "text": "Our work with Antonia Krömeke examined illness identity, health-related quality of life, and flourishing among 244 German-speaking people with inflammatory bowel disease. Lower engulfment and higher enrichment were associated with flourishing. Engulfment concerns illness taking over the sense of self; enrichment concerns perceived positive changes associated with living with the condition. The survey design does not show that either process causes flourishing."
+      },
+      {
+        "heading": "Interpreting adjustment and wellbeing",
+        "text": "Finding an association with enrichment should not become an expectation that people must find benefits in illness. Nor does acceptance mean being content with symptoms or inadequate care. For our research program, the value of distinguishing identity dimensions is that it permits more than one account of living with a condition. A person’s illness-related identity is not a judgment of their character or effort."
+      },
+      {
+        "heading": "From one condition to another",
+        "text": "Extending an identity measure to another population requires more than replacing the diagnosis in an item. We need to examine whether its dimensions are meaningful, whether the items function as intended, and how scores relate to other experiences. Ongoing work with long-COVID data takes up these measurement questions. Any profiles identified in such analyses will need interpretation and validation rather than being treated as permanent categories."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Krömeke & Shani, Journal of Health Psychology, online 2024; issue 2025",
+        "url": "https://doi.org/10.1177/13591053241260288"
+      }
+    ],
+    "related": "",
+    "visual": "identity",
+    "date": "2026-09-08"
+  },
+  {
+    "slug": "accommodating-prejudice",
+    "title": "Institutional accommodation of antisemitism",
+    "category": "Research in progress",
+    "deck": "An institution may reject a prejudice in principle while making decisions that accommodate it in practice.",
+    "sections": [
+      {
+        "heading": "An illustrative dilemma",
+        "text": "Imagine an organization excluding someone from an event because others might object to the person’s identity. The decision-maker insists that this is not an expression of their own prejudice; it is a practical attempt to prevent conflict. This hypothetical situation raises a different question from whether the decision-maker personally dislikes the excluded group. What happens when an institution changes its treatment of a person to accommodate somebody else’s hostility?"
+      },
+      {
+        "heading": "The research question",
+        "text": "Our work on antisemitism accommodation investigates this problem in relation to anti-Jewish exclusion and political litmus tests. It asks how justifications affect judgments of discrimination, legitimacy, empathy, and intervention. It also distinguishes the perspectives of decision-makers, observers, and those subjected to exclusion. This is an ongoing research program, not a claim that every disputed institutional decision has the same explanation."
+      },
+      {
+        "heading": "Separating concepts",
+        "text": "A criticism of government policy, a disagreement with an individual, a condition imposed on someone because they are Jewish, and a response to third-party hostility are not interchangeable. The research aims to make these distinctions explicit and test their implications. An institution’s stated intention and the consequences of its decision may also be different questions."
+      },
+      {
+        "heading": "Bystander judgments",
+        "text": "A decision can be normalized not only by the person making it but also by observers who regard it as unavoidable. This makes bystander judgments an important empirical target. Our public project description explains the program’s questions; findings from studies still being prepared for publication are not presented as settled conclusions. The London Centre profile provides further background on this research direction."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Research program: London Centre for the Study of Contemporary Antisemitism",
+        "url": "https://londonantisemitism.com/team/maor-shani/"
+      }
+    ],
+    "related": "",
+    "visual": "network",
+    "date": "2026-09-08"
+  },
+  {
+    "slug": "reading-an-interactive-graph",
+    "title": "Interpreting correlations and longitudinal findings",
+    "category": "Methods notebook",
+    "deck": "How to read means, response distributions, correlations, and uncertainty intervals in the lab’s results displays.",
+    "sections": [
+      {
+        "heading": "What each mark represents",
+        "text": "The empirical displays on this site reproduce published summary statistics. A point may represent an adjusted mean or a correlation, while a bar segment represents a response percentage. None of these marks represents an individual participant. The separate methods demonstration uses generated points and is explicitly labeled as synthetic."
+      },
+      {
+        "heading": "Correlation and causation",
+        "text": "A positive correlation means that higher values on one measure tend to accompany higher values on another in the analyzed sample. It does not establish that changing the first variable will change the second. Shared causes, reverse direction, measurement choices, and the sample itself can all matter. A bivariate correlation also differs from a regression coefficient adjusted for other variables."
+      },
+      {
+        "heading": "Standard deviations and confidence intervals",
+        "text": "A standard deviation describes variation in observed scores. A confidence interval describes uncertainty in an estimate under a statistical model. The antisemitism correlation chart uses the published 95% confidence intervals. The optional profile chart instead shows one standard deviation around a mean. The Study 4 mean chart shows adjusted means without error bars because exact uncertainty intervals are not supplied numerically in its source figure."
+      },
+      {
+        "heading": "Comparing waves",
+        "text": "A change in mean level, a within-wave correlation, and an association between individual changes answer different questions. The Study 4 views separate mean scores from within-wave correlations. Comparing two displayed correlations does not test whether their difference is statistically significant, and a line joining two group means does not depict any one person’s trajectory."
+      }
+    ],
+    "sources": [],
+    "related": "hope",
+    "visual": "hope",
+    "date": "2026-09-08"
+  },
+  {
+    "slug": "welcome-to-iei",
+    "title": "IEI Lab at Ariel University",
+    "category": "Lab news",
+    "deck": "The Intergroup Experiences and Identity Lab begins its work at Ariel University in October 2026.",
+    "sections": [
+      {
+        "heading": "Research areas",
+        "text": "What makes people feel that they belong? How do group identities shape conflict, discrimination, and cooperation? And what happens when health conditions change the ways people see themselves and relate to others? These questions connect the work of the Intergroup Experiences and Identity Lab, directed by Dr. Maor Shani."
+      },
+      {
+        "heading": "Building on earlier research",
+        "text": "The lab’s new institutional home brings together research developed through work in Germany, Israel, and international collaborations. The website connects that work across three broad areas: conflict and society; antisemitism, identity, and inclusion; and health and wellbeing. It also makes space for the students whose thesis projects contribute to these questions."
+      },
+      {
+        "heading": "Website resources",
+        "text": "Alongside a publication library and a supervision archive, this site includes short research notes and an interactive view of selected published findings. These resources are intended for researchers, students, practitioners, and readers interested in the questions behind the statistics. They distinguish published findings from ongoing work and explain where the evidence has limits."
+      },
+      {
+        "heading": "Contact",
+        "text": "Prospective students and collaborators are welcome to contact Maor with a research question and an explanation of how it connects to the lab. Formal opportunities depend on university arrangements and project availability. As the lab develops, this site will provide a home for its work without making promises about positions or study participation that have not been confirmed."
+      }
+    ],
+    "sources": [],
+    "related": "",
+    "visual": "network",
+    "date": "2026-09-08"
+  }
+]

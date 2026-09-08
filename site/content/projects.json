@@ -1,0 +1,131 @@
+[
+  {
+    "id": "antisemitism-health",
+    "title": "Antisemitism and psychosocial health",
+    "topic": "Antisemitism",
+    "status": "Ongoing research",
+    "methods": "Surveys · Interviews · Social networks",
+    "question": "How do antisemitic experiences enter everyday life, relationships, and psychological health?",
+    "summary": "A program of quantitative and qualitative research with Jews in Germany examines direct and indirect experiences of antisemitism, vigilance, identification, coping, and participation. The published survey and subsequent interview work address different periods and should not be read as a single longitudinal sample.",
+    "outputs": [
+      "bleed-2025",
+      "education-oct7-2025",
+      "oct7-report-2024"
+    ]
+  },
+  {
+    "id": "accommodation",
+    "title": "Institutional accommodation of antisemitism",
+    "topic": "Antisemitism",
+    "status": "Ongoing research",
+    "methods": "Experiments · Bystander judgments",
+    "question": "When is exclusion recognized as discrimination, and when is it excused as a practical response to other people’s hostility?",
+    "summary": "Studies examine antisemitism accommodation, political litmus tests, and judgments of discriminatory treatment from different perspectives. The program distinguishes institutional decisions, bystander reactions, and the experience of the person being excluded.",
+    "outputs": []
+  },
+  {
+    "id": "boycott-boundary",
+    "title": "Criticism, prejudice, and political action",
+    "topic": "Antisemitism",
+    "status": "Manuscript in preparation",
+    "methods": "Two-wave survey · Political attitudes",
+    "question": "How do criticism of Israeli policy and antisemitic prejudice relate to boycott versus engagement?",
+    "summary": "Work with Shai Vopel separates policy criticism from prejudice and examines whether their combination helps explain different forms of political action. The aim is to test conditional relationships, not to treat all criticism or all boycott support as equivalent.",
+    "outputs": []
+  },
+  {
+    "id": "antisemitism-meta",
+    "title": "Antisemitism and health: systematic review and meta-analysis",
+    "topic": "Antisemitism",
+    "status": "Evidence synthesis in progress",
+    "methods": "Systematic review · Meta-analysis",
+    "question": "What does the available quantitative evidence say about antisemitism and psychosocial outcomes?",
+    "summary": "An ongoing synthesis examines associations between antisemitic experiences and mental health or wellbeing among Jews. Study eligibility, overlapping samples, outcome definitions, and effect-size comparability are central methodological tasks. No pooled findings are presented here.",
+    "outputs": []
+  },
+  {
+    "id": "inclusivity",
+    "title": "INCLUSIVITY and Together for Tolerance",
+    "topic": "Conflict and society",
+    "status": "Published studies and ongoing analyses",
+    "methods": "School interventions · Longitudinal surveys",
+    "question": "Can shared norms make disagreement less exclusionary?",
+    "summary": "A collaborative research program examines equality-based respect, dialogue, social networks, and cooperation. It connects school-based intervention work with longitudinal adolescent studies and cross-national survey evidence. The funded INCLUSIVITY period has ended; related analyses and publications continue.",
+    "outputs": [
+      "pnas-nexus-2026",
+      "social-inclusion-2025",
+      "together-tolerance-2023",
+      "cyberbullying-2025"
+    ]
+  },
+  {
+    "id": "hope-conflict",
+    "title": "Hope for peace and victory in intergroup conflict",
+    "topic": "Conflict and society",
+    "status": "Published research",
+    "methods": "Cross-context surveys · Longitudinal analysis",
+    "question": "What changes when people hope for victory rather than peace?",
+    "summary": "Research distinguishes the goals toward which hope is directed, including the possibility of hoping for both outcomes. Published studies examine relationships with compromise, extreme war policies, and violent intentions, rather than assuming that hope is uniformly conciliatory.",
+    "outputs": [
+      "hope-conflict-2024"
+    ]
+  },
+  {
+    "id": "gun-culture",
+    "title": "Civilian firearm decision-making",
+    "topic": "Conflict and society",
+    "status": "Ongoing research",
+    "methods": "Surveys · Vignettes · Latent profiles",
+    "question": "How do threat, identity, and individual differences relate to firearm attitudes and decisions?",
+    "summary": "The “Stop or I’ll Shoot” project examines civilian firearm decision-making in Israel, including heterogeneity among licensed owners and judgments about the legitimacy of force. Maor Shani is a co-investigator with lead investigator Prof. Uzi Ben Shalom and Dr. Vered Ne’eman-Haviv. Funded by the Israeli Ministry of Innovation, Science and Technology.",
+    "outputs": []
+  },
+  {
+    "id": "illness-identity",
+    "title": "Illness identity and psychological wellbeing",
+    "topic": "Health and wellbeing",
+    "status": "Published studies and ongoing research",
+    "methods": "Psychometrics · Surveys · Person-centered analysis",
+    "question": "How does a chronic condition become part of the self without defining the whole person?",
+    "summary": "Studies of inflammatory bowel disease, celiac disease, and long COVID examine illness identity, stigma, social support, and quality of life. Ongoing work extends the measurement of illness identity to long COVID and explores patterns across its dimensions.",
+    "outputs": [
+      "ibd-2024",
+      "long-covid-2025",
+      "love-gluten-2024"
+    ]
+  },
+  {
+    "id": "celiac-camps",
+    "title": "Belonging and peer support in celiac disease",
+    "topic": "Health and wellbeing",
+    "status": "Published research",
+    "methods": "Camp evaluation · Dyadic measurement",
+    "question": "What can contact with peers who share a condition contribute to everyday life?",
+    "summary": "Research examines camps, social relationships, illness-specific quality of life, and parent–child perspectives in celiac disease. The work connects psychological measurement with practical questions about support for young people and families.",
+    "outputs": [
+      "celiac-camps-2025",
+      "celiac-2022",
+      "cdqol-2021"
+    ]
+  },
+  {
+    "id": "trauma-relationships",
+    "title": "Trauma, close relationships, and professional life",
+    "topic": "Health and wellbeing",
+    "status": "Thesis research in progress",
+    "methods": "Dyadic designs · Surveys · Intervention evaluation",
+    "question": "How is trauma experienced across relationships rather than within one person alone?",
+    "summary": "Current thesis projects examine therapists and their partners, secondary traumatic stress, client-inspired hope, and adult sibling relationships in the context of PTSD. Each project has its own design and research question; intervention effectiveness is not assumed in advance.",
+    "outputs": []
+  },
+  {
+    "id": "idf-resilience",
+    "title": "Applied research on resilience",
+    "topic": "Health and wellbeing",
+    "status": "Research advisory work",
+    "methods": "Intervention evaluation",
+    "question": "How can resilience-focused programs be evaluated rigorously?",
+    "summary": "Research advisory work with the Center for Mental Health of the IDF Medical Corps concerns resilience and the prevention of distress among soldiers and reservists. This public overview does not disclose participant information or operational material.",
+    "outputs": []
+  }
+]

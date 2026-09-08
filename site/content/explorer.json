@@ -1,0 +1,522 @@
+{
+  "hope": {
+    "title": "Hope, political goals, and conflict attitudes",
+    "source": "https://doi.org/10.1111/bjso.12722",
+    "sourceLocation": "Shani et al. (2024), Table 1",
+    "kind": "Published bivariate correlations, not participant-level data",
+    "outcomes": [
+      "Support for compromise",
+      "Support for extreme war policies",
+      "Violent intentions"
+    ],
+    "studies": [
+      {
+        "label": "Study 1 · Israeli Jews",
+        "sample": "Study 1 is described as N = 306 in Figure 1. Table 1 reports a varying pairwise N; no confidence intervals are recalculated here.",
+        "peace": [
+          0.52,
+          -0.42,
+          -0.19
+        ],
+        "victory": [
+          -0.13,
+          0.17,
+          0.2
+        ],
+        "meanPeace": 3.52,
+        "sdPeace": 1.33,
+        "meanVictory": 4.19,
+        "sdVictory": 1.23
+      },
+      {
+        "label": "Study 2 · Pakistanis",
+        "sample": "N = 253. Published correlations are rounded to two decimal places.",
+        "peace": [
+          0.28,
+          -0.31,
+          -0.16
+        ],
+        "victory": [
+          -0.31,
+          0.33,
+          0.36
+        ],
+        "meanPeace": 3.8,
+        "sdPeace": 1.16,
+        "meanVictory": 4.09,
+        "sdVictory": 1.16
+      }
+    ]
+  },
+  "profiles": {
+    "title": "Identity and antisemitism: three empirical profiles",
+    "source": "https://doi.org/10.3389/fpsyg.2024.1499295",
+    "sourceLocation": "Shani, Goldberg, & van Zalk (2025), Table 2 and Section 3.5",
+    "totalSurvey": 420,
+    "completeCases": 344,
+    "collection": "December 2022–March 2023, before October 7, 2023",
+    "outcomes": [
+      {
+        "name": "Subjective wellbeing",
+        "min": 1,
+        "max": 7,
+        "means": [
+          4.62,
+          4.22,
+          4.76
+        ],
+        "sd": [
+          1.15,
+          1.22,
+          1.14
+        ]
+      },
+      {
+        "name": "Anxiety",
+        "min": 1,
+        "max": 4,
+        "means": [
+          2.09,
+          2.05,
+          1.82
+        ],
+        "sd": [
+          0.55,
+          0.49,
+          0.53
+        ]
+      },
+      {
+        "name": "Depression",
+        "min": 1,
+        "max": 4,
+        "means": [
+          1.66,
+          1.66,
+          1.57
+        ],
+        "sd": [
+          0.46,
+          0.46,
+          0.46
+        ]
+      },
+      {
+        "name": "Social participation",
+        "min": 1,
+        "max": 5,
+        "means": [
+          3.16,
+          3.14,
+          3.15
+        ],
+        "sd": [
+          0.75,
+          0.71,
+          0.74
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "name": "High identity · High antisemitism",
+        "short": "High identity / high AS",
+        "n": 181
+      },
+      {
+        "name": "Low identity · Low antisemitism",
+        "short": "Low identity / low AS",
+        "n": 29
+      },
+      {
+        "name": "Average identity · Low antisemitism",
+        "short": "Average identity / low AS",
+        "n": 134
+      }
+    ]
+  },
+  "study4": {
+    "source": "https://doi.org/10.1111/bjso.12722",
+    "label": "Shani et al. (2024), Study 4",
+    "sampleN": 129,
+    "population": "Israeli Jewish panel participants with data at both waves",
+    "times": [
+      "2021 baseline",
+      "October 2023 follow-up"
+    ],
+    "timingNote": "The second wave took place in the third week of the 2023 Israel–Hamas war, after October 7. The baseline was in 2021, not immediately before the attacks.",
+    "meanSource": "Figure 3, p. 1375",
+    "meanKind": "Estimated marginal means adjusted for the original 2021 experimental condition",
+    "meanNote": "All scales range from 1 to 7. The points represent adjusted group means, not individual trajectories. Exact uncertainty intervals for these adjusted means are not supplied numerically in the figure and are not reconstructed here.",
+    "correlationSource": "Table 7, p. 1374",
+    "correlationKind": "Within-wave bivariate Pearson correlations",
+    "correlationNote": "These are separate within-wave correlations. Comparing their values does not test whether they changed significantly. They are not correlations between change scores or causal effects.",
+    "meanVariables": [
+      {
+        "id": "victory",
+        "label": "Hope for victory",
+        "group": "hope",
+        "values": [
+          5.03,
+          6.56
+        ]
+      },
+      {
+        "id": "peace",
+        "label": "Hope for peace",
+        "group": "hope",
+        "values": [
+          4.99,
+          3.56
+        ]
+      },
+      {
+        "id": "war",
+        "label": "Support for extreme war policies",
+        "group": "attitudes",
+        "values": [
+          3.67,
+          5.05
+        ]
+      },
+      {
+        "id": "violence",
+        "label": "Violent intentions",
+        "group": "attitudes",
+        "values": [
+          3.07,
+          4.07
+        ]
+      }
+    ],
+    "correlationVariables": [
+      "Hope for victory",
+      "Hope for peace",
+      "Support for extreme war policies",
+      "Violent intentions",
+      "Support for compromise"
+    ],
+    "matrices": [
+      [
+        [
+          1,
+          -0.36,
+          0.53,
+          0.36,
+          -0.56
+        ],
+        [
+          -0.36,
+          1,
+          -0.43,
+          -0.26,
+          0.53
+        ],
+        [
+          0.53,
+          -0.43,
+          1,
+          0.58,
+          -0.51
+        ],
+        [
+          0.36,
+          -0.26,
+          0.58,
+          1,
+          -0.36
+        ],
+        [
+          -0.56,
+          0.53,
+          -0.51,
+          -0.36,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          -0.31,
+          0.52,
+          0.3,
+          -0.45
+        ],
+        [
+          -0.31,
+          1,
+          -0.6,
+          -0.5,
+          0.65
+        ],
+        [
+          0.52,
+          -0.6,
+          1,
+          0.68,
+          -0.64
+        ],
+        [
+          0.3,
+          -0.5,
+          0.68,
+          1,
+          -0.52
+        ],
+        [
+          -0.45,
+          0.65,
+          -0.64,
+          -0.52,
+          1
+        ]
+      ]
+    ],
+    "reviewNote": "The mean-score view excludes support for compromise pending author confirmation: Table 7 prints 3.47 for the 2023 mean, whereas Figure 3 prints 2.47 and the narrative describes a decrease. Correlations involving compromise are retained as printed in Table 7. Figure 3 contains adjusted means; its minor differences from Table 7 for other variables are preserved, not reconciled."
+  },
+  "experiences": {
+    "source": "https://doi.org/10.3389/fpsyg.2024.1499295",
+    "sourceLocation": "Shani et al. (2025), Figure 1, p. 7",
+    "kind": "Published item-response percentages",
+    "collection": "December 2022 to March 2023, before October 7",
+    "sampleNote": "Survey N = 420; valid responses to the Figure 1 items range from 412 to 419. Exact item-specific denominators are not supplied in the figure.",
+    "categories": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very often"
+    ],
+    "items": [
+      {
+        "label": "Treated with less courtesy",
+        "percentages": [
+          41,
+          35,
+          19,
+          4,
+          2
+        ]
+      },
+      {
+        "label": "Threatened/harassed",
+        "percentages": [
+          58,
+          31,
+          9,
+          1,
+          1
+        ]
+      },
+      {
+        "label": "Poor service in restaurants/stores",
+        "percentages": [
+          69,
+          23,
+          6,
+          1,
+          1
+        ]
+      },
+      {
+        "label": "Not part of German society",
+        "percentages": [
+          29,
+          24,
+          28,
+          14,
+          5
+        ]
+      },
+      {
+        "label": "Heard conspiracy theories about Jews",
+        "percentages": [
+          7,
+          12,
+          23,
+          31,
+          28
+        ]
+      },
+      {
+        "label": "Heard antisemitic comments from public figures",
+        "percentages": [
+          8,
+          27,
+          39,
+          16,
+          10
+        ]
+      },
+      {
+        "label": "Different behavior when identified as Jewish",
+        "percentages": [
+          10,
+          21,
+          32,
+          24,
+          13
+        ]
+      },
+      {
+        "label": "Blamed for Israel's policies",
+        "percentages": [
+          13,
+          15,
+          21,
+          27,
+          24
+        ]
+      }
+    ],
+    "roundingNote": "Percentages are transcribed from the printed labels in Figure 1. Two rows sum to 101% because of rounding. In the all-item view, segment widths alone are rescaled to fit 100%; labels, tables, and downloads retain the published values.",
+    "selectionNote": "Eight selected items are shown. The item “Called names/insulted” is not reconstructed because the figure does not label its final response category. No missing percentage is inferred.",
+    "interpretation": "These are reported experiences in this study sample, not population prevalence estimates for all Jews in Germany."
+  },
+  "associations": {
+    "source": "https://doi.org/10.3389/fpsyg.2024.1499295",
+    "sourceLocation": "Shani et al. (2025), Supplementary Table S1; see also Figure 2",
+    "kind": "Bivariate Pearson correlations with published 95% confidence intervals",
+    "sampleNote": "Cross-sectional survey, N = 420 overall. Exact pairwise sample sizes are not assumed. Confidence intervals are reproduced from Supplementary Table S1, not recalculated.",
+    "outcomes": [
+      "Subjective wellbeing",
+      "Anxiety",
+      "Depression",
+      "Social participation"
+    ],
+    "predictors": [
+      {
+        "label": "Everyday antisemitism",
+        "definition": "Direct experiences of unequal treatment and discrimination attributed to being Jewish.",
+        "estimates": [
+          {
+            "r": -0.3,
+            "lo": -0.39,
+            "hi": -0.2
+          },
+          {
+            "r": 0.38,
+            "lo": 0.28,
+            "hi": 0.46
+          },
+          {
+            "r": 0.35,
+            "lo": 0.25,
+            "hi": 0.43
+          },
+          {
+            "r": -0.19,
+            "lo": -0.29,
+            "hi": -0.09
+          }
+        ]
+      },
+      {
+        "label": "Subtle antisemitism",
+        "definition": "Subtle forms of antisemitic treatment, including changes in others’ behavior and identity-related microaggressions.",
+        "estimates": [
+          {
+            "r": -0.09,
+            "lo": -0.2,
+            "hi": 0.01
+          },
+          {
+            "r": 0.33,
+            "lo": 0.23,
+            "hi": 0.42
+          },
+          {
+            "r": 0.17,
+            "lo": 0.07,
+            "hi": 0.27
+          },
+          {
+            "r": -0.08,
+            "lo": -0.18,
+            "hi": 0.02
+          }
+        ]
+      },
+      {
+        "label": "Collective antisemitism",
+        "definition": "Exposure to antisemitic expressions directed at Jews as a group.",
+        "estimates": [
+          {
+            "r": -0.08,
+            "lo": -0.18,
+            "hi": 0.02
+          },
+          {
+            "r": 0.27,
+            "lo": 0.17,
+            "hi": 0.36
+          },
+          {
+            "r": 0.15,
+            "lo": 0.05,
+            "hi": 0.25
+          },
+          {
+            "r": -0.07,
+            "lo": -0.17,
+            "hi": 0.03
+          }
+        ]
+      },
+      {
+        "label": "Perceived prevalence of antisemitism",
+        "definition": "Participants’ estimates of how common antisemitic attitudes are in German society, not an objective measure of prevalence.",
+        "estimates": [
+          {
+            "r": -0.17,
+            "lo": -0.27,
+            "hi": -0.07
+          },
+          {
+            "r": 0.11,
+            "lo": 0.0,
+            "hi": 0.21
+          },
+          {
+            "r": 0.21,
+            "lo": 0.11,
+            "hi": 0.31
+          },
+          {
+            "r": -0.12,
+            "lo": -0.22,
+            "hi": -0.01
+          }
+        ]
+      },
+      {
+        "label": "Vigilance against antisemitism",
+        "definition": "Anticipating antisemitism and taking precautions to avoid exposure. This is a response to potential discrimination, not an exposure measure.",
+        "estimates": [
+          {
+            "r": -0.08,
+            "lo": -0.18,
+            "hi": 0.03
+          },
+          {
+            "r": 0.16,
+            "lo": 0.06,
+            "hi": 0.26
+          },
+          {
+            "r": 0.14,
+            "lo": 0.04,
+            "hi": 0.24
+          },
+          {
+            "r": -0.19,
+            "lo": -0.29,
+            "hi": -0.09
+          }
+        ]
+      }
+    ],
+    "note": "Higher scores indicate more of each construct. Negative correlations with wellbeing or participation and positive correlations with anxiety or depression indicate poorer outcomes. The chart includes nonsignificant estimates and does not establish causal direction.",
+    "adjustedNote": "These are unadjusted associations. In the paper’s separate multivariable regressions, everyday antisemitism remained significantly associated with all four outcomes after Holm–Bonferroni adjustment; the other focal predictors did not. See Results, Section 3.4."
+  }
+}
