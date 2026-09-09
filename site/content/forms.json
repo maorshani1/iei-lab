@@ -1,0 +1,38 @@
+{
+  "contact": {
+    "provider": "Web3Forms",
+    "action": "https://api.web3forms.com/submit",
+    "ajaxAction": "https://api.web3forms.com/submit",
+    "hidden": {
+      "access_key": "73d63d5e-259e-4126-a364-625d029ebee1",
+      "subject": "IEI Lab website contact",
+      "from_name": "IEI Lab website",
+      "redirect": "https://www.maorshani.com/contact?sent=1"
+    },
+    "honeypot": "botcheck",
+    "honeypotType": "checkbox",
+    "required": [
+      "name",
+      "email",
+      "message"
+    ]
+  },
+  "participate": {
+    "provider": "FormSubmit",
+    "action": "https://formsubmit.co/maorsha@ariel.ac.il",
+    "ajaxAction": "https://formsubmit.co/ajax/maorsha@ariel.ac.il",
+    "hidden": {
+      "_next": "https://www.maorshani.com/participate?sent=1",
+      "_captcha": "false",
+      "_template": "table",
+      "_subject": "IEI Lab study interest",
+      "_cc": "maor.shani@uos.de"
+    },
+    "honeypot": "_honey",
+    "honeypotType": "text",
+    "required": [
+      "name",
+      "email"
+    ]
+  }
+}

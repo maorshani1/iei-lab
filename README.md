@@ -1,92 +1,55 @@
-# IEI Lab — Intergroup Experiences and Identity Lab
+# IEI Lab: migration-ready revision 3
 
-Site for [maorshani.com](https://maorshani.com): research, people, publications, notes, and study participation.
+This is the same 32-page static website, research content, images, typography, and form implementation delivered as IEI_Lab_Website_v3.zip. The migration package adds automatic Vercel build-mode selection and fixes a first-build error by creating the ignored report directory before writing the build manifest. It does not itself change GitHub, Vercel, Google Drive, or the live domain.
 
-Directed by Dr. Maor Shani, Department of Psychology, Ariel University.
+## Deployment configuration
 
-## Run locally
+The repository-root vercel.json selects Other (framework: null), runs npm run build:vercel, and publishes dist. The install command is npm ci --ignore-scripts. There are no runtime npm dependencies; use Node.js 20 or later.
 
-```bash
-npm install
-npm run dev
+scripts/vercel-build.mjs uses Vercel's VERCEL_ENV variable:
+
+- production: builds with --production, enables the existing inquiry forms, and removes review notices and review noindex.
+- preview or development: builds the review version, with inquiry submissions disabled and noindex.
+- missing or unsupported value: stops the build rather than guessing. Vercel's Automatically expose System Environment Variables setting must be enabled. It is enabled by default for new projects, but the current project's setting could not be inspected through the connection.
+
+The code-level build, framework, and output-directory settings override their corresponding Vercel dashboard settings. The project Root Directory and production branch still need to match the actual repository. No DNS changes or new Vercel project are needed for this migration.
+
+Do not promote a preview-mode artifact directly to production. Merge the approved branch to the configured production branch and allow a fresh production build.
+
+## Local verification
+
+```sh
+npm ci --ignore-scripts
+npm run build
+npm test
+npm run build:production
+npm test
 ```
 
-## Put it on GitHub and on maorshani.com
+These commands do not send inquiries. No live provider request or inbox-delivery test has been performed in this migration session.
 
-This is a TanStack Start app (not a folder of static HTML). **GitHub is the right place for the code. GitHub Pages is not the right place to host it.**
+## Source layout
 
-The reliable path:
+- site/content/*.json: research, publications, supervision, images, and existing form-provider configuration.
+- site/assets/: CSS, JavaScript, illustrations, and social-card assets.
+- scripts/build.mjs and scripts/results-template.mjs: page generation.
+- scripts/vercel-build.mjs: deployment-environment selection.
+- dist/: generated public site, not source; recreated at each build.
+- review/: locally generated checks, ignored by Git.
 
-1. Push this repository to GitHub.
-2. Connect it to **Vercel** (free) — this project is already set up for that.
-3. Point **maorshani.com** at Vercel.
+The public output contains neither the original source ZIP nor private review documents. No font binaries are included.
 
-Cloudflare Pages is a fine alternative. GitHub Pages would need a static rebuild of the whole site.
+## Forms and scientific content
 
-### 1. Create the GitHub repo
+Web3Forms is retained for contact inquiries. FormSubmit is retained for participation inquiries, including the existing CC destination, routing fields, and honeypots. The source form configuration and controller are byte-for-byte unchanged from revision 3. The form access key in the source is the existing public Web3Forms form key, not a private server credential.
 
-On [github.com/new](https://github.com/new):
+All research content and numerical values are unchanged from revision 3. The unresolved Study 4 compromise-mean discrepancy remains unresolved and that mean remains omitted. Before public launch, confirm current student-profile permissions and any outstanding content-review decisions recorded in the earlier review package.
 
-- Repository name: e.g. `iei-lab` or `maorshani.com`
-- Public is typical for an academic site
-- Do **not** add a README, `.gitignore`, or license (this project already has them)
+## Next action
 
-On your computer, in this project folder:
+Use MIGRATE_IN_CODEX.md in a local coding workspace with access to the existing maorshani1/iei-lab repository. Do not drag this package over the live repository without first preserving Git history and local changes.
 
-```bash
-git init
-git add .
-git commit -m "Initial commit: IEI Lab site"
-git branch -M main
-git remote add origin https://github.com/YOUR_USER/iei-lab.git
-git push -u origin main
-```
+## Documentation
 
-### 2. Deploy from GitHub (Vercel)
-
-1. Sign in at [vercel.com](https://vercel.com) with GitHub.
-2. **Add New → Project** and import the repo.
-3. Leave the defaults (Vite / TanStack Start, `npm run build`).
-4. Click **Deploy**.
-
-You will get a URL like `iei-lab.vercel.app`. Check that it looks right before touching DNS.
-
-### 3. Attach maorshani.com
-
-In the Vercel project: **Settings → Domains → Add** `maorshani.com` and `www.maorshani.com`. Prefer the apex (`maorshani.com`) as the primary and redirect `www` to it (or the reverse — pick one).
-
-At your domain registrar (where you bought maorshani.com), set:
-
-**Apex (`maorshani.com`)** — A records:
-
-| Type | Name | Value |
-| --- | --- | --- |
-| A | `@` | `76.76.21.21` |
-| A | `@` | `76.76.21.22` |
-
-**www** — CNAME:
-
-| Type | Name | Value |
-| --- | --- | --- |
-| CNAME | `www` | `cname.vercel-dns.com` |
-
-Vercel’s dashboard will show the exact records if they differ. Remove any old A/CNAME records for `@` and `www` that point elsewhere.
-
-DNS can take from a few minutes to a few hours. HTTPS is issued automatically.
-
-### Alternative: Cloudflare Pages
-
-1. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages → Create → Pages → Connect to Git**.
-2. Build command: `npm run build`
-3. Output: follow the TanStack Start / Nitro preset Cloudflare documents (or use the Vercel path above — it is simpler for this repo).
-4. **Custom domains** → add `maorshani.com`. If the domain’s nameservers are already at Cloudflare, this is one click.
-
-### Why not GitHub Pages?
-
-GitHub Pages only serves static files. This site is built as a server app (TanStack Start + Nitro). Forcing it onto Pages would mean rewriting the build to a static export. If you specifically want Pages, say so and it can be converted.
-
-## After it is live
-
-- Future edits: change files, `git push` — Vercel rebuilds automatically.
-- Scholar / email / phone: edit `src/data/lab.ts`, `src/data/publications.ts`, `src/data/people.ts`, `src/data/research.ts`, `src/data/blog.ts`.
-- Forms on Participate and Contact currently record interest in the browser (toast confirmation). Wire them to email (Formspree, Basin, or a Vercel serverless route) when you want messages in your inbox.
+- https://vercel.com/docs/project-configuration/vercel-json
+- https://vercel.com/docs/environment-variables/system-environment-variables

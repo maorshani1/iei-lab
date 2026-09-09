@@ -1,0 +1,42 @@
+{
+  "interactive-results": {
+    "alt": "Laptop and notebook on a desk, with illustrative statistical graphics on the screen.",
+    "credit": "AI-generated illustration; not a photograph of the lab, its members, or research participants. Any charts in the image are illustrative, not study results.",
+    "sourceImage": "research_analytics_desk_workspace.png",
+    "sourceSHA256": "ffef89d4e7785cf72bbdfad3bf255653890c512c144360472d3e056676c264f3",
+    "width": 1448,
+    "height": 1086
+  },
+  "hope-research": {
+    "alt": "A person reviewing printed charts beside a window.",
+    "credit": "AI-generated illustration; not a photograph of the lab, its members, or research participants. Any charts in the image are illustrative, not study results.",
+    "sourceImage": "thoughtful_data_review_by_the_window.png",
+    "sourceSHA256": "cd582580a8719f797a814871ac9758da735950ba61acacb370c49e8c506ef318",
+    "width": 1448,
+    "height": 1086
+  },
+  "germany-research": {
+    "alt": "A person reviewing survey materials and charts in a fictional office overlooking a European city.",
+    "credit": "AI-generated illustration; not a photograph of the lab, its members, or research participants. Any charts in the image are illustrative, not study results.",
+    "sourceImage": "thoughtful_researcher_amidst_berlin_studies.png",
+    "sourceSHA256": "a9bbdbf090f8299b94221dabb154a3b5301f0fa988b3d02c5d9e79b03230201c",
+    "width": 1448,
+    "height": 1086
+  },
+  "supervision": {
+    "alt": "Three adults discussing research around a table in a fictional university setting.",
+    "credit": "AI-generated illustration; not a photograph of the lab, its members, or research participants. Any charts in the image are illustrative, not study results.",
+    "sourceImage": "modern_academic_mentoring_discussion.png",
+    "sourceSHA256": "94ce88dd87901518a10d756926cc4527afde015132e6f4b637cb0770cd32f184",
+    "width": 1448,
+    "height": 1086
+  },
+  "publications": {
+    "alt": "Printed articles, a notebook, and glasses on a desk.",
+    "credit": "AI-generated illustration; not a photograph of the lab, its members, or research participants. Any charts in the image are illustrative, not study results.",
+    "sourceImage": "serene_scholarly_workspace_with_research_notes.png",
+    "sourceSHA256": "0274f6e97cad02d7a8901a220edb7645c7a74f837f553aed50f4c50dafc8ffc3",
+    "width": 1448,
+    "height": 1086
+  }
+}

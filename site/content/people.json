@@ -1,0 +1,66 @@
+[
+  {
+    "id": "roy-russo",
+    "name": "Roy Russo",
+    "program": "Clinical Psychology · M.A.",
+    "institution": "Ariel University",
+    "topic": "ADHD traits and trading decisions",
+    "summary": "An experimental study of ADHD traits, repeated trading, and performance in a simulated market. The focus is on observed behavior under standardized conditions rather than self-reported investment behavior.",
+    "status": "Thesis in progress"
+  },
+  {
+    "id": "eden-silne",
+    "name": "Eden Silne",
+    "program": "Clinical Psychology · M.A.",
+    "institution": "Ariel University",
+    "topic": "Secondary traumatic stress and vicarious growth",
+    "summary": "Examines cognitive, interpersonal, and personal factors in mental health professionals’ responses to working within a shared traumatic reality, including rumination and client-inspired hope.",
+    "status": "Thesis in progress"
+  },
+  {
+    "id": "shachar-bitton",
+    "name": "Shachar Bitton",
+    "program": "Clinical Psychology · M.A.",
+    "institution": "Ariel University",
+    "topic": "Trauma work, partners, and invalidation",
+    "summary": "Examines spillover and crossover following secondary traumatic stress among Israeli therapists and their partners, with attention to the role of invalidation.",
+    "status": "Thesis in progress"
+  },
+  {
+    "id": "amit-lavie",
+    "name": "Amit Lavie",
+    "program": "Organizational Psychology · M.A.",
+    "institution": "Ariel University",
+    "topic": "Antisemitism in international working life",
+    "summary": "Studies antisemitic experiences in international work interactions, organizational commitment, burnout, and perceived organizational support among employees in Israel.",
+    "note": "Co-supervised with Prof. Abira Reizer",
+    "status": "Thesis in progress"
+  },
+  {
+    "id": "sahar-shmueli",
+    "name": "Sahar Shmueli",
+    "program": "Psychology · Master’s thesis",
+    "institution": "Ariel University",
+    "topic": "Sibling relationships in the context of PTSD",
+    "summary": "Evaluates a six-session intervention for adult siblings when one sibling is coping with PTSD. A nonrandomized controlled pre–post design examines both relationship quality and individual wellbeing.",
+    "status": "Thesis in progress"
+  },
+  {
+    "id": "thomas-grabiak",
+    "name": "Thomas Grabiak",
+    "program": "Psychology · B.Sc.",
+    "institution": "Osnabrück University",
+    "topic": "Antisemitism and psychological health",
+    "summary": "A systematic review and meta-analytic thesis examining the relationship between antisemitism and psychological health.",
+    "status": "External supervision"
+  },
+  {
+    "id": "andrea-ormaza",
+    "name": "Andrea Ormaza",
+    "program": "Intercultural Psychology · M.Sc.",
+    "institution": "Osnabrück University",
+    "topic": "Intersectional discrimination and adolescent wellbeing",
+    "summary": "Examines longitudinal relationships between discrimination and wellbeing among adolescents in Germany, including the role of social support.",
+    "status": "External supervision"
+  }
+]

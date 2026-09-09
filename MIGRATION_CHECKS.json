@@ -1,0 +1,238 @@
+{
+  "prepared": "2026-09-09",
+  "remote_mutations": false,
+  "verified_repository": "maorshani1/iei-lab",
+  "last_observed_main": "904db23520bed0f93805a2327a02d1d2584c8708",
+  "changes": [
+    "package.json: add build:vercel",
+    "vercel.json: select build:vercel",
+    ".gitignore: exclude .vercel/",
+    "scripts/vercel-build.mjs: select production/review",
+    "README.md: migration instructions",
+    "MIGRATE_IN_CODEX.md: handoff",
+    "scripts/build.mjs: create ignored review directory before writing build manifest (fixes first clean build)"
+  ],
+  "unchanged_files": [
+    {
+      "path": "site/assets/app.js",
+      "unchanged": true,
+      "sha256": "d067934e9961641e0ec89713b1efe2dce179f7d6926c47dd9ec0e6f597aba3a7"
+    },
+    {
+      "path": "site/assets/favicon.svg",
+      "unchanged": true,
+      "sha256": "ce0ea8dbf1435ed7c5ac572b0cd151487df9eb988c3bebcddfca25ad9b043ed7"
+    },
+    {
+      "path": "site/assets/forms.js",
+      "unchanged": true,
+      "sha256": "2a85c4522bfb3697eacc59a081bc79edd3e7249deed8e99ab78b63bdb0ccdbbd"
+    },
+    {
+      "path": "site/assets/images/germany-research-1440.webp",
+      "unchanged": true,
+      "sha256": "4d80bb3a0b745508a87da3f36e9b7516d6cd9440f8a1dc9134a51fec0e6dd5c6"
+    },
+    {
+      "path": "site/assets/images/germany-research-480.webp",
+      "unchanged": true,
+      "sha256": "67c122d9e1c7f09675133c4db5654816ae0e7154894a9d723f47cb92e939586b"
+    },
+    {
+      "path": "site/assets/images/germany-research-960.webp",
+      "unchanged": true,
+      "sha256": "31cb68739f9a800d786c52a210ece7c134a231b18399d7bc394a7c5b9867838e"
+    },
+    {
+      "path": "site/assets/images/hope-research-1440.webp",
+      "unchanged": true,
+      "sha256": "f109ca418bf54b2e14d0c133b882873e5078d05791d6a5dbb699cf285a75353c"
+    },
+    {
+      "path": "site/assets/images/hope-research-480.webp",
+      "unchanged": true,
+      "sha256": "4804505eed735be09a642817121997e0200ffef2e82e361bc4a4e93f3d84ded4"
+    },
+    {
+      "path": "site/assets/images/hope-research-960.webp",
+      "unchanged": true,
+      "sha256": "f3cccff393ce3acc0237cb2679b8916774802422688998a540bd910b6f6c9a91"
+    },
+    {
+      "path": "site/assets/images/interactive-results-1440.webp",
+      "unchanged": true,
+      "sha256": "b16246487e194851a257d613874de8e114346f55ff9b3df55eb80a316c1aa6fd"
+    },
+    {
+      "path": "site/assets/images/interactive-results-480.webp",
+      "unchanged": true,
+      "sha256": "eb8f345a5e641cd25a124c740b5ea56af989f0a9b9d2adade412fc7f66fda5ba"
+    },
+    {
+      "path": "site/assets/images/interactive-results-960.webp",
+      "unchanged": true,
+      "sha256": "d7279e634cc1458b5bef0cf2ee954583c17bebae823a33c11017ab3acb0b56a7"
+    },
+    {
+      "path": "site/assets/images/publications-1440.webp",
+      "unchanged": true,
+      "sha256": "61537a2d48e341ca1df81baeae342b403768858fd1ea94a0c49e15ca76747854"
+    },
+    {
+      "path": "site/assets/images/publications-480.webp",
+      "unchanged": true,
+      "sha256": "db5f00b5a34d44901bc71780dbed6085141470d90d55b90df6ed5a3d34eed112"
+    },
+    {
+      "path": "site/assets/images/publications-960.webp",
+      "unchanged": true,
+      "sha256": "fcae8cc4ec716bc97a983d7d8591a7f60e8afa0d5062892222c41cfb4c9b2bfd"
+    },
+    {
+      "path": "site/assets/images/supervision-1440.webp",
+      "unchanged": true,
+      "sha256": "52ada4e2f8c34eed3b4539f406b21cc52f6b7d58d5667560715988663f535215"
+    },
+    {
+      "path": "site/assets/images/supervision-480.webp",
+      "unchanged": true,
+      "sha256": "7c926ece5bf58ca67d25c2ce9181c127fd60f861a805c011ebb04afc0b951697"
+    },
+    {
+      "path": "site/assets/images/supervision-960.webp",
+      "unchanged": true,
+      "sha256": "d8a1296c68a851c3816c44858149f6a917cfc83c5d3ac99105eada8c68da790a"
+    },
+    {
+      "path": "site/assets/results.js",
+      "unchanged": true,
+      "sha256": "c8c2305cd98249b0ff259f32feb67f784215c59a79cbfd04be945e0ae3e54de0"
+    },
+    {
+      "path": "site/assets/site.css",
+      "unchanged": true,
+      "sha256": "4b64e4494b73c29dba007dfcb83a24037bc9bb16f799b1a4134523dfe5f0998d"
+    },
+    {
+      "path": "site/assets/social-card.png",
+      "unchanged": true,
+      "sha256": "cc4c9616aacc07111f47ac99697101da3738011b828e3064fac41f2353468f80"
+    },
+    {
+      "path": "site/content/explorer.json",
+      "unchanged": true,
+      "sha256": "c23b6442487f5d97a25080f87c1248153506079dd7106700dfe9e0d974dcc023"
+    },
+    {
+      "path": "site/content/fellowships.json",
+      "unchanged": true,
+      "sha256": "d8ae0b9c2eb6c874fdce7bbc5e61c4a01ad2ee281176fe4d2c5f039a8634f25a"
+    },
+    {
+      "path": "site/content/forms.json",
+      "unchanged": true,
+      "sha256": "9dc0580d18a537420555801837921beebc6235896256e274b6737c162f5dc843"
+    },
+    {
+      "path": "site/content/images.json",
+      "unchanged": true,
+      "sha256": "5179ec36911523eed460b3967df56051b910490915e1812e72fda32e5483f7cf"
+    },
+    {
+      "path": "site/content/people.json",
+      "unchanged": true,
+      "sha256": "d903870a27fe6d69ce9d9ad4becdda24fc415aeb46651c64f8c8419ceefc5dcb"
+    },
+    {
+      "path": "site/content/posts.json",
+      "unchanged": true,
+      "sha256": "6019ce20f97796d96ad1c8a7c6d032340d47313d143560834fecb6daa2dbc43c"
+    },
+    {
+      "path": "site/content/projects.json",
+      "unchanged": true,
+      "sha256": "7a5edd6d2b11c56c32d02013df1c8dd3753f85b0fa4e09bb5ef483c9b6ffee36"
+    },
+    {
+      "path": "site/content/publications.json",
+      "unchanged": true,
+      "sha256": "f1183bccc9960ca16d099f42de03864e90bb366c341504e0bf1ae705fcc3ae35"
+    },
+    {
+      "path": "site/content/site.json",
+      "unchanged": true,
+      "sha256": "b428c8985dda2736506156393eb17d525d96a3060c83e31044e1c41b3b1ae46a"
+    },
+    {
+      "path": "site/content/theses.json",
+      "unchanged": true,
+      "sha256": "5856be7aadef123a3b5f524aaf80e1f0a43c21f746161932849bd4c8b5e2abb7"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "unchanged": false,
+      "change": "One mkdirSync call for report directory; no template or research-content change.",
+      "original_sha256": "a6e993004424bec901a13f3f7e72efa12e16d42c3bb12dcc15af5d291454bc4a",
+      "sha256": "3edb5c3e964dedb5585c5112abfd9eda0c86180a7f6cce39a846654bb087b415"
+    },
+    {
+      "path": "scripts/preview.mjs",
+      "unchanged": true,
+      "sha256": "37e51757069b699dde7fd5cb05b871c11d7e0ec499d1beafac17a2417230e3fa"
+    },
+    {
+      "path": "scripts/results-template.mjs",
+      "unchanged": true,
+      "sha256": "eb5c936e908eb9cbff7b05e2ff0dbb199857d7961d5802c3b88ea09fb07bf054"
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "unchanged": true,
+      "sha256": "de22b2b8d4ba35b43fe3e23d0881fd3b689e9e35c0e90341fbf2c29448f26bc5"
+    },
+    {
+      "path": "scripts/test.mjs",
+      "unchanged": true,
+      "sha256": "8a1c5ee05fab270a26b3d178a4ec17a32f5d590d81eb5b166ce23bfebefaea37"
+    }
+  ],
+  "local_build_verification": [
+    {
+      "environment": "preview",
+      "clean_checkout_build": "passed",
+      "structural_tests": "passed",
+      "pages": 32,
+      "local_links_and_assets_checked": 1067,
+      "form_mode": "disabled",
+      "indexing_mode": "noindex"
+    },
+    {
+      "environment": "production",
+      "clean_checkout_build": "passed",
+      "structural_tests": "passed",
+      "pages": 32,
+      "local_links_and_assets_checked": 1067,
+      "form_mode": "enabled",
+      "indexing_mode": "indexable"
+    },
+    {
+      "environment": "development",
+      "clean_checkout_build": "passed",
+      "structural_tests": "passed",
+      "pages": 32,
+      "local_links_and_assets_checked": 1067,
+      "form_mode": "disabled",
+      "indexing_mode": "noindex"
+    },
+    {
+      "environment": null,
+      "result": "stopped as intended; did not guess deployment mode"
+    },
+    {
+      "environment": "invalid",
+      "result": "stopped as intended; did not guess deployment mode"
+    }
+  ],
+  "live_deployment_tested": false,
+  "live_inquiries_sent": false
+}
