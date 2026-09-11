@@ -1,6 +1,6 @@
 {
   "name": "iei-lab-website",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "private": true,
   "type": "module",
   "description": "IEI Lab academic website: static, accessible, and dependency-free.",
@@ -14,6 +14,7 @@
     "preview": "node scripts/serve.mjs",
     "test": "node scripts/test.mjs",
     "review:html": "node scripts/preview.mjs",
-    "build:vercel": "node scripts/vercel-build.mjs"
+    "build:vercel": "node scripts/vercel-build.mjs",
+    "assets:campus": "node scripts/cache-campus.mjs"
   }
 }

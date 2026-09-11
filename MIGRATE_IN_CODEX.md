@@ -1,51 +1,48 @@
-# Apply the IEI Lab website migration
+# Update the already-migrated IEI Lab website to version 4
 
-## User's requested outcome
+Prepared 11 September 2026. This is source for an update, not a deployment report.
 
-Replace the old academic lab website with the supplied revision 3, using the existing maorshani.com domain, GitHub repository, and Vercel project. Do the file reorganization and deployment configuration for the user. Do not redesign the site or change research findings in this task.
+## Current state verified through GitHub
 
-This package has not been applied to the user's repository. It is prepared source, not a deployment.
+- Repository: `maorshani1/iei-lab`; default and previously used production branch: `main`.
+- Pull request #1, "Migrate IEI Lab to supplied static website package", merged on 9 September 2026.
+- Observed main commit: `f15a0cb6c27eba6436d96aee9a62549d1c2d81cd`.
+- Observed Git tree: `e6c3b45c6ad92fd2e2fda9fa4fc2cf86ffbe1f81`.
+- GitHub reports a successful Vercel deployment for that commit.
+- Existing Vercel team: `maorshani-3052s-projects`; project: `iei-lab`.
+- Public host: `https://www.maorshani.com`; keep the existing apex-domain redirect.
 
-## Verified remote identity and last observed state
+This is no longer a React/TanStack-to-static migration. The repository already uses this static site's `scripts/` and `site/` structure. Do not repeat the old migration or delete the repository. Refresh HEAD and check for newer or uncommitted work before applying this update.
 
-- GitHub repository: https://github.com/maorshani1/iei-lab
-- GitHub owner: maorshani1
-- Default branch observed: main
-- Last observed main SHA: 904db23520bed0f93805a2327a02d1d2584c8708
-- Last observed Git tree: de660b2cb091f72b51bc3a55c68089581ed01871
-- GitHub's Vercel status for that SHA reported a successful deployment:
-  https://vercel.com/maorshani-3052s-projects/iei-lab/GztwByYHCKmyEuMmeHLcAeWdMT6u
-- Vercel team slug from that status: maorshani-3052s-projects
-- Vercel project slug from that status: iei-lab
-- Existing canonical domain in the source: https://www.maorshani.com
+The September 11 preparation session could read GitHub but could not create a backup branch (403 Resource not accessible by integration), and could not access the Vercel project (403 Forbidden). No remote write occurred. Use the existing, authorized local workspace from the successful migration session. Never ask for account secrets to be pasted into a conversation.
 
-Refresh all of this before writing. The last observed SHA is a comparison point, not a license to discard newer work.
+## Applying the update
 
-## Previous connection limitations
+1. Confirm the local repository's Git remote is `maorshani1/iei-lab`. Read `git status`, fetch allowed remote updates, and reconcile local changes. Do not reset, force-push, silently stash, or discard untracked files. Preserve `.git`, local environment files, and `.vercel/project.json` outside the publishable output.
+2. Preserve the current production commit with a new verified backup reference. Create an update branch, for example `update/public-v4-2026-09-11`. If either name already exists, check it and choose a new name rather than overwrite it.
+3. Overlay the supplied source contents into the existing repository root. Do not nest another `iei-lab` directory inside the repository. No existing tracked file needs deletion for this release. Preserve the historical `MIGRATION_CHECKS.json` unless deliberately archiving it; do not mistake it for current test output.
+4. Inspect the diff, especially any changes made locally since the observed commit. The production form configuration, original form JavaScript, existing published results controller, original explorer data, and student profiles are unchanged from the verified main tree. Retain any newer intentional changes rather than overwrite them.
+5. Run `npm ci --ignore-scripts`, `npm run build`, `npm test`, `npm run build:production`, and `npm test`. Test preview/production selection with `VERCEL_ENV=preview npm run build:vercel` and `VERCEL_ENV=production npm run build:vercel`. A missing VERCEL_ENV must stop the Vercel build, not silently publish disabled forms.
+6. The supplied `vercel.json` retains `buildCommand: npm run build:vercel`, `outputDirectory: dist`, `installCommand: npm ci --ignore-scripts`, `framework: null`, clean URLs, and the existing inquiry-provider CSP settings. Its only CSP extension is the Wikimedia image host. Do not create a second Vercel project or change domain/DNS/billing settings. Confirm the existing project root and production branch are still correct.
+7. Push the update branch and open a pull request. Let the existing GitHub integration create a preview. Inspect its exact commit, logs, all 37 pages, clean URLs, nested missing-page behavior, images, publication dialogs, archives, search, question guide, and published data explorer. Verify `/blog` is the overview page, not a directory error; verify the mobile heading keeps a space between “Experiences” and “and”.
+8. Check all four actual campus photographs on the deployment. The Vercel build attempts to cache them; this preparation environment could not access their binaries. Do not claim they load based only on source URLs or local fallback text.
+9. Present the working preview and any unresolved issues before the final public switch. On approval, merge to the verified production branch to trigger a **fresh production-mode build**. Do not point the public domain at the downloaded review HTML or an existing disabled-form review build.
+10. Verify `maorshani.com` and `www.maorshani.com`, the new pages, production-mode forms, absent review banner/noindex, source/private-path exclusion, and the correct deployed commit. A provider response is not proof of inbox delivery; ask before sending clearly labeled real form-test messages. Report actual delivery testing separately.
+11. After the remote merge, update the user's existing local clone without overwriting local edits, so their synchronized Drive folder is not left on the earlier version. Retain a simple rollback record.
 
-The previous chat could read repository content. Creating backup/pre-v3-migration-2026-09-09 was rejected with 403 Resource not accessible by integration. That branch was NOT created. Vercel team listing returned no teams, and direct project access returned 403 Forbidden. Its deploy action also had an incompatible exposed argument schema. No remote branch, commit, pull request, deployment, or setting was changed.
+## Preserved migration fixes
 
-Use the local coding workspace and the user's existing authorized Git/Vercel connection where available. Do not ask for passwords, access tokens, or private credentials pasted into a chat. Stop at a genuine authentication boundary and report the exact blocked action.
+This source includes the exact behavior of the earlier migration fixes, which the unadjusted review ZIP would have reverted:
 
-## Safe migration workflow
+- Root-relative assets and navigation on 404 pages in **both** review and production modes.
+- Local clean URLs such as `/blog` resolve `blog.html` before looking for a directory index.
+- A literal space after the homepage line break prevents “Experiencesand” on narrow screens where the break is hidden.
+- JPEG MIME support added for campus-photo caching is also retained.
 
-1. Locate the user's existing local website repository, or ask the user to select that folder. Do not confuse it with another research project or a ZIP extraction folder. Confirm git remote -v points to maorshani1/iei-lab, inspect status, fetch permitted remote updates, and check the actual production branch and project root.
-2. Inspect any local changes. Do not reset, force-push, overwrite, or auto-stash them. Preserve tracked and untracked local work in a safe backup outside the publishable site, then reconcile or ask about conflicts. Preserve .git, authentication files, .vercel/project.json, and local environment files; do not publish them.
-3. Create and verify a rollback branch or tag pointing to the current production source commit. Create a separate migration branch. Do not touch main until the replacement is tested. If a backup branch already exists, verify it and choose a new name rather than overwrite it.
-4. Read the existing project files and latest form configuration. The original app uses React/TanStack; this package intentionally replaces it with a dependency-free static generator. Keep the original implementation retrievable in Git history and the rollback reference rather than merging incompatible package files. The old AGENTS.md contains generator-specific Grok sandbox assumptions, not a description of the new deployment environment.
-5. Copy the contents of this package's iei-lab directory into the verified repository root on the migration branch, not into an extra nested folder. Preserve Git metadata and relevant local configuration. Remove obsolete tracked application/build files only within this verified repository and only after the backup exists. Do not leave the original public directory, server build output, or ZIP archives as additional publishable content. Check the full staged diff before committing.
-6. Use the included vercel.json and npm run build:vercel. This version chooses review or production from VERCEL_ENV. Verify that the existing Vercel Root Directory points to the repository root and that system environment variables are exposed. Keep the existing project, domain, DNS, and unrelated account settings. Do not buy services or create a second hosting project.
-7. Compare the latest original src/routes/contact.tsx, src/routes/participate.tsx, and src/data/lab.ts against site/content/forms.json. Retain the latest existing providers, form key, recipients, CC, redirects, and spam controls. Do not substitute a mailto helper. Do not print secrets. Handle a genuine difference deliberately rather than silently using an older copy.
-8. Run npm ci --ignore-scripts; npm run build; npm test; npm run build:production; npm test. Verify review forms are disabled, production forms point to the intended providers, images load, site-wide search and the research charts work, and direct page URLs resolve. Test production headers and redirects on an actual deployment, not just local HTML. Keep private review/source documents out of dist and the published website.
-9. Push the migration branch and open a pull request if the current Git credentials permit. Use the existing GitHub-to-Vercel integration to build a preview. Confirm its exact commit SHA, build outcome, page routes, assets, error behavior, and mobile layout. Do not describe noindex as password protection.
-10. Confirm outstanding public-content decisions with Maor before the final switch, particularly permission to publish current student profiles. The Study 4 compromise mean is already omitted because its published sources disagree; do not guess a replacement or change research values. When the preview is approved, merge to the verified production branch and let Vercel produce a new production-mode build. Do not promote a disabled-form review artifact as production.
-11. With explicit approval, submit one clearly labeled contact test and one participation test, then confirm receipt in the intended inboxes and CC destination. An API success response is not verified email delivery. Do not use real participant data for tests. Report exactly what was verified.
-12. Verify both maorshani.com and www.maorshani.com route as intended and retain rollback instructions. Synchronize the user's existing local clone after any remote merge; Google Drive folder sync is not a substitute for git pull. Report the final branch/commit, PR and deployment links, form-test status, and any remaining limitations.
+## Public and private boundaries
 
-## Scope to preserve
+The public update contains 37 website pages, campus-photo placements and credits, 18 genuine publication-page thumbnails, 23 media records, 30 conference/talk records, a curated question guide, and the **published** ten-variable Germany correlation matrix. It does not contain a generative-AI API or new paid service.
 
-Keep the white background, restrained Arial/Helvetica typography, descriptive academic headings, 32 pages, five clearly labeled generated illustrations, and the revision 3 research displays. All site/content files, CSS, imagery, form controller, and chart code in this package are unchanged from revision 3. The build also creates the ignored review directory before writing its manifest; the original clean-checkout build failed without that directory. No page templates or research values were changed.
+Do not upload any separate experimental review HTML, private analysis JSON, raw `.sav` files, participant data, author-review screenshots, or private ZIP. The experimental results remain under scientific/publication review even though they are aggregate. Source and output checks must confirm the public data bundle contains only `germany-published`, not the Ariel or bystander experimental bundles.
 
-## No irreversible changes
-
-No force-push, history deletion, credential exposure, participant-data upload, DNS changes, provider replacement, or unrequested account/billing changes. If authorization still blocks a step, stop there rather than claim completion.
+There is no redesign or statistical reanalysis to perform as part of this update. Keep the approved research content and the deliberate removal of the homepage hope table.

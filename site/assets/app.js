@@ -20,7 +20,7 @@
     let buttonTopic='';
     function run(){const terms=normalize(q?.value).trim().split(/\s+/).filter(Boolean), selected=normalize(topic?.value||buttonTopic);let count=0;
       items.forEach(item=>{const ok=terms.every(t=>normalize(item.dataset.search).includes(t))&&(!year?.value||item.dataset.year===year.value)&&(!selected||normalize(item.dataset.topic).split('|').includes(selected));item.hidden=!ok;if(ok)count++;});
-      const c=$('[data-filter-count]',scope);if(c)c.textContent=`${count} of ${items.length} ${scope.querySelector('.thesis-record')?'completed theses':scope.querySelector('.publication-row')?'publication records':scope.querySelector('.project-card')?'projects and programs':'research summaries'}`;
+      const c=$('[data-filter-count]',scope);if(c)c.textContent=`${count} of ${items.length} ${scope.dataset.recordLabel?scope.dataset.recordLabel:scope.querySelector('.thesis-record')?'completed theses':scope.querySelector('.publication-row')?'publication records':scope.querySelector('.project-card')?'projects and programs':'research summaries'}`;
       const empty=$('[data-empty]',scope);if(empty)empty.hidden=count>0;
     }
     [q,year,topic].filter(Boolean).forEach(el=>el.addEventListener(el===q?'input':'change',run));
