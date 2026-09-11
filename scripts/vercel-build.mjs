@@ -17,6 +17,7 @@ if (!['production', 'preview', 'development'].includes(environment)) {
 const production = environment === 'production';
 console.log(`IEI Lab: ${environment} deployment; inquiry forms ${production ? 'enabled' : 'disabled'}.`);
 try {
+  execFileSync(process.execPath,[path.join(root,'scripts/cache-campus.mjs')],{cwd:root,stdio:'inherit'});
   execFileSync(process.execPath,
     [path.join(root, 'scripts/build.mjs'), ...(production ? ['--production'] : [])],
     { cwd: root, stdio: 'inherit' });

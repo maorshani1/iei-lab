@@ -1,55 +1,50 @@
-# IEI Lab: migration-ready revision 3
+# IEI Lab website: revision 4
 
-This is the same 32-page static website, research content, images, typography, and form implementation delivered as IEI_Lab_Website_v3.zip. The migration package adds automatic Vercel build-mode selection and fixes a first-build error by creating the ignored report directory before writing the build manifest. It does not itself change GitHub, Vercel, Google Drive, or the live domain.
+10 September 2026. Prepared source and review output, not a live deployment.
 
-## Deployment configuration
+## What is included
 
-The repository-root vercel.json selects Other (framework: null), runs npm run build:vercel, and publishes dist. The install command is npm ci --ignore-scripts. There are no runtime npm dependencies; use Node.js 20 or later.
+37 pages, the existing research and supervision content, a 23-record media archive, 30 conference/invited-talk records, 18 genuine publication-page thumbnails, a published ten-variable correlation explorer, and a local source-based question-answering guide. The homepage's hope-results table has been removed; its full research results remain on the results page.
 
-scripts/vercel-build.mjs uses Vercel's VERCEL_ENV variable:
+The four real Ariel campus-photo entries have source/author/license credits. Their original image bytes could not be downloaded in the preparation environment. They therefore use remote image URLs until the caching step succeeds. **The portable HTML requires internet access for these campus photos.** Other included illustrations and publication thumbnails are embedded in the portable preview.
 
-- production: builds with --production, enables the existing inquiry forms, and removes review notices and review noindex.
-- preview or development: builds the review version, with inquiry submissions disabled and noindex.
-- missing or unsupported value: stops the build rather than guessing. Vercel's Automatically expose System Environment Variables setting must be enabled. It is enabled by default for new projects, but the current project's setting could not be inspected through the connection.
+The included `scripts/cache-campus.mjs` downloads the four allowlisted images before the Vercel build. It uses explicit time and size limits and retains credited remote-source links on failure. Run `npm run assets:campus` to cache them locally. Verify actual photograph loading on a preview deployment before publication. An offline screenshot showing the source fallback is not evidence that the photos have been cached.
 
-The code-level build, framework, and output-directory settings override their corresponding Vercel dashboard settings. The project Root Directory and production branch still need to match the actual repository. No DNS changes or new Vercel project are needed for this migration.
+## Open the review
 
-Do not promote a preview-mode artifact directly to production. Merge the approved branch to the configured production branch and allow a fresh production build.
+`review/IEI_Lab_Preview_v4.html` is a self-contained review of the site, apart from the four remote campus photos. Open it in a normal browser. Review forms are deliberately disabled. The source files and the built `dist/` also work on a static server.
 
-## Local verification
+## Build
 
 ```sh
 npm ci --ignore-scripts
 npm run build
 npm test
-npm run build:production
-npm test
+npm run review:html
 ```
 
-These commands do not send inquiries. No live provider request or inbox-delivery test has been performed in this migration session.
+Use `npm run build:production` only for approved public content. It enables the existing inquiry providers and removes review notices and noindex. It does not send a test inquiry.
 
-## Source layout
+`vercel.json` uses `npm run build:vercel`, publishes `dist`, and selects the static/Other framework. `scripts/vercel-build.mjs` builds review mode in Vercel preview/development and production mode in Vercel production. `VERCEL_ENV` must be available. The default root is the repository root, not an extra nested extraction directory. No domain, DNS, account, or live repository was changed while preparing this package.
 
-- site/content/*.json: research, publications, supervision, images, and existing form-provider configuration.
-- site/assets/: CSS, JavaScript, illustrations, and social-card assets.
-- scripts/build.mjs and scripts/results-template.mjs: page generation.
-- scripts/vercel-build.mjs: deployment-environment selection.
-- dist/: generated public site, not source; recreated at each build.
-- review/: locally generated checks, ignored by Git.
+See `MIGRATE_IN_CODEX.md` for safe replacement of the old React/TanStack project, backups, branch-based review, and the production switch. Do not promote a disabled-form review artifact to production; build again in production mode.
 
-The public output contains neither the original source ZIP nor private review documents. No font binaries are included.
+## Important boundaries
 
-## Forms and scientific content
+- The two unpublished experiments are NOT in this package, its JSON, search index, or public build. Their separate private aggregate review must not be added to the public repository without explicit scientific and release approval.
+- The Ask the lab guide is curated keyword matching plus source links, **not a generative AI agent**. It has no API key, external model, conversation logging, or private-Drive access.
+- The publication page has 18 actual first-page previews. Six other published entries still need an accessible source page/PDF; two forthcoming entries do not have fabricated covers. The PNAS Nexus preview is labeled as an accepted manuscript.
+- The form JavaScript, configuration, and generator are byte-for-byte/function-for-function unchanged from the migration package. No live form submission or inbox test was performed in this revision.
+- There are no font binaries in this package.
 
-Web3Forms is retained for contact inquiries. FormSubmit is retained for participation inquiries, including the existing CC destination, routing fields, and honeypots. The source form configuration and controller are byte-for-byte unchanged from revision 3. The form access key in the source is the existing public Web3Forms form key, not a private server credential.
+## Editing content
 
-All research content and numerical values are unchanged from revision 3. The unresolved Study 4 compromise-mean discrepancy remains unresolved and that mean remains omitted. Before public launch, confirm current student-profile permissions and any outstanding content-review decisions recorded in the earlier review package.
+`site/content/media.json`: add media records without changing layout. `site/content/conferences.json`: add conference/talk records. `site/content/publications.json`: citations and optional preview filenames. `site/content/campus.json`: original image URLs, credits, licenses, and local cache names. `site/content/data-explorer.json`: approved published aggregate results only. `site/assets/lab-guide.js`: curated answers and their sources. `site/content/forms.json`: existing inquiry-provider configuration; preserve it deliberately.
 
-## Next action
+`site/assets/` holds CSS, JS, and included images. `scripts/` holds build/preview/testing scripts. `dist/` is regenerated at each build. `review/` holds local review reports and is excluded from Git by `.gitignore`.
 
-Use MIGRATE_IN_CODEX.md in a local coding workspace with access to the existing maorshani1/iei-lab repository. Do not drag this package over the live repository without first preserving Git history and local changes.
+## Verification status
 
-## Documentation
+Structural tests: 37 generated pages and 1,550 local links/assets. Chromium rendered all 37 pages at 1440, 768 and 390 px (111 page/viewport cases) with actual local CSS/JS/assets. Separate tests covered the new controls, archive filters, publication modal, curated guide, portable routing, and downloads. Navigation to localhost/file URLs is blocked in the preparation environment, so these are in-memory browser tests, not deployed-host tests. Remote campus photo retrieval and actual email delivery remain to be checked in the intended deployment environment.
 
-- https://vercel.com/docs/project-configuration/vercel-json
-- https://vercel.com/docs/environment-variables/system-environment-variables
+Read `REVISION4_REVIEW.md` before publishing. Keep archival CV dates distinct from current event confirmations.

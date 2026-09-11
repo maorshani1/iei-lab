@@ -1,0 +1,42 @@
+[
+  {
+    "id": "campus-library",
+    "title": "Dr. Reuben Hecht Library",
+    "year": 2023,
+    "credit": "Lewis4482000",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Ariel_University_Library_-_The_Dr._Reuben_Hecht_Library_-_Ariel_University,_Israel.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ariel_University_Library_-_The_Dr._Reuben_Hecht_Library_-_Ariel_University%2C_Israel.jpg/1280px-Ariel_University_Library_-_The_Dr._Reuben_Hecht_Library_-_Ariel_University%2C_Israel.jpg"
+  },
+  {
+    "id": "campus-medicine",
+    "title": "Ariel University campus",
+    "year": 2025,
+    "credit": "Roded Shlomo Pikiwiki Israel",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+    "source": "https://commons.wikimedia.org/wiki/File:130577_ariel_university_in_samaria_PikiWiki_Israel.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/130577_ariel_university_in_samaria_PikiWiki_Israel.jpg/1280px-130577_ariel_university_in_samaria_PikiWiki_Israel.jpg"
+  },
+  {
+    "id": "campus-architecture",
+    "title": "School of Architecture building",
+    "year": 2018,
+    "credit": "Yagasi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Ariel_University_-_Building_for_Architectual_Studies.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Ariel_University_-_Building_for_Architectual_Studies.jpg/1280px-Ariel_University_-_Building_for_Architectual_Studies.jpg"
+  },
+  {
+    "id": "campus-lower",
+    "title": "Lower campus",
+    "year": 2012,
+    "credit": "Gur Dotan / Ariela1982 (Wikimedia Commons)",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Ariel_university.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Ariel_university.jpg"
+  }
+]

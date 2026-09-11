@@ -1,7 +1,14 @@
-node_modules/
 dist/
 review/
-.vercel/
+node_modules/
 .DS_Store
 .env
 .env.*
+!.env.example
+.vercel/
+private/
+private_research*/
+*Experimental_Data_Review*
+*.sav
+*.sav.bin
+*.pkl

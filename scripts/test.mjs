@@ -38,14 +38,18 @@ execFileSync(process.execPath,['--check',path.join(root,'site/assets/forms.js')]
 execFileSync(process.execPath,['--check',path.join(root,'scripts/build.mjs')]);
 execFileSync(process.execPath,['--check',path.join(root,'site/assets/results.js')]);
 execFileSync(process.execPath,['--check',path.join(root,'scripts/results-template.mjs')]);
-assert.equal(htmlFiles.length,32,'Unexpected page count');
-for(const name of ['site','publications','people','theses','projects','posts','fellowships','explorer','images','forms'])JSON.parse(fs.readFileSync(path.join(root,'site/content',name+'.json'),'utf8'));
+assert.equal(htmlFiles.length,37,'Unexpected page count');
+for(const name of ['site','publications','people','theses','projects','posts','fellowships','explorer','images','forms','campus','media','conferences','data-explorer'])JSON.parse(fs.readFileSync(path.join(root,'site/content',name+'.json'),'utf8'));
 assert.ok(fs.existsSync(path.join(out,'assets/social-card.png')),'Social preview image missing');
 assert.ok(fs.existsSync(path.join(out,'feed.xml')),'RSS feed missing');
 assert.ok(fs.existsSync(path.join(out,'sitemap.xml')),'Sitemap missing');
 const review=fs.readFileSync(path.join(out,'robots.txt'),'utf8').includes('Disallow: /');
 for(const file of htmlFiles){const h=fs.readFileSync(file,'utf8');if(review)assert.ok(h.includes('noindex'),'Review page unexpectedly indexable');}
 fs.mkdirSync(path.join(root,'review'),{recursive:true});
-fs.writeFileSync(path.join(root,'review/structural-tests.json'),JSON.stringify({date:'2026-09-08',mode:review?'review':'production',htmlPages:htmlFiles.length,localReferencesChecked:refs,issues},null,2));
+fs.writeFileSync(path.join(root,'review/structural-tests.json'),JSON.stringify({date:'2026-09-10',mode:review?'review':'production',htmlPages:htmlFiles.length,localReferencesChecked:refs,issues},null,2));
 if(issues.length){console.error(issues.join('\n'));process.exit(1);}
 console.log(`PASS: ${htmlFiles.length} pages; ${refs} local links/assets; unique IDs; JSON; JS syntax; review indexing; no private source links.`);
+
+for(const name of ['data-lab','lab-guide','enhancements'])execFileSync(process.execPath,['--check',path.join(root,'site/assets',name+'.js')]);
+const home=fs.readFileSync(path.join(out,'index.html'),'utf8');assert.ok(!home.includes('Hope before and after October 7'),'Homepage table not removed');
+const bundle=JSON.parse(fs.readFileSync(path.join(root,'site/content/data-explorer.json'),'utf8'));assert.equal(bundle.length,1);assert.equal(Object.keys(bundle[0].groups[0].pairs).length,45);assert.ok(!JSON.stringify(bundle).includes('uid'));

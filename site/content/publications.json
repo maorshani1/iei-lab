@@ -13,7 +13,10 @@
       "Europe"
     ],
     "highlight": true,
-    "url": "https://doi.org/10.1093/pnasnexus/pgag087"
+    "url": "https://doi.org/10.1093/pnasnexus/pgag087",
+    "preview": "paper-pnas-nexus-2026.webp",
+    "previewKind": "Actual first page",
+    "previewLabel": "Accepted manuscript"
   },
   {
     "id": "stritzke-chapter-2026",
@@ -65,7 +68,9 @@
       "youth",
       "Israel"
     ],
-    "url": "https://doi.org/10.1057/s41254-024-00386-x"
+    "url": "https://doi.org/10.1057/s41254-024-00386-x",
+    "preview": "paper-place-branding-2025.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "celiac-camps-2025",
@@ -100,7 +105,9 @@
       "health",
       "coping"
     ],
-    "url": "https://doi.org/10.1177/20551029251349409"
+    "url": "https://doi.org/10.1177/20551029251349409",
+    "preview": "paper-long-covid-2025.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "cyberbullying-2025",
@@ -115,7 +122,9 @@
       "norms",
       "cyberbullying"
     ],
-    "url": "https://doi.org/10.1007/s10964-025-02202-y"
+    "url": "https://doi.org/10.1007/s10964-025-02202-y",
+    "preview": "paper-cyberbullying-2025.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "social-inclusion-2025",
@@ -133,7 +142,9 @@
       "adolescence"
     ],
     "highlight": true,
-    "url": "https://doi.org/10.17645/si.10122"
+    "url": "https://doi.org/10.17645/si.10122",
+    "preview": "paper-social-inclusion-2025.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "gpir-2025",
@@ -149,7 +160,9 @@
       "collective action",
       "protest"
     ],
-    "url": "https://doi.org/10.1177/13684302251322760"
+    "url": "https://doi.org/10.1177/13684302251322760",
+    "preview": "paper-gpir-2025.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "bleed-2025",
@@ -167,7 +180,9 @@
       "Germany"
     ],
     "highlight": true,
-    "url": "https://doi.org/10.3389/fpsyg.2024.1499295"
+    "url": "https://doi.org/10.3389/fpsyg.2024.1499295",
+    "preview": "paper-bleed-2025.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "education-oct7-2025",
@@ -184,7 +199,9 @@
       "education",
       "resilience"
     ],
-    "url": "https://doi.org/10.1515/9798897830701-005"
+    "url": "https://doi.org/10.1515/9798897830701-005",
+    "preview": "paper-education-oct7-2025.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "ibd-2024",
@@ -203,7 +220,9 @@
       "health"
     ],
     "note": "First published online in 2024; assigned to the 2025 journal issue.",
-    "url": "https://doi.org/10.1177/13591053241260288"
+    "url": "https://doi.org/10.1177/13591053241260288",
+    "preview": "paper-ibd-2024.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "love-gluten-2024",
@@ -219,7 +238,9 @@
       "adolescence",
       "identity"
     ],
-    "url": "https://doi.org/10.3389/fpsyg.2024.1335201"
+    "url": "https://doi.org/10.3389/fpsyg.2024.1335201",
+    "preview": "paper-love-gluten-2024.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "hope-conflict-2024",
@@ -236,7 +257,9 @@
       "Israel"
     ],
     "highlight": true,
-    "url": "https://doi.org/10.1111/bjso.12722"
+    "url": "https://doi.org/10.1111/bjso.12722",
+    "preview": "paper-hope-conflict-2024.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "nature-comms-2024",
@@ -252,7 +275,9 @@
     ],
     "highlight": true,
     "url": "https://doi.org/10.1038/s41467-024-44693-6",
-    "doi": "10.1038/s41467-024-44693-6"
+    "doi": "10.1038/s41467-024-44693-6",
+    "preview": "paper-nature-comms-2024.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "together-tolerance-2023",
@@ -269,7 +294,9 @@
       "youth"
     ],
     "highlight": true,
-    "url": "https://doi.org/10.3233/DEV-230342"
+    "url": "https://doi.org/10.3233/DEV-230342",
+    "preview": "paper-together-tolerance-2023.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "coco-2023",
@@ -299,7 +326,9 @@
       "camps",
       "youth"
     ],
-    "url": "https://doi.org/10.1177/1359105320968142"
+    "url": "https://doi.org/10.1177/1359105320968142",
+    "preview": "paper-celiac-2022.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "cdqol-2021",
@@ -314,7 +343,9 @@
       "celiac",
       "measurement"
     ],
-    "url": "https://doi.org/10.1097/MEG.0000000000002051"
+    "url": "https://doi.org/10.1097/MEG.0000000000002051",
+    "preview": "paper-cdqol-2021.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "covidistress-2021",
@@ -387,7 +418,9 @@
       "activism",
       "identity fusion"
     ],
-    "url": "https://doi.org/10.1371/journal.pone.0190639"
+    "url": "https://doi.org/10.1371/journal.pone.0190639",
+    "preview": "paper-fusion-2018.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "deep-sea-2018",
@@ -416,7 +449,10 @@
       "peace"
     ],
     "highlight": true,
-    "url": ""
+    "url": "https://doi.org/10.1037/pac0000220",
+    "doi": "10.1037/pac0000220",
+    "preview": "paper-mixed-model-2017.webp",
+    "previewKind": "Actual first page"
   },
   {
     "id": "oct7-report-2024",
@@ -432,6 +468,8 @@
       "resilience",
       "report"
     ],
-    "url": ""
+    "url": "https://www.psychologie-cms.uni-osnabrueck.de/index.php?id=2551",
+    "preview": "paper-oct7-report-2024.webp",
+    "previewKind": "Actual first page"
   }
 ]
