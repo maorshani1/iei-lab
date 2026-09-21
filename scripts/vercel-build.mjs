@@ -15,13 +15,13 @@ if (!['production', 'preview', 'development'].includes(environment)) {
   process.exit(1);
 }
 const production = environment === 'production';
-console.log(`IEI Lab: ${environment} deployment; inquiry forms ${production ? 'enabled' : 'disabled'}.`);
+console.log(`SERI Lab: ${environment} deployment; inquiry forms ${production ? 'enabled' : 'disabled'}.`);
 try {
   execFileSync(process.execPath,[path.join(root,'scripts/cache-campus.mjs')],{cwd:root,stdio:'inherit'});
   execFileSync(process.execPath,
     [path.join(root, 'scripts/build.mjs'), ...(production ? ['--production'] : [])],
     { cwd: root, stdio: 'inherit' });
 } catch (error) {
-  console.error('IEI Lab build failed. The deployment must not be promoted.');
+  console.error('SERI Lab build failed. The deployment must not be promoted.');
   process.exit(Number.isInteger(error.status) && error.status !== 0 ? error.status : 1);
 }

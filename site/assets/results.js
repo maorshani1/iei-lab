@@ -181,14 +181,14 @@
   function exportCSV(key){
     let rows,name;
     if(key==='study4'){
-      const s=data.study4;name='iei-study4-'+state.mode+'.csv';
+      const s=data.study4;name='seri-study4-'+state.mode+'.csv';
       if(state.mode==='means')rows=[['measure','wave','adjusted_mean','scale_min','scale_max','panel_n','statistic','source_location','source','timing_note'],...meanRows().flatMap(r=>r.values.map((v,t)=>[r.label,s.times[t],v,1,7,s.sampleN,s.meanKind,s.meanSource,s.source,s.timingNote]))];
       else rows=[['hope_measure','outcome','wave','pearson_r','panel_n','statistic','source_location','source','interpretation'],...correlationRows().map(r=>[r.predictor,r.outcome,s.times[r.time],r.r,s.sampleN,s.correlationKind,s.correlationSource,s.source,s.correlationNote])];
     }else if(key==='experience'){
-      const d=data.experiences;name='iei-antisemitic-experience-distributions.csv';
+      const d=data.experiences;name='seri-antisemitic-experience-distributions.csv';
       rows=[['item','response_category','published_percentage','reported_row_total','statistic','collection_period','sample_note','rounding_note','source_location','source'],...selectedItems().flatMap(r=>r.percentages.map((v,i)=>[r.label,d.categories[i],v,r.percentages.reduce((a,b)=>a+b,0),d.kind,d.collection,d.sampleNote,d.roundingNote,d.sourceLocation,d.source]))];
     }else{
-      const a=data.associations;name='iei-antisemitism-outcome-correlations.csv';
+      const a=data.associations;name='seri-antisemitism-outcome-correlations.csv';
       rows=[['measure','outcome','pearson_r','published_95ci_lower','published_95ci_upper','statistic','sample_note','source_location','source'],...associationRows().map(r=>[r.predictor,r.outcome,r.r,r.lo,r.hi,a.kind,a.sampleNote,a.sourceLocation,a.source])];
     }
     download(name,'\ufeff'+csv(rows),'text/csv;charset=utf-8');
@@ -207,7 +207,7 @@
     let foot='';notes.forEach(note=>{wrap(note,maxChars).forEach(row=>{foot+=text(14,y,row,12,'start',GREY);y+=17;});y+=7;});
     // Inline palette/text colors make the exported chart independent of site CSS.
     const content=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${y+10}" viewBox="0 0 ${W} ${y+10}" style="background:#fff"><title>${esc($('#'+key+'-title').textContent)}</title><rect width="100%" height="100%" fill="#fff"/>${heading.map((l,i)=>text(14,24+i*23,l,17)).join('')}${legend}<g transform="translate(0 ${headHeight})">${svg.innerHTML}</g>${foot}</svg>`;
-    download('iei-'+key+'-published-results.svg',content,'image/svg+xml;charset=utf-8');
+    download('seri-'+key+'-published-results.svg',content,'image/svg+xml;charset=utf-8');
   }
   document.querySelectorAll('[data-results-export]').forEach(b=>b.addEventListener('click',()=>{const [key,type]=b.dataset.resultsExport.split('-');if(type==='csv')exportCSV(key);else exportSVG(key);}));
   let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{renderStudy4();renderExperience();renderAssociation();},120);});

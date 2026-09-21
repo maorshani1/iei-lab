@@ -1,9 +1,9 @@
 {
-  "name": "iei-lab-website",
+  "name": "seri-lab-website",
   "version": "1.4.0",
   "private": true,
   "type": "module",
-  "description": "IEI Lab academic website: static, accessible, and dependency-free.",
+  "description": "SERI Lab academic website: static, accessible, and dependency-free.",
   "engines": {
     "node": ">=20"
   },
