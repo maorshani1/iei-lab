@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<title>SERI Lab — Social Experiences, Resilience, and Identity</title>
+<desc>Research on intergroup relations, discrimination, and well-being. Dr. Maor Shani, Ariel University.</desc>
+<rect width="1200" height="630" fill="#f7f6f1"/>
+<path d="M72 112H1128" stroke="#bcc8c8"/>
+<g font-family="Arial, sans-serif" fill="#172d3c">
+<text x="72" y="77" font-size="17" letter-spacing="1.7">ARIEL UNIVERSITY · DEPARTMENT OF PSYCHOLOGY</text>
+<text x="72" y="233" font-size="82" font-weight="600" letter-spacing="-3">SERI Lab</text>
+<text x="72" y="307" font-size="38">Social Experiences,</text>
+<text x="72" y="357" font-size="38">Resilience, and Identity</text>
+<text x="72" y="429" font-size="24" fill="#52626c">Research on intergroup relations,</text>
+<text x="72" y="465" font-size="24" fill="#52626c">discrimination, and well-being.</text>
+<text x="72" y="552" font-size="22">Dr. Maor Shani</text>
+<text x="1128" y="552" font-size="20" text-anchor="end" fill="#52626c">maorshani.com</text>
+</g>
+<circle cx="1014" cy="289" r="111" fill="#ebf0ed" stroke="#9db1aa"/>
+<text x="1014" y="305" text-anchor="middle" font-family="Arial,sans-serif" font-size="48" letter-spacing="-2" font-weight="600" fill="#172d3c">SERI</text>
+</svg>

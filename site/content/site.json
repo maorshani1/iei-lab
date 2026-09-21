@@ -1,11 +1,15 @@
 {
-  "name": "Intergroup Experiences and Identity Lab",
-  "shortName": "IEI Lab",
+  "name": "Social Experiences, Resilience, and Identity Lab",
+  "shortName": "SERI Lab",
   "director": "Dr. Maor Shani",
   "email": "maorsha@ariel.ac.il",
   "domain": "https://www.maorshani.com",
   "launch": "2026-10-01",
-  "updated": "2026-09-08",
-  "hebrew": "מעבדה לחוויות בין-קבוצתיות וזהות",
-  "description": "Psychological research on belonging, conflict, discrimination, and life with chronic illness. Directed by Dr. Maor Shani at Ariel University."
+  "updated": "2026-09-22",
+  "hebrew": "המעבדה לחוויות חברתיות, חוסן וזהות",
+  "description": "SERI Lab studies social experiences, resilience, and identity: intergroup relations, discrimination, coping, and well-being. Directed by Dr. Maor Shani at Ariel University.",
+  "acronym": "SERI",
+  "title": "Social Experiences, Resilience, and Identity",
+  "tagline": "Research on intergroup relations, discrimination, and well-being.",
+  "introduction": "We study how identities and social experiences shape people’s attitudes, relationships, and well-being. Our research examines intergroup conflict and discrimination, belonging and inclusion, and coping with social and health-related challenges."
 }

@@ -40,7 +40,7 @@ execFileSync(process.execPath,['--check',path.join(root,'site/assets/results.js'
 execFileSync(process.execPath,['--check',path.join(root,'scripts/results-template.mjs')]);
 assert.equal(htmlFiles.length,37,'Unexpected page count');
 for(const name of ['site','publications','people','theses','projects','posts','fellowships','explorer','images','forms','campus','media','conferences','data-explorer'])JSON.parse(fs.readFileSync(path.join(root,'site/content',name+'.json'),'utf8'));
-assert.ok(fs.existsSync(path.join(out,'assets/social-card.png')),'Social preview image missing');
+assert.ok(fs.existsSync(path.join(out,'assets/seri-social-card.png')),'Social preview image missing');
 assert.ok(fs.existsSync(path.join(out,'feed.xml')),'RSS feed missing');
 assert.ok(fs.existsSync(path.join(out,'sitemap.xml')),'Sitemap missing');
 const review=fs.readFileSync(path.join(out,'robots.txt'),'utf8').includes('Disallow: /');
