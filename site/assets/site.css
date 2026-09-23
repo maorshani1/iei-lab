@@ -307,11 +307,9 @@ td{vertical-align:top}
 .section-top>a{margin-top:20px}
 .three-col,.two-col{grid-template-columns:1fr}
 .theme-card:last-child{grid-column:auto}
-.theme-card{padding:22px 0 15px;display:grid;grid-template-columns:50px 1fr;column-gap:14px}
-.theme-card .theme-number{grid-row:1/4;font-size:26px}
+.theme-card{padding:22px 0 15px}
 .theme-card h3{font-size:27px}
 .theme-card p{max-width:100%}
-.theme-card .text-link{justify-self:start}
 .feature-grid{grid-template-columns:1fr;gap:35px}
 .feature-section{padding:45px 0}
 .feature-section h2{font-size:38px}
