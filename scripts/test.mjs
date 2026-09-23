@@ -38,15 +38,15 @@ execFileSync(process.execPath,['--check',path.join(root,'site/assets/forms.js')]
 execFileSync(process.execPath,['--check',path.join(root,'scripts/build.mjs')]);
 execFileSync(process.execPath,['--check',path.join(root,'site/assets/results.js')]);
 execFileSync(process.execPath,['--check',path.join(root,'scripts/results-template.mjs')]);
-assert.equal(htmlFiles.length,37,'Unexpected page count');
-for(const name of ['site','publications','people','theses','projects','posts','fellowships','explorer','images','forms','campus','media','conferences','data-explorer'])JSON.parse(fs.readFileSync(path.join(root,'site/content',name+'.json'),'utf8'));
+assert.equal(htmlFiles.length,39,'Unexpected page count');
+for(const name of ['site','publications','people','theses','projects','posts','fellowships','explorer','images','forms','campus','media','conferences','data-explorer','antisemitism','teaching'])JSON.parse(fs.readFileSync(path.join(root,'site/content',name+'.json'),'utf8'));
 assert.ok(fs.existsSync(path.join(out,'assets/seri-social-card.png')),'Social preview image missing');
 assert.ok(fs.existsSync(path.join(out,'feed.xml')),'RSS feed missing');
 assert.ok(fs.existsSync(path.join(out,'sitemap.xml')),'Sitemap missing');
 const review=fs.readFileSync(path.join(out,'robots.txt'),'utf8').includes('Disallow: /');
 for(const file of htmlFiles){const h=fs.readFileSync(file,'utf8');if(review)assert.ok(h.includes('noindex'),'Review page unexpectedly indexable');}
 fs.mkdirSync(path.join(root,'review'),{recursive:true});
-fs.writeFileSync(path.join(root,'review/structural-tests.json'),JSON.stringify({date:'2026-09-10',mode:review?'review':'production',htmlPages:htmlFiles.length,localReferencesChecked:refs,issues},null,2));
+fs.writeFileSync(path.join(root,'review/structural-tests.json'),JSON.stringify({date:new Date().toISOString().slice(0,10),mode:review?'review':'production',htmlPages:htmlFiles.length,localReferencesChecked:refs,issues},null,2));
 if(issues.length){console.error(issues.join('\n'));process.exit(1);}
 console.log(`PASS: ${htmlFiles.length} pages; ${refs} local links/assets; unique IDs; JSON; JS syntax; review indexing; no private source links.`);
 

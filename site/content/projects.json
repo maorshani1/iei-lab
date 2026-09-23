@@ -15,22 +15,22 @@
   },
   {
     "id": "accommodation",
-    "title": "Institutional accommodation of antisemitism",
+    "title": "Responses to discrimination and exclusion",
     "topic": "Antisemitism",
     "status": "Ongoing research",
-    "methods": "Experiments · Bystander judgments",
-    "question": "When is exclusion recognized as discrimination, and when is it excused as a practical response to other people’s hostility?",
-    "summary": "Studies examine antisemitism accommodation, political litmus tests, and judgments of discriminatory treatment from different perspectives. The program distinguishes institutional decisions, bystander reactions, and the experience of the person being excluded.",
+    "methods": "Experimental research",
+    "question": "How do people recognize and respond to discriminatory treatment?",
+    "summary": "We study responses to antisemitism and exclusion, including the roles of bystanders and institutions.",
     "outputs": []
   },
   {
     "id": "boycott-boundary",
     "title": "Criticism, prejudice, and political action",
     "topic": "Antisemitism",
-    "status": "Manuscript in preparation",
-    "methods": "Two-wave survey · Political attitudes",
-    "question": "How do criticism of Israeli policy and antisemitic prejudice relate to boycott versus engagement?",
-    "summary": "Work with Shai Vopel separates policy criticism from prejudice and examines whether their combination helps explain different forms of political action. The aim is to test conditional relationships, not to treat all criticism or all boycott support as equivalent.",
+    "status": "Ongoing research",
+    "methods": "Survey research",
+    "question": "How do prejudice and political attitudes relate to intergroup relations?",
+    "summary": "We examine distinctions between political criticism, prejudice, and engagement in the context of Israel and antisemitism.",
     "outputs": []
   },
   {
@@ -40,7 +40,7 @@
     "status": "Evidence synthesis in progress",
     "methods": "Systematic review · Meta-analysis",
     "question": "What does the available quantitative evidence say about antisemitism and psychosocial outcomes?",
-    "summary": "An ongoing synthesis examines associations between antisemitic experiences and mental health or wellbeing among Jews. Study eligibility, overlapping samples, outcome definitions, and effect-size comparability are central methodological tasks. No pooled findings are presented here.",
+    "summary": "We bring together research on antisemitic experiences and psychosocial health to understand the wider evidence and identify gaps for future study.",
     "outputs": []
   },
   {
