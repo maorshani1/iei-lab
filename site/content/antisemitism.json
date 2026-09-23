@@ -1,0 +1,44 @@
+{
+  "lead": "How does antisemitism shape everyday life—and how do people respond? We study experiences of discrimination, their psychological and social consequences, and the resources that support coping and resilience.",
+  "introduction": "Antisemitism research is a central part of SERI Lab. Our work connects the experiences of Jewish communities and Israelis with broader questions about identity, belonging, and exclusion. We bring together surveys, experiments, interviews, and evidence synthesis to understand both lived experiences and the social environments in which they unfold.",
+  "published": [
+    {
+      "publication": "bleed-2025",
+      "heading": "Everyday experiences and psychosocial health",
+      "label": "Journal article · 2025",
+      "description": "Our survey of Jews in Germany examines antisemitic experiences, vigilance, well-being, and social participation. The data were collected before October 7, 2023; the study examines associations rather than establishing causation."
+    },
+    {
+      "publication": "education-oct7-2025",
+      "heading": "Collective trauma, resilience, and education",
+      "label": "Book chapter · 2025",
+      "description": "Our work on Jewish life in Germany after October 7 considers collective trauma, coping, and resilience, and what these experiences mean for Jewish education."
+    },
+    {
+      "publication": "oct7-report-2024",
+      "heading": "Listening to Jewish experiences after October 7",
+      "label": "Preliminary research report · 2024",
+      "description": "An accessible report from our interview research explores how Jews in Germany describe changes in daily life, relationships, and coping in the aftermath of October 7."
+    }
+  ],
+  "ongoing": [
+    {
+      "title": "Israeli experiences of discrimination and exclusion",
+      "description": "Survey and experimental studies examine how antisemitism and anti-Israel discrimination and exclusion relate to Israelis’ well-being, belonging, and responses to adversity."
+    },
+    {
+      "title": "Coping and resilience",
+      "description": "We examine how people and communities respond to antisemitism, with attention to identity, social support, and everyday participation."
+    },
+    {
+      "title": "Recognizing and responding to discrimination",
+      "description": "We study how people interpret exclusion and how bystanders and institutions respond to discriminatory treatment."
+    },
+    {
+      "title": "Understanding the wider evidence",
+      "description": "Evidence synthesis and comparative research examine antisemitism, psychosocial health, and the social contexts of prejudice."
+    }
+  ],
+  "development": "We are also developing research on inclusion in educational and professional settings, and on ways to support communities facing antisemitism.",
+  "invitation": "Interested in research collaboration, student projects, a talk, or the practical questions raised by this work? We welcome conversations with researchers, students, educators, and community organizations. Contact Dr. Maor Shani and SERI Lab to learn more."
+}

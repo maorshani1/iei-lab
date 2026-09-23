@@ -1,0 +1,57 @@
+{
+  "lead": "Connecting psychological ideas with the questions people face in everyday life.",
+  "philosophy": "Our teaching starts with meaningful questions and gives students the tools to investigate them. Across Dr. Maor Shani’s courses, discussion, practical exercises, and research projects connect theory with lived experience. Students learn to question assumptions, weigh evidence, and explain what their conclusions can—and cannot—support.",
+  "principles": [
+    {"title": "Learn through inquiry", "text": "Use real questions, cases, and data to turn concepts into understanding."},
+    {"title": "Think critically, discuss openly", "text": "Compare perspectives, challenge arguments respectfully, and make room for different ways of participating."},
+    {"title": "Build research confidence", "text": "Practise choosing methods, interpreting evidence, and communicating clearly and responsibly."}
+  ],
+  "seminar": {
+    "title": "Antisemitism and Trauma",
+    "subtitle": "Impact, resilience, and adaptive coping",
+    "period": "Undergraduate research seminar · 2025–26 and planned 2026–27",
+    "description": "This distinctive seminar brings the psychology of antisemitism into direct conversation with research on discrimination, collective trauma, identity, and resilience. Jewish and Israeli experiences, including the context of October 7 and its aftermath, provide a starting point for examining wider questions about exclusion, belonging, and coping.",
+    "practice": "Students move from reading and discussion to empirical research: developing questions, considering ethical choices, interpreting evidence, and writing a scientific argument. The seminar connects teaching with the lab’s ongoing survey and experimental research.",
+    "discussion": "We encourage thoughtful disagreement and careful distinctions between concepts, experiences, and evidence. Students are never expected to disclose personal trauma or speak on behalf of a whole group."
+  },
+  "ariel": [
+    {
+      "title": "Statistics for Psychological Research",
+      "period": "Master’s in Clinical Psychology · 2025–26; Statistics I & II planned for 2026–27",
+      "description": "From a research question to an analysis and a clear account of the results. Applied work with psychological data develops the judgment to select methods, check assumptions, interpret uncertainty, and write research reports."
+    },
+    {
+      "title": "Academic Reading and Writing",
+      "period": "First-year undergraduate course · 2025–26",
+      "description": "An introduction to academic inquiry through critical reading, finding and evaluating sources, building an argument, and clear scientific writing. Practical exercises help students become more confident readers and writers."
+    },
+    {
+      "title": "Intelligence and Personality Tests",
+      "period": "Planned for 2026–27",
+      "description": "What can we responsibly conclude from a test score? Students explore psychological measurement, reliability, validity, and the uses and limits of assessment through discussion and practical examples. The emphasis is on assessment literacy."
+    }
+  ],
+  "osnabrueck": [
+    {
+      "title": "Introduction to Developmental Psychology",
+      "description": "A foundation in psychological development and the ways researchers study change. Theory and everyday examples connect developmental questions with the evidence used to answer them."
+    },
+    {
+      "title": "Migration and Identity",
+      "description": "How do migration and contact reshape identity and belonging? The course considers both migrants and receiving societies, connecting acculturation, multiple identities, and well-being with contemporary experiences."
+    },
+    {
+      "title": "Intercultural Psychology",
+      "description": "An exploration of prejudice, cultural diversity, and relations between groups. Students critically examine what psychological research can contribute to reducing prejudice and improving intercultural relations."
+    },
+    {
+      "title": "Advanced Perspectives in Developmental Psychological Research",
+      "description": "A seminar on psychology’s contribution to major societal challenges and the UN Sustainable Development Goals. Students develop ambitious, scientifically grounded research and intervention ideas that connect evidence with social impact."
+    },
+    {
+      "title": "Intergroup Emotions in Conflict",
+      "description": "A seminar exploring emotions in relations between groups, with attention to how psychological perspectives help us understand conflict."
+    }
+  ],
+  "invitation": "Interested in a course, teaching collaboration, guest lecture, or student research? Contact Dr. Maor Shani and SERI Lab to discuss ideas and learn more."
+}

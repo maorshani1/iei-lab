@@ -650,3 +650,29 @@ h1{font-weight:600;font-size:44px;line-height:1.2}h2{font-weight:600;font-size:3
 @media(max-width:700px){.brand{flex-basis:174px;padding:7px 0}.brand .lab-logo{width:174px}.header-inner{min-height:83px}.hero .hero-identity{margin-bottom:27px}.hero .eyebrow{margin-bottom:24px;font-size:12px}.footer-brand{width:266px;margin-bottom:22px}}
 @media(max-width:360px){.brand{flex-basis:158px}.brand .lab-logo{width:158px}.header-tools{flex-shrink:0}}
 @media print{.lab-logo{print-color-adjust:exact;-webkit-print-color-adjust:exact}.hero .hero-identity{max-width:420px}}
+
+/* Research and teaching sections. */
+@media(min-width:1191px){.nav{gap:16px}.nav a{font-size:16px}.header-tools{flex-shrink:0}}
+.section-jump{display:flex;flex-wrap:wrap;gap:12px 28px;padding:20px 0;margin-bottom:32px;border-block:1px solid var(--line);font-size:16px}
+.section-jump a{text-decoration:none}.section-jump a:hover{text-decoration:underline}
+.focus-introduction{max-width:910px;font-size:19px;line-height:1.8}
+.focus-section{padding-block:42px}.focus-section h2{margin-bottom:28px}
+.publication-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.publication-feature{display:flex;flex-direction:column;border-top:2px solid #75958c;padding-top:22px;min-width:0}
+.publication-feature .eyebrow{margin-bottom:14px;font-size:13px}.publication-feature h3{font-size:24px;line-height:1.35}
+.publication-feature p{font-size:17px}.publication-feature .actions{margin-top:auto;padding-top:20px}
+.publication-citation{font-size:14px;margin:0 0 12px}.publication-citation summary{cursor:pointer;color:var(--teal);text-decoration:underline;text-underline-offset:4px}.publication-citation p{font-size:14px;line-height:1.7;margin:12px 0}
+.focus-related{font-size:16px;margin:30px 0 0;padding:18px 0;border-top:1px solid var(--line)}
+.focus-band{background:#f1f5f3;padding:50px 0;margin:15px 0}
+.focus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 60px}
+.focus-topic{border-top:1px solid #c7d5cf;padding-top:22px}.focus-topic h3{font-size:23px}.focus-topic p{font-size:18px;margin-bottom:0}
+.focus-development{border-top:1px solid #c7d5cf;margin-top:30px;padding-top:25px;max-width:910px}.focus-development h3{font-size:20px;margin-bottom:12px}.focus-development p{margin-bottom:0}
+.research-teaching{display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:start}
+.focus-contact{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:center;gap:45px;border-top:1px solid var(--line);padding-block:45px 65px}.focus-contact p{max-width:790px;margin-bottom:0}.focus-contact-actions{display:flex;flex-direction:column;align-items:flex-start;gap:20px}.focus-contact .eyebrow{margin-bottom:15px}.focus-contact .text-link{overflow-wrap:anywhere}
+.teaching-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:30px}.teaching-principles>div{padding-top:20px;border-top:1px solid var(--line)}.teaching-principles h3{font-size:21px;margin-bottom:12px}.teaching-principles p{font-size:17px;margin-bottom:0}
+.seminar-feature{padding:50px 0;background:#eaf1ee;border-block:1px solid #d0ded7;margin:10px 0 20px}.seminar-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:60px}.seminar-feature h2{font-size:38px;margin-bottom:14px}.seminar-subtitle{font-size:22px;line-height:1.5}.seminar-feature .course-period{max-width:330px}.seminar-feature .text-link{margin-top:10px}.seminar-discussion{font-size:16px;border-top:1px solid #c5d4cb;padding-top:20px;margin-bottom:0}
+.course-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.course-grid--past{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 50px}.course-card{border-top:1px solid var(--line);padding-top:22px}.course-card h3{font-size:23px;line-height:1.35;margin-bottom:12px}.course-card p{font-size:17px}.course-period{font-size:14px!important;color:#4e625b;line-height:1.6}.past-teaching{border-top:1px solid var(--line);padding-top:40px}
+.home-focus{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:60px;padding:35px;margin-top:10px;margin-bottom:25px;background:#edf3f0;border:1px solid #d4e0d9}.home-focus h2{font-size:32px;line-height:1.3}.home-focus p{font-size:18px}.home-focus .eyebrow{margin-bottom:16px}.home-focus-teaching{border-left:1px solid #c3d3c9;padding-left:35px}.home-focus-teaching h3{font-size:25px}.home-focus-teaching p{font-size:17px}
+@media(max-width:950px){.publication-features,.course-grid{grid-template-columns:1fr}.course-grid--past{grid-template-columns:repeat(2,minmax(0,1fr))}.publication-feature{display:block}.publication-feature .actions{padding-top:0}.seminar-grid,.research-teaching{gap:35px}.home-focus{gap:30px}.home-focus-teaching{padding-left:25px}}
+@media(max-width:700px){.focus-section{padding-block:30px}.focus-introduction{font-size:18px}.section-jump{gap:12px 20px;margin-bottom:25px}.focus-grid,.teaching-principles,.seminar-grid,.research-teaching,.focus-contact,.course-grid--past,.home-focus{grid-template-columns:1fr;gap:25px}.focus-band,.seminar-feature{padding-block:34px}.seminar-feature h2{font-size:31px}.focus-contact{padding-block:35px 45px}.home-focus{padding:25px 22px}.home-focus h2{font-size:28px}.home-focus-teaching{border-left:0;border-top:1px solid #c3d3c9;padding:24px 0 0}.focus-topic p{font-size:17px}.publication-feature h3,.course-card h3{font-size:22px}}
+@media print{.section-jump{display:none}.seminar-feature,.focus-band,.home-focus{break-inside:avoid;background:#fff}.course-card,.publication-feature{break-inside:avoid}}

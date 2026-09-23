@@ -2,7 +2,7 @@
 
 SERI Lab — Social Experiences, Resilience, and Identity — is directed by Dr. Maor Shani in the Department of Psychology at Ariel University. We study intergroup relations, discrimination, belonging, coping, resilience, and well-being.
 
-Our website is available at https://www.maorshani.com. Its 37 pages include research projects, publications, thesis supervision, media coverage, conference presentations, published aggregate results, and a curated question-answering guide.
+Our website is available at https://www.maorshani.com. Its 39 pages include antisemitism research, teaching, research projects, publications, thesis supervision, media coverage, conference presentations, published aggregate results, and a curated question-answering guide.
 
 ## Development
 
@@ -21,6 +21,7 @@ The preview server runs at http://127.0.0.1:4173. The default build is excluded 
 
 ## Content
 
+- `site/content/antisemitism.json` and `teaching.json`: research and course overviews.
 - `site/content/site.json`: lab name, research description, contact details, and domain.
 - `site/content/publications.json`: citations, source links, and first-page previews.
 - `site/content/projects.json`, `people.json`, and `theses.json`: research and supervision.
