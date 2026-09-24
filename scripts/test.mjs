@@ -38,8 +38,8 @@ execFileSync(process.execPath,['--check',path.join(root,'site/assets/forms.js')]
 execFileSync(process.execPath,['--check',path.join(root,'scripts/build.mjs')]);
 execFileSync(process.execPath,['--check',path.join(root,'site/assets/results.js')]);
 execFileSync(process.execPath,['--check',path.join(root,'scripts/results-template.mjs')]);
-assert.equal(htmlFiles.length,39,'Unexpected page count');
-for(const name of ['site','publications','people','theses','projects','posts','fellowships','explorer','images','forms','campus','media','conferences','data-explorer','antisemitism','teaching'])JSON.parse(fs.readFileSync(path.join(root,'site/content',name+'.json'),'utf8'));
+assert.equal(htmlFiles.length,40,'Unexpected page count');
+for(const name of ['site','publications','people','theses','projects','posts','fellowships','explorer','images','forms','campus','media','conferences','data-explorer','antisemitism','teaching','resources'])JSON.parse(fs.readFileSync(path.join(root,'site/content',name+'.json'),'utf8'));
 assert.ok(fs.existsSync(path.join(out,'assets/seri-social-card.png')),'Social preview image missing');
 assert.ok(fs.existsSync(path.join(out,'feed.xml')),'RSS feed missing');
 assert.ok(fs.existsSync(path.join(out,'sitemap.xml')),'Sitemap missing');
@@ -53,3 +53,33 @@ console.log(`PASS: ${htmlFiles.length} pages; ${refs} local links/assets; unique
 for(const name of ['data-lab','lab-guide','enhancements'])execFileSync(process.execPath,['--check',path.join(root,'site/assets',name+'.js')]);
 const home=fs.readFileSync(path.join(out,'index.html'),'utf8');assert.ok(!home.includes('Hope before and after October 7'),'Homepage table not removed');
 const bundle=JSON.parse(fs.readFileSync(path.join(root,'site/content/data-explorer.json'),'utf8'));assert.equal(bundle.length,1);assert.equal(Object.keys(bundle[0].groups[0].pairs).length,45);assert.ok(!JSON.stringify(bundle).includes('uid'));
+
+// Resource directory and the user-confirmed visiting-scholar affiliation.
+execFileSync(process.execPath,['--check',path.join(root,'scripts/resources-page.mjs')]);
+const resources=JSON.parse(fs.readFileSync(path.join(root,'site/content/resources.json'),'utf8'));
+assert.equal(resources.entries.length,18);
+assert.equal(resources.categories.length,4);
+assert.equal(new Set(resources.entries.map(r=>r.id)).size,resources.entries.length);
+assert.equal(new Set(resources.entries.map(r=>r.url)).size,resources.entries.length);
+const allowedCategories=new Set(resources.categories.map(c=>c.id));
+const resourcesHtml=fs.readFileSync(path.join(out,'resources.html'),'utf8');
+assert.ok(resourcesHtml.includes('id="resources-query"'));
+assert.ok(resourcesHtml.includes('id="resources-area"'));
+for(const r of resources.entries){
+ assert.ok(allowedCategories.has(r.category));
+ assert.ok(r.description&&r.institution&&r.location&&r.topics.length);
+ assert.equal(new URL(r.url).protocol,'https:');
+ assert.equal(new URL(r.sourceUrl).protocol,'https:');
+ assert.ok(resourcesHtml.includes(`id="${r.id}"`));
+}
+const search=fs.readFileSync(path.join(out,'assets/search-index.js'),'utf8');
+for(const r of resources.entries)assert.ok(search.includes(`resources.html#${r.id}`));
+for(const p of ['index','people','about']){
+ const html=fs.readFileSync(path.join(out,p+'.html'),'utf8');
+ assert.ok(html.includes('visiting scholar at '),p+' is missing the visiting-scholar role');
+ assert.ok(html.includes('https://constructor.university/'),p+' is missing the institution link');
+ assert.ok(html.includes('in Bremen, Germany'),p+' is missing the location');
+}
+for(const file of htmlFiles)assert.ok(fs.readFileSync(file,'utf8').includes('>Useful links</a>'),'Directory navigation missing: '+file);
+assert.ok(fs.readFileSync(path.join(out,'sitemap.xml'),'utf8').includes('/resources</loc>'));
+console.log('PASS: 18 resources, 4 categories, directory/index links, and affiliation on home, people and about pages.');
