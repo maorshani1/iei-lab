@@ -8,11 +8,31 @@
   function toast(message){const t=$('.toast');if(!t)return;t.textContent=message;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.hidden=true,4200);}
   async function copy(text){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);}else{const el=document.createElement('textarea');el.value=text;el.style.position='fixed';el.style.top='-9999px';document.body.append(el);el.select();const ok=document.execCommand('copy');el.remove();if(!ok)throw Error('copy');}toast('Copied to clipboard.');}catch{const dlg=document.createElement('dialog');dlg.className='search-dialog';const div=document.createElement('div');div.className='search-body';const p=document.createElement('p');p.textContent='Automatic copying is unavailable. Select and copy the text below.';const ta=document.createElement('textarea');ta.value=text;ta.rows=7;const b=document.createElement('button');b.textContent='Close';b.className='button secondary';b.addEventListener('click',()=>dlg.close());div.append(p,ta,b);dlg.append(div);document.body.append(dlg);dlg.addEventListener('close',()=>dlg.remove());dlg.showModal();ta.focus();ta.select();}}
   $$('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.copy)));
-  const menu=$('.menu-toggle'), nav=$('#main-nav');
-  function closeMenu(){nav?.classList.remove('is-open');menu?.setAttribute('aria-expanded','false');menu?.setAttribute('aria-label','Open navigation menu');}
-  menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');nav?.classList.toggle('is-open',open);});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();document.querySelector('.search-dialog[open]')?.close();}});
-  document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))closeMenu();});
+  const menu=$('.menu-toggle'), nav=$('#main-nav'), more=$('.nav-more'), moreToggle=$('summary',more||document.createElement('details'));
+  const desktopNav=matchMedia('(min-width:1280px)');
+  function sizeMenu(){const header=$('.site-header');if(header&&nav)nav.style.setProperty('--nav-space',Math.max(0,innerHeight-header.getBoundingClientRect().bottom-16)+'px');}
+  function closeMore(){if(more)more.open=false;}
+  function closeMenu(){closeMore();nav?.classList.remove('is-open');menu?.setAttribute('aria-expanded','false');menu?.setAttribute('aria-label','Open navigation menu');}
+  menu?.addEventListener('click',()=>{
+    const open=menu.getAttribute('aria-expanded')!=='true';
+    if(!open){closeMenu();return;}
+    sizeMenu();menu.setAttribute('aria-expanded','true');menu.setAttribute('aria-label','Close navigation menu');nav?.classList.add('is-open');
+    nav?.querySelector('a')?.focus({preventScroll:true});
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key!=='Escape')return;
+    if(more?.open){closeMore();moreToggle?.focus();e.preventDefault();}
+    else if(nav?.classList.contains('is-open')){closeMenu();menu?.focus();e.preventDefault();}
+    document.querySelector('.search-dialog[open]')?.close();
+  });
+  document.addEventListener('click',e=>{if(!e.target.closest('.nav-more'))closeMore();if(!e.target.closest('.site-header'))closeMenu();});
+  document.addEventListener('focusin',e=>{if(!e.target.closest('.nav-more'))closeMore();if(!e.target.closest('.site-header'))closeMenu();});
+  desktopNav.addEventListener('change',()=>{
+    const hadNavFocus=nav?.contains(document.activeElement);
+    closeMenu();
+    if(hadNavFocus)(desktopNav.matches?nav?.querySelector('a'):menu)?.focus({preventScroll:true});
+  });
+  addEventListener('resize',sizeMenu);
   $$('a',nav||document.createElement('nav')).forEach(a=>a.addEventListener('click',closeMenu));
   // All filtering is local; no query is transmitted to a server.
   $$('[data-filter-scope]').forEach(scope=>{
