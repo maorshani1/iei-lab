@@ -8,13 +8,14 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "build:production": "node scripts/build.mjs --production",
-    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "build": "node scripts/elegant-build.mjs",
+    "build:production": "node scripts/elegant-build.mjs --production",
+    "dev": "node scripts/elegant-build.mjs && node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs",
     "test": "node scripts/test.mjs",
     "review:html": "node scripts/preview.mjs",
     "build:vercel": "node scripts/vercel-build.mjs",
-    "assets:campus": "node scripts/cache-campus.mjs"
+    "assets:campus": "node scripts/cache-campus.mjs",
+    "test:design": "node scripts/test-elegant.mjs"
   }
 }
