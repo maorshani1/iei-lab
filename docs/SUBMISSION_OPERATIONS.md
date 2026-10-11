@@ -6,7 +6,7 @@ The submission area is available at `https://www.maorshani.com/teaching/submissi
 
 Assignment files and the submission register are stored in the lecturer's private Google Drive. Firestore stores encrypted application records. The lecturer reviews continued retention after the course; completed work is not deleted automatically. Retention reviews must also cover recovery copies.
 
-The configured lecturer can sign in, select a course, and review extension requests. Decisions and manual retries require a sign-in within the preceding 15 minutes. The owner panel's retry control processes queued emails and register updates and reports any remaining backlog.
+The configured lecturer can sign in, select a course, and review extension requests. Decisions and manual retries require a sign-in within the preceding 15 minutes. The owner panel's retry control refreshes all assignment trackers and processes queued emails and register updates and reports any remaining backlog.
 
 ## Daily maintenance
 
@@ -31,3 +31,21 @@ Production requires all three launch gates, the canonical origin, the lecturer-a
 To close intake, set `SUBMISSIONS_ENABLED=false` and deploy that configuration, or roll back to a verified closed deployment. Verify the public catalogue reports `enabled:false` and sign-in requests return `SUBMISSIONS_NOT_OPEN`. Existing private files and records should remain in place. Cron schedules need a separate check after a hosting rollback.
 
 References: [Vercel cron management](https://vercel.com/docs/cron-jobs/manage-cron-jobs), [Firestore consistent document reads](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/listDocuments).
+
+## Assignment trackers and grading
+
+Each assignment folder contains a private Google Sheet named with its assignment code and “Class Submission Tracker 2026-27”. The “Class status” tab includes every student in the private course roster. Before the deadline, unsubmitted work shows “Awaiting submission”; after the effective deadline it shows “Missing”. The effective deadline includes approved individual extensions. Exact verified email and student-number matches identify individual submissions. The most recent completed revision is displayed with its receipt and private files link.
+
+Columns M–Q are lecturer fields: grade, grading status, feedback, notes, and the revision graded (for example, R0). Automatic refreshes preserve these fields. Column R warns when a grade refers to an older revision or the graded revision is unspecified. Sort or filter entire rows; do not remove roster rows or edit the hidden student keys. A whole-row sort preserves the relationship between the student and their grade. Google Sheets can be downloaded through File → Download → Microsoft Excel (.xlsx).
+
+The “Needs review” tab lists uncertain identity matches and team membership. In column I, enter the confirmed student numbers separated by semicolons, including the submitter if appropriate; preserve leading zeros. Column J accepts lecturer notes. Sign in to the submission website and use “Refresh trackers and retry pending updates” to apply confirmations. The daily refresh also applies them. An unconfirmed named teammate is flagged rather than counted as a confirmed submission. Roster matching does not change student sign-in or access permissions.
+
+Roster data and tracker destinations are encrypted application records, excluded from the public repository. Roster changes require a private roster update and a corresponding safe sheet update. Intelligence and Personality Tests has no assignment tracker because assessment is by examination.
+
+## Failure alerts and independent checks
+
+Completed submissions queue their tracker updates in the same database transaction as their receipt. Provider failures leave updates queued for retry. Daily maintenance refreshes every configured tracker, retries pending messages and register entries, and records an aggregate health result. Backup, credential cleanup, and queue processing run independently so that one failure does not prevent the other maintenance steps.
+
+The service emails the lecturer when an upload-service, tracker, register, notification, or maintenance failure is detected. Alerts contain no student records and are limited to one attempt per problem category per 24 hours. Google authorization or a complete service outage can also prevent email delivery. The authenticated health endpoint checks database access, recent maintenance, tracker freshness, queued updates, and the private Google register connection; only aggregate status is returned.
+
+The private recovery snapshot includes roster and tracking indexes. Grades and feedback remain in the Google Sheets files and their version history. Download an Excel copy after grading each assignment and keep it in private course storage. At the end of the course, review retention of files, Sheets, and encrypted recovery copies together.
