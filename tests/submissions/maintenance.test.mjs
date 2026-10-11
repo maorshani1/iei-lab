@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createMaintenanceHandler} from '../../api/submissions-maintenance.js';
+const call=async(handler,{method='GET',authorization}={})=>{const result={};const response={setHeader(){},set statusCode(value){result.status=value;},end(value){result.body=JSON.parse(value);}};await handler({method,headers:{authorization}},response);return result;};
+function fixture(enabled=true){const calls=[];const rt={enabled,cronSecret:'synthetic-maintenance-secret',portal:{store:{},drive:{},register:{sheets:{}},async drain(){calls.push('drain');return {sent:0,queued:0,register:{synced:0,queued:0}};}}};return {calls,handler:createMaintenanceHandler(()=>rt,async()=>{calls.push('backup');return {state:'completed',documents:2};},async()=>{calls.push('cleanup');return {deleted:2};})};}
+test('closed maintenance cannot back up records or send queued mail',async()=>{const f=fixture(false);assert.equal((await call(f.handler)).status,503);assert.deepEqual(f.calls,[]);});
+test('missing or wrong maintenance secret cannot access private operations',async()=>{const f=fixture();for(const authorization of [undefined,'Bearer wrong'])assert.equal((await call(f.handler,{authorization})).status,404);assert.deepEqual(f.calls,[]);});
+test('maintenance rejects non-GET requests even with its secret',async()=>{const f=fixture();assert.equal((await call(f.handler,{method:'POST',authorization:'Bearer synthetic-maintenance-secret'})).status,405);assert.deepEqual(f.calls,[]);});
+test('authorized maintenance completes recovery copy before retrying queues',async()=>{const f=fixture();const result=await call(f.handler,{authorization:'Bearer synthetic-maintenance-secret'});assert.equal(result.status,200);assert.deepEqual(f.calls,['backup','cleanup','drain']);assert.equal(result.body.backup.documents,2);});
+test('maintenance failures never return a provider message or credential',async()=>{const handler=createMaintenanceHandler(()=>{throw new Error('PRIVATE_PROVIDER_DETAIL');});const result=await call(handler);assert.equal(result.status,503);assert.deepEqual(result.body,{error:'MAINTENANCE_FAILED'});});

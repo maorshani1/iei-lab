@@ -53,6 +53,15 @@
   "functions": {
     "api/submissions.js": {
       "maxDuration": 300
+    },
+    "api/submissions-maintenance.js": {
+      "maxDuration": 300
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/submissions-maintenance",
+      "schedule": "0 3 * * *"
+    }
+  ]
 }
