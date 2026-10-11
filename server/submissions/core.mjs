@@ -5,8 +5,8 @@ import {descriptors,validateContent} from './validation.mjs';
 const HOUR=3600_000,DAY=24*HOUR;
 const cleanFile=f=>({name:f.finalName||f.originalName,size:f.size,role:f.role,index:f.index,state:f.state,offset:f.offset});
 export class Portal {
- constructor({store,drive,mail,secret,ownerEmail,folderMap,now=()=>Date.now()}){
-  Object.assign(this,{store,drive,mail,secret,folderMap,now});this.ownerEmail=email(ownerEmail);
+ constructor({store,drive,mail,secret,ownerEmail,folderMap,register=null,now=()=>Date.now()}){
+  Object.assign(this,{store,drive,mail,secret,folderMap,register,now});this.ownerEmail=email(ownerEmail);
  }
  uid(e){return digest(this.secret,'account:'+email(e));}
  async limit(parts){const now=this.now();const keys=parts.map(([name,max,period])=>'rate_'+digest(this.secret,name+':'+Math.floor(now/period)));await this.store.transaction(keys,tx=>{parts.forEach(([name,max,period],i)=>{const r=tx.get(keys[i])||{count:0,expiresAt:now+2*period};fail(r.count<max,'RATE_LIMIT',429);r.count++;tx.set(keys[i],r);});});}
@@ -125,11 +125,11 @@ export class Portal {
   try{
    await this.drive.checkFolder(this.folderMap[a.id]);for(const f of r.files){await this.drive.checkFile(f.driveId,f.parent,f.size);await this.drive.rename(f.driveId,f.finalName);}
    const line='line_'+s.uid+'_'+r.assignment,out='outbox_receipt_'+id,q='queue_mail';
-   const receipt=await this.store.transaction([key,line,out,q],tx=>{const x=tx.get(key),l=tx.get(line);if(x.state==='completed')return x.receipt;fail(x.finalLease===lease&&l.pending===id&&l.completed.length===x.revision,'SUBMISSION_CONFLICT',409);
+   const receipt=await this.store.transaction([key,line,out,q,...(this.register?.keys(id)||[])],tx=>{const x=tx.get(key),l=tx.get(line);if(x.state==='completed')return x.receipt;fail(x.finalLease===lease&&l.pending===id&&l.completed.length===x.revision,'SUBMISSION_CONFLICT',409);
     x.receipt=this.receipt(x,when,timing);x.state='completed';x.completedAt=this.now();delete x.finalLease;delete x.finalLeaseUntil;tx.set(key,x);l.completed.push(id);l.pending=null;l.pendingKey=null;tx.set(line,l);
-    const queued=tx.get(q)||{ids:[]};fail(queued.ids.length<3000,'NOTIFICATION_QUEUE_FULL',503);queued.ids.push(out);tx.set(q,queued);tx.set(out,{kind:'receipt',submission:id,email:s.email,attempts:0,state:'queued',nextTry:0});return x.receipt;});
+    const queued=tx.get(q)||{ids:[]};fail(queued.ids.length<3000,'NOTIFICATION_QUEUE_FULL',503);queued.ids.push(out);tx.set(q,queued);tx.set(out,{kind:'receipt',submission:id,email:s.email,attempts:0,state:'queued',nextTry:0});this.register?.enqueue(tx,x);return x.receipt;});
    // Failure to notify never rolls back a successfully recorded submission.
-   await this.deliver(out).catch(()=>{});return (await this.owned(s,id)).receipt||receipt;
+   await this.deliver(out).catch(()=>{});if(this.register)await this.register.sync(id).catch(()=>{});return (await this.owned(s,id)).receipt||receipt;
   }catch(e){await this.store.transaction([key],tx=>{const x=tx.get(key);if(x.finalLease===lease){delete x.finalLease;delete x.finalLeaseUntil;tx.set(key,x);}});throw e;}
  }
  async receipts(s,courseId=null){
@@ -168,6 +168,6 @@ export class Portal {
    await this.store.transaction([key,q,...(sk?[sk]:[])],tx=>{const x=tx.get(key);fail(x.lease===lease,'NOTIFICATION_BUSY',409);x.state='sent';x.sentAt=this.now();delete x.lease;delete x.leaseUntil;tx.set(key,x);const queue=tx.get(q)||{ids:[]};queue.ids=queue.ids.filter(i=>i!==key);tx.set(q,queue);if(sk){const sub=tx.get(sk);if(sub?.receipt){sub.receipt.emailStatus='accepted-by-email-provider';tx.set(sk,sub);}}});return true;
   }catch{await this.store.transaction([key],tx=>{const x=tx.get(key);if(x?.lease===lease){x.state='queued';x.nextTry=this.now()+Math.min(6*HOUR,60_000*2**Math.min(x.attempts,8));delete x.lease;delete x.leaseUntil;tx.set(key,x);}});return false;}
  }
- async drain(){const q=await this.store.get('queue_mail')||{ids:[]};let sent=0;let examined=0;for(const id of q.ids){const item=await this.store.get(id);if(!item||item.nextTry>this.now()||item.leaseUntil>this.now())continue;if(examined++>=25)break;if(await this.deliver(id))sent++;}return {sent,queued:Math.max(0,q.ids.length-sent)};}
+ async drain(){const q=await this.store.get('queue_mail')||{ids:[]};let sent=0;let examined=0;for(const id of q.ids){const item=await this.store.get(id);if(!item||item.nextTry>this.now()||item.leaseUntil>this.now())continue;if(examined++>=25)break;if(await this.deliver(id))sent++;}return {sent,queued:Math.max(0,q.ids.length-sent),...(this.register?{register:await this.register.drain()}:{})};}
 }
 export function jerusalemEnd(date){fail(/^\d{4}-\d{2}-\d{2}$/.test(date||''),'DATE_INVALID');const probe=new Date(date+'T12:00:00Z');fail(!Number.isNaN(+probe)&&probe.toISOString().slice(0,10)===date,'DATE_INVALID');const tz=new Intl.DateTimeFormat('en',{timeZone:'Asia/Jerusalem',timeZoneName:'longOffset'}).formatToParts(probe).find(x=>x.type==='timeZoneName')?.value;fail(/^GMT\+0[23]:00$/.test(tz||''),'DATE_INVALID');return date+'T23:59:59.999'+tz.slice(3);}
