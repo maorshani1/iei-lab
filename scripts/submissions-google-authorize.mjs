@@ -77,7 +77,7 @@ export function createAuthorizationFlow({client,save,request=fetch,onResult=()=>
    const about=await json('https://www.googleapis.com/drive/v3/about?fields=user(emailAddress)',{headers:{Authorization:'Bearer '+renewed.access_token}});
    requireValue(about.user?.emailAddress?.toLowerCase()===OWNER,'GOOGLE_ACCOUNT_MISMATCH');
    await save({projectId:PROJECT,clientId:client.client_id,clientSecret:client.client_secret,refreshToken:issued.refresh_token,ownerEmail:OWNER,scopes,
-    authorizedAt:new Date().toISOString(),consentStatus:'testing',refreshTokenExpiresIn:issued.refresh_token_expires_in||null});
+    authorizedAt:new Date().toISOString(),consentStatus:'not-reported-by-token-endpoint',refreshTokenExpiresIn:issued.refresh_token_expires_in||null});
    finish('authorized');
   }catch(error){
    const code=/^(GOOGLE_|CREDENTIAL_)[A-Z_]+$/.test(error.code||'')?error.code:error.code==='EEXIST'?'CREDENTIAL_ALREADY_EXISTS':'AUTHORIZATION_FAILED';
@@ -90,8 +90,11 @@ export function createAuthorizationFlow({client,save,request=fetch,onResult=()=>
 }
 
 async function main(){
+ const args=process.argv.slice(2);
+ requireValue(args.length===0||(args.length===1&&args[0]==='--stage-renewal'),'SETUP_ARGUMENT_INVALID');
+ const stageRenewal=args.includes('--stage-renewal');
  const clientFile=path.join(os.homedir(),'Downloads/seri-google-client.json');
- const output=path.join(os.homedir(),'Library/Application Support/SERI Teaching Submissions/google-oauth.json');
+ const output=path.join(os.homedir(),'Library/Application Support/SERI Teaching Submissions',stageRenewal?'google-oauth-renewal.json':'google-oauth.json');
  try{await fs.access(output);throw Object.assign(new Error(),{code:'CREDENTIAL_ALREADY_EXISTS'});}catch(error){if(error.code!=='ENOENT')throw error;}
  const client=validateClient(JSON.parse(await fs.readFile(clientFile,'utf8')));
  const flow=createAuthorizationFlow({client,save:credential=>saveCredential(output,credential),onResult:result=>{
@@ -102,13 +105,13 @@ async function main(){
  const server=http.createServer((req,res)=>flow.handler(req,res).catch(()=>{res.statusCode=500;res.end('Setup failed. Return to the chat.');}));
  server.on('error',()=>{console.error(JSON.stringify({status:'failed',code:'LOCAL_LISTENER_UNAVAILABLE'}));process.exitCode=1;});
  server.listen(8765,'127.0.0.1',()=>{
-  console.log(JSON.stringify({status:'waiting-for-owner-consent',clientValidated:true,scopes:['drive.file','gmail.send']}));
+  console.log(JSON.stringify({status:'waiting-for-owner-consent',clientValidated:true,stagedRenewal:stageRenewal,scopes:['drive.file','gmail.send']}));
   execFile('/usr/bin/open',['-a','Google Chrome','http://127.0.0.1:8765/'],error=>{if(error)console.log(JSON.stringify({status:'open-local-setup-in-browser',url:'http://127.0.0.1:8765/'}));});
  });
  const timeout=setTimeout(()=>{console.log(JSON.stringify({status:'expired'}));server.close();},20*60_000);
  timeout.unref();server.on('close',()=>clearTimeout(timeout));
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))main().catch(error=>{
- const known=['CREDENTIAL_ALREADY_EXISTS','CLIENT_CONFIGURATION_INVALID','ENOENT'];
+ const known=['CREDENTIAL_ALREADY_EXISTS','CLIENT_CONFIGURATION_INVALID','SETUP_ARGUMENT_INVALID','ENOENT'];
  console.error(JSON.stringify({status:'failed',code:known.includes(error.code)?error.code:'SETUP_FAILED'}));process.exitCode=1;
 });

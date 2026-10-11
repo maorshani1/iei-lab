@@ -18,6 +18,8 @@ The listener expires after 20 minutes. If it expires before approval, rerun the 
 
 Google OAuth grants in External Testing mode that include these scopes normally have a seven-day refresh-token lifetime. Before long-term operation, complete the appropriate consent publication and authorization steps and verify renewal again. OAuth publication and student-intake activation are separate controls.
 
+After an owner-approved publication change, `node scripts/submissions-google-authorize.mjs --stage-renewal` can obtain a replacement grant. It writes `google-oauth-renewal.json` without replacing the active credential. Verify the new grant's account, scopes, refresh behavior, and access to the existing destinations before securely replacing the active credential and updating the corresponding hosting secret. Keep the previous credential privately for recovery until the replacement has been verified. An absent token-expiration field is not a guarantee of permanent authorization. The token endpoint does not report the project's publishing status; confirm that separately in Google Auth Platform.
+
 ## Isolated Drive and Sheets check
 
 Run:
@@ -49,6 +51,24 @@ The check copies the service-account credential into the private application-sup
 The check verifies database identity and location, encrypted storage, concurrent transactions, sign-in with simulated email, account isolation, PDF upload and final naming, revisions R0 and R1, receipt retrieval, and automatic register updates. It simulates a lost Sheets response after a successful write, then verifies that retrying keeps a single row. Synthetic submission dates fall within a fixed catalogue window. Each run uses new synthetic accounts and adds two test submissions.
 
 The result is saved as `backend-integration-check.json` beside the private credentials. This exercises application services and live Google adapters directly. Browser transport, deployed hosting configuration, actual email delivery, production destination folders, and student-intake activation require separate verification. No email is sent and no launch setting is changed by this check.
+
+## Browser workflow check
+
+After the isolated backend check has passed and `dist/` contains the submission page, run `scripts/submissions-browser-check.mjs` with an installed Playwright module:
+
+```sh
+SERI_PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs \
+SERI_CHROME_EXECUTABLE=/absolute/path/to/chrome \
+node scripts/submissions-browser-check.mjs
+```
+
+Omit `SERI_CHROME_EXECUTABLE` when Playwright's own Chromium browser is installed. The check also uses `/usr/bin/openssl` to create an ephemeral certificate. Its HTTPS server binds only to `127.0.0.1`; certificate-error tolerance applies only to the test browser contexts. Temporary certificate files are removed when the check finishes.
+
+The browser loads the built page, scripts, styles, and the real HTTP handler. Live Drive, Firestore, and Sheets operations use the existing isolated test collection and purpose-marked test folder and register. Email is simulated in memory; the Gmail sender is never instantiated. Browser requests to other origins are blocked. The deployed runtime and intake settings are not changed.
+
+The check covers closed mode, three course selections at mobile, tablet, and desktop widths, secure session cookies, a 25,000,000-byte synthetic PDF, recovery after a lost chunk response, cloud hash verification, revisions R0 through R2, receipt history, automatic register readback, CSRF rejection, separate browser accounts, an owner-approved extension, and logout. Each successful run adds three synthetic submissions to the isolated test storage. Results and screenshots are saved privately beside the setup credentials. This does not verify real mailbox delivery, the Vercel upload path, or the compatibility of every course file.
+
+Use `--logout-only` for a focused sign-in and logout check without new uploads. It also verifies that replaying the revoked session cookie is rejected. This option does not run the upload, revision, register, or extension scenarios.
 
 ## Owner email delivery check
 
