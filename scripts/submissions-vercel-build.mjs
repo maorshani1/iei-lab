@@ -11,7 +11,7 @@ const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?
 const originals=new Map(walk(out).filter(f=>f.endsWith('.html')).map(f=>[f,fs.readFileSync(f,'utf8')]));
 await import('./submissions-build.mjs');
 for(const [file,html] of originals)if(path.basename(file)!=='teaching.html')assert.equal(fs.readFileSync(file,'utf8'),html,'Existing page changed: '+path.basename(file));
-const pages=walk(out).filter(f=>f.endsWith('.html'));assert.equal(pages.length,41);
+const pages=walk(out).filter(f=>f.endsWith('.html'));assert.equal(pages.length,43);
 for(const file of pages){const html=fs.readFileSync(file,'utf8');
  assert.equal((html.match(/<h1\b/g)||[]).length,1,'Expected one page heading');
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size,'Duplicate element identifier');
@@ -26,4 +26,4 @@ const p=fs.readFileSync(path.join(out,'teaching/submissions.html'),'utf8');asser
 for(const dir of ['server/submissions','site/assets'])for(const file of fs.readdirSync(path.join(root,dir))){if((dir==='server/submissions'||file==='submissions.js')&&/\.(?:mjs|js)$/.test(file))execFileSync(process.execPath,['--check',path.join(root,dir,file)]);}
 const tests=fs.readdirSync(path.join(root,'tests/submissions')).filter(f=>f.endsWith('.test.mjs')).map(f=>path.join(root,'tests/submissions',f));
 execFileSync(process.execPath,['--test',...tests],{cwd:root,stdio:'inherit'});
-console.log('PASS: original pages preserved; 41-page reference checks; assignment module tests. Intake remains disabled unless all server launch gates are met.');
+console.log('PASS: original pages preserved; 43-page reference checks; assignment module tests. Intake remains disabled unless all server launch gates are met.');

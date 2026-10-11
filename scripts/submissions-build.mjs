@@ -4,6 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 import {portalContent} from './submissions-page.mjs';
+import {submissionInformationPages,renderSubmissionInformationPage} from './submissions-information.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),out=path.join(root,'dist'),teaching=path.join(out,'teaching.html');
 assert.ok(fs.existsSync(teaching),'Build the existing site before adding the submissions page.');
 let shell=fs.readFileSync(teaching,'utf8');assert.equal([...shell.matchAll(/<main id="main"[^>]*>[\s\S]*?<\/main>/g)].length,1,'Unexpected Teaching page shell.');
@@ -19,4 +20,5 @@ let html=shell.replace(/<main id="main"[^>]*>[\s\S]*?<\/main>/,`<main id="main" 
 assert.equal([...html.matchAll(/<h1\b/g)].length,1,'Expected one submission-page H1.');
 assert.ok(!html.includes('__seriReviewTransport'),'Review transport must never enter the production HTML.');
 fs.mkdirSync(path.join(out,'teaching'),{recursive:true});fs.writeFileSync(path.join(out,'teaching/submissions.html'),html);
-console.log('Added the submission page. Live upload remains controlled by server-only activation gates.');
+for(const page of submissionInformationPages)fs.writeFileSync(path.join(out,page.path+'.html'),renderSubmissionInformationPage(shell,page));
+console.log('Added the submission page and its public information pages. Live upload remains controlled by server-only activation gates.');

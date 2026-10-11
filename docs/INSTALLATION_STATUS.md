@@ -4,7 +4,7 @@ This local installation package adds the approved course-first, bilingual submis
 
 ## Build
 
-The Vercel configuration runs `node scripts/submissions-vercel-build.mjs`. That wrapper runs the existing full build and regression tests first, generates the additional submission page, checks the resulting 41-page site, and runs the submission service tests. The original build scripts and research content are preserved.
+The Vercel configuration runs `node scripts/submissions-vercel-build.mjs`. That wrapper runs the existing full build and regression tests first, generates the submission page and two Google integration information pages, checks the resulting 43-page site, and runs the submission service tests. The original build scripts and research content are preserved.
 
 ## Privacy boundary
 
