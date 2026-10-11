@@ -16,6 +16,8 @@
     "review:html": "node scripts/preview.mjs",
     "build:vercel": "node scripts/vercel-build.mjs",
     "assets:campus": "node scripts/cache-campus.mjs",
-    "test:design": "node scripts/test-elegant.mjs"
+    "test:design": "node scripts/test-elegant.mjs",
+    "test:submissions": "node --test tests/submissions/*.test.mjs",
+    "build:submissions": "node scripts/elegant-build.mjs && node scripts/submissions-build.mjs"
   }
 }

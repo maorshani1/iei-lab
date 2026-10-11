@@ -12,3 +12,9 @@ private_research*/
 *.sav
 *.sav.bin
 *.pkl
+
+# Private teaching records never belong in the public repository.
+private/
+*.xlsx
+*.xls
+*roster_prepared*.json

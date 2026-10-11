@@ -1,0 +1,188 @@
+/* SERI assignment area v0.3.
+ * Load after the website's site.css and elegant.css. Inherit the site's actual
+ * font stacks, body size, heading scale, colours and container width. No fonts
+ * are downloaded or embedded; no styles below target other website pages.
+ */
+#submission-portal {
+  --p-ink: var(--ink, #172f38);
+  --p-green: var(--teal, #39655b);
+  --p-muted: var(--muted, #62716f);
+  --p-border: var(--line, #dce3dd);
+  --p-soft: var(--soft, #f2f5f1);
+  color: inherit;
+  font: inherit;
+  padding-top: 32px;
+  padding-bottom: 60px;
+}
+#submission-portal *, #submission-portal *::before, #submission-portal *::after { box-sizing: border-box; }
+#submission-portal [hidden] { display: none !important; }
+#submission-portal :lang(he) { font-family: var(--sans, Arial, Helvetica, sans-serif); letter-spacing: normal; }
+#submission-portal p { margin: 0 0 18px; }
+#submission-portal .bi { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; }
+#submission-portal .bi > span { min-width: 0; }
+#submission-portal a { color: var(--p-green); text-underline-offset: 4px; }
+#submission-portal .portal-breadcrumb { display: flex; flex-wrap: wrap; gap: 14px; font-size: 15px; color: var(--p-muted); margin: 0; }
+#submission-portal .portal-hero { display: grid; grid-template-columns: minmax(0,1fr) 285px; gap: 72px; align-items: center; }
+#submission-portal .portal-eyebrow { font: 600 13px/1.6 var(--sans); letter-spacing: 1.6px; color: var(--p-green); margin-bottom: 18px; }
+#submission-portal .portal-hero h1 { margin-top: 0; margin-bottom: 14px; }
+#submission-portal .portal-hero-he { font-size: 30px; line-height: 1.4; color: var(--p-ink); margin-bottom: 26px; text-align: left; }
+#submission-portal .portal-lead { font-size: 21px; line-height: 1.6; color: var(--p-muted); margin-bottom: 7px; }
+#submission-portal .portal-lead:lang(he) { text-align: left; }
+#submission-portal .portal-private { border-left: 1px solid var(--p-border); padding-left: 30px; font-size: 16px; }
+#submission-portal .portal-private .bi { display: block; }
+#submission-portal .portal-private .bi > span { display: block; }
+#submission-portal .portal-private p { margin: 14px 0 0; color: var(--p-muted); }
+#submission-portal .portal-private strong { font-weight: 600; }
+#submission-portal .portal-card { padding: 34px 0; margin-bottom: 24px; background: transparent; border: 0; border-top: 1px solid var(--p-border); border-radius: 0; box-shadow: none; }
+#submission-portal .portal-card-title { margin-bottom: 24px; }
+#submission-portal .portal-card-title h2 { margin: 0 0 10px; }
+#submission-portal .portal-card-title p { color: var(--p-ink); font-size: 21px; line-height: 1.5; margin: 0; text-align: left; }
+#submission-portal .portal-course-chooser { border-top: 0; padding-top: 0; padding-bottom: 36px; margin: 0; }
+#submission-portal .portal-course-chooser .portal-field { margin: 24px 0 0; max-width: 920px; }
+#submission-portal .portal-course-chooser select { min-height: 56px; }
+#submission-portal .portal-muted { color: var(--p-muted); font-size: inherit; line-height: 1.8; }
+#submission-portal .portal-muted .bi { display: block; }
+#submission-portal .portal-muted .bi > span { display: block; margin-bottom: 7px; }
+#submission-portal .portal-course-information { border-top: 1px solid var(--p-border); padding: 42px 0 28px; }
+#submission-portal .portal-course-information h2 { margin-bottom: 24px; }
+#submission-portal .portal-course-information h2 .bi { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+#submission-portal .portal-course-information h2 :lang(he) { font-size: .85em; line-height: 1.4; }
+#submission-portal .portal-course-copy, #submission-portal .portal-instructions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 48px; color: inherit; }
+#submission-portal .portal-course-copy p { margin: 0; }
+#submission-portal .portal-instructions { padding: 28px 0 38px; }
+#submission-portal .portal-instructions h2 { font-size: 26px; margin-bottom: 16px; }
+#submission-portal .portal-instructions h2:lang(he) { font-size: 25px; }
+#submission-portal .portal-instructions p { font-size: inherit; line-height: 1.8; }
+#submission-portal .portal-tabs { display: flex; flex-wrap: wrap; gap: 10px 38px; border-bottom: 1px solid var(--p-border); margin: 4px 0 36px; }
+#submission-portal .portal-tabs button { color: var(--p-muted); background: transparent; border: 0; border-bottom: 2px solid transparent; border-radius: 0; padding: 12px 0 18px; font: 400 17px/1.6 var(--sans); cursor: pointer; }
+#submission-portal .portal-tabs button .bi { display: block; text-align: left; }
+#submission-portal .portal-tabs button .bi > span { display: block; }
+#submission-portal .portal-tabs button[aria-selected=true] { color: var(--p-green); border-bottom-color: var(--p-green); }
+#submission-portal .portal-layout { display: grid; grid-template-columns: 260px minmax(0,1fr); gap: 64px; align-items: start; }
+#submission-portal .portal-sidebar { padding-top: 30px; padding-right: 28px; border-right: 1px solid var(--p-border); font-size: 16px; }
+#submission-portal .portal-sidebar h2 { font-size: 26px; margin: 0 0 22px; }
+#submission-portal .portal-steps { list-style: none; padding: 0; margin: 0 0 28px; }
+#submission-portal .portal-steps li { margin: 0 0 25px; }
+#submission-portal .portal-steps .bi { display: block; }
+#submission-portal .portal-steps .bi > span { display: block; }
+#submission-portal .portal-steps strong { font-weight: 600; }
+#submission-portal .portal-steps p { margin: 8px 0 0; color: var(--p-muted); }
+#submission-portal .portal-side-note { border-top: 1px solid var(--p-border); padding-top: 24px; color: var(--p-muted); }
+#submission-portal .portal-side-note .bi { display: block; }
+#submission-portal .portal-side-note .bi > span { display: block; margin-bottom: 12px; }
+#submission-portal .portal-workspace { min-width: 0; }
+#submission-portal #auth-card { border-top: 0; padding-top: 20px; }
+#submission-portal label { display: block; font-size: 16px; font-weight: 600; line-height: 1.6; margin-bottom: 10px; }
+#submission-portal input:not([type=checkbox]), #submission-portal select, #submission-portal textarea { display: block; width: 100%; min-width: 0; min-height: 50px; border: 1px solid #bccdc1; border-radius: 0; background: #fff; color: var(--p-ink); padding: 12px 14px; font: 400 17px/1.5 var(--sans); }
+#submission-portal textarea { resize: vertical; line-height: 1.7; }
+#submission-portal input::placeholder, #submission-portal textarea::placeholder { color: var(--p-muted); opacity: 1; }
+#submission-portal input[type=file] { font-size: 16px; padding: 12px; background: #fff; border-style: solid; }
+#submission-portal input[type=file]::file-selector-button { background: var(--p-soft); color: var(--p-green); border: 1px solid #bdcfc4; border-radius: 0; font: 400 16px/1.5 var(--sans); padding: 9px 14px; margin-right: 14px; cursor: pointer; }
+#submission-portal :is(input,textarea,select,button,a,summary):focus-visible { outline: 3px solid var(--p-green); outline-offset: 4px; }
+#submission-portal .portal-inline { display: flex; gap: 14px; align-items: stretch; }
+#submission-portal .portal-inline input { flex: 1; min-width: 0; }
+#submission-portal .portal-button { display: inline-flex; align-items: center; justify-content: center; gap: 22px; min-height: 48px; max-width: 100%; padding: 13px 23px; border: 1px solid var(--p-green); border-radius: 0; background: var(--p-green); color: #fff; box-shadow: none; cursor: pointer; font: 400 16px/1.5 var(--sans); }
+#submission-portal .portal-button .bi { gap: 6px 16px; align-items: center; }
+#submission-portal .portal-button:hover { background: #294e46; border-color: #294e46; }
+#submission-portal button:disabled { opacity: .6; cursor: not-allowed; }
+#submission-portal fieldset { min-width: 0; border: 0; padding: 0; margin: 0; }
+#submission-portal fieldset:disabled { opacity: .7; }
+#submission-portal .portal-field { margin-bottom: 26px; }
+#submission-portal .portal-form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 26px; }
+#submission-portal .portal-help { font-size: 16px; line-height: 1.7; color: var(--p-muted); margin: 10px 0 18px; }
+#submission-portal .portal-help .bi { display: block; }
+#submission-portal .portal-help .bi > span { display: block; margin-bottom: 4px; }
+#submission-portal .portal-deadline { padding: 22px 24px; margin: 0 0 30px; background: var(--p-soft); border-left: 2px solid #a2b5a1; font-size: 16px; line-height: 1.8; }
+#submission-portal .portal-check { display: flex; align-items: flex-start; gap: 14px; font-weight: 400; margin: 26px 0; }
+#submission-portal .portal-check input { flex: none; width: 18px; height: 18px; margin: 5px 0 0; accent-color: var(--p-green); }
+#submission-portal .portal-check > span { min-width: 0; }
+#submission-portal .portal-check .bi { display: block; }
+#submission-portal .portal-check .bi > span { display: block; margin-bottom: 8px; }
+#submission-portal .portal-submit-row { display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; margin-top: 30px; }
+#submission-portal .portal-submit-row p { margin: 0; }
+#submission-portal .portal-message:not(:empty) { padding: 20px 24px; margin: 22px 0 0; background: var(--p-soft); font-size: 16px; line-height: 1.8; overflow-wrap: anywhere; }
+#submission-portal .portal-message[data-error=true] { background: #fcf3ed; color: #7e412d; border-left: 2px solid #af6a4d; }
+#submission-portal .portal-signed { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; border-top: 1px solid var(--p-border); padding: 20px 0; margin-bottom: 10px; font-size: 16px; overflow-wrap: anywhere; }
+#submission-portal .portal-text-button, #submission-portal .portal-text-link { display: inline-block; color: var(--p-green); background: none; border: 0; border-bottom: 1px solid #a7beb1; border-radius: 0; padding: 6px 0; font: 400 16px/1.7 var(--sans); cursor: pointer; }
+#submission-portal .portal-late { border-left: 2px solid #c5ab78; background: #fcf8ee; padding: 26px; margin: 26px 0; }
+#submission-portal .portal-late h3 { font-size: 24px; margin: 0 0 16px; }
+#submission-portal progress { width: 100%; height: 10px; accent-color: var(--p-green); margin-top: 18px; }
+#submission-portal .portal-receipt { background: var(--p-soft); padding: 32px; margin-top: 32px; border: 1px solid var(--p-border); border-top: 2px solid var(--p-green); }
+#submission-portal .portal-receipt h2 { font-size: 32px; margin-bottom: 14px; }
+#submission-portal .portal-receipt dl { display: grid; grid-template-columns: 175px minmax(0,1fr); gap: 14px 24px; font-size: 17px; margin: 26px 0; }
+#submission-portal .portal-receipt dt { color: var(--p-muted); }
+#submission-portal .portal-receipt dd { margin: 0; overflow-wrap: anywhere; }
+#submission-portal .portal-file-list { list-style: none; padding: 0; margin: 0; font-size: 16px; }
+#submission-portal .portal-file-list li { padding: 14px 0; border-top: 1px solid var(--p-border); overflow-wrap: anywhere; }
+#submission-portal .portal-receipt-card { padding: 28px 0; border-bottom: 1px solid var(--p-border); }
+#submission-portal .portal-receipt-card h3 { margin: 8px 0 18px; }
+#submission-portal .portal-fallback { border-top: 1px solid var(--p-border); margin-top: 42px; padding: 30px 0; }
+#submission-portal .portal-fallback summary { cursor: pointer; font-size: 17px; color: var(--p-green); }
+#submission-portal .portal-fallback .portal-instructions { padding: 24px 0 0; }
+#submission-portal .portal-fallback code { font-size: 16px; line-height: 1.8; overflow-wrap: anywhere; }
+#submission-portal .portal-privacy { border-top: 1px solid var(--p-border); padding-top: 26px; color: var(--p-muted); font-size: 16px; margin-top: 12px; }
+#submission-portal .portal-privacy .bi { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 48px; }
+#submission-portal .portal-honeypot, #submission-portal .portal-sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+#submission-portal .portal-owner-card { padding: 28px 0; margin: 24px 0; border-bottom: 1px solid var(--p-border); }
+#submission-portal .portal-owner-card p { white-space: pre-wrap; overflow-wrap: anywhere; }
+#submission-portal .portal-owner-controls { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
+#submission-portal .portal-banner { background: var(--p-soft); border: 0; border-left: 2px solid #a2b5a1; padding: 18px 24px; color: #52645c; font-size: 15px; line-height: 1.75; margin: 0 0 38px; }
+#submission-portal .portal-banner p { margin: 6px 0 10px; }
+#submission-portal .portal-demo-tools summary { cursor: pointer; font-size: 16px; margin-top: 10px; }
+#submission-portal .portal-demo-controls { display: flex; flex-wrap: wrap; gap: 10px; padding: 16px 0 4px; }
+#submission-portal .portal-demo-controls button { background: white; color: var(--p-green); border: 1px solid #bdcfc4; border-radius: 0; padding: 10px 14px; font: 400 16px/1.5 var(--sans); cursor: pointer; }
+#submission-portal #code-form { margin-top: 24px; }
+#submission-portal #upload-recovery { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; }
+@media (max-width: 1000px) {
+  #submission-portal .portal-hero { gap: 40px; grid-template-columns: minmax(0,1fr) 250px; }
+  #submission-portal .portal-layout { grid-template-columns: 210px minmax(0,1fr); gap: 36px; }
+  #submission-portal .portal-form-grid { grid-template-columns: 1fr; gap: 0; }
+  #submission-portal .portal-inline { flex-wrap: wrap; }
+}
+@media (max-width: 760px) {
+  #submission-portal { padding-top: 24px; padding-bottom: 40px; }
+  #submission-portal .portal-hero { grid-template-columns: 1fr; gap: 26px; }
+  #submission-portal .portal-hero-he { font-size: 26px; margin-bottom: 20px; }
+  #submission-portal .portal-lead { font-size: 19px; }
+  #submission-portal .portal-private { border-left: 0; border-top: 1px solid var(--p-border); padding: 20px 0 0; }
+  #submission-portal .portal-private strong.bi { display: flex; }
+  #submission-portal .portal-private p { margin-top: 10px; }
+  #submission-portal .portal-private p.bi { display: block; }
+  #submission-portal .portal-breadcrumb { font-size: 14px; gap: 10px; }
+  #submission-portal .portal-course-copy, #submission-portal .portal-instructions, #submission-portal .portal-privacy .bi { grid-template-columns: 1fr; gap: 24px; }
+  #submission-portal .portal-course-information h2 .bi { grid-template-columns: 1fr; gap: 12px; }
+  #submission-portal .portal-course-information { padding-top: 30px; }
+  #submission-portal .portal-card-title p { font-size: 21px; }
+  #submission-portal .portal-card-title { margin-bottom: 22px; }
+  #submission-portal .portal-tabs { gap: 8px 25px; margin-bottom: 24px; }
+  #submission-portal .portal-tabs button { font-size: 16px; padding: 12px 0; }
+  #submission-portal .portal-layout { display: flex; flex-direction: column; gap: 12px; }
+  #submission-portal .portal-workspace { width: 100%; }
+  #submission-portal .portal-sidebar { order: 2; border-right: 0; border-top: 1px solid var(--p-border); padding: 26px 0 0; width: 100%; }
+  #submission-portal .portal-steps { display: none; }
+  #submission-portal .portal-side-note { border: 0; padding: 0; }
+  #submission-portal .portal-side-note .bi { display: block; }
+  #submission-portal .portal-form-grid { grid-template-columns: 1fr; gap: 0; }
+  #submission-portal .portal-banner { padding: 18px; }
+  #submission-portal .portal-receipt { padding: 22px 18px; }
+  #submission-portal .portal-receipt dl { grid-template-columns: 1fr; gap: 5px; font-size: 16px; }
+  #submission-portal .portal-receipt dd { margin-bottom: 16px; }
+  #submission-portal .portal-late { padding: 22px 18px; }
+  #submission-portal .portal-deadline { padding: 20px 18px; }
+}
+@media (max-width: 480px) {
+  #submission-portal .portal-inline { flex-direction: column; }
+  #submission-portal .portal-inline .portal-button, #submission-portal .portal-submit-row .portal-button { width: 100%; }
+  #submission-portal .bi { gap: 6px 16px; }
+  #submission-portal .portal-owner-controls .portal-button { width: 100%; }
+}
+@media print {
+  body * { visibility: hidden; }
+  #receipt, #receipt * { visibility: visible; }
+  #receipt { position: absolute; top: 0; left: 0; margin: 20px !important; width: calc(100% - 40px); }
+  #receipt button { display: none; }
+  #receipt .portal-demo-print { display: block !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #submission-portal *, #submission-portal *::before, #submission-portal *::after { scroll-behavior: auto !important; transition: none !important; }
+}
