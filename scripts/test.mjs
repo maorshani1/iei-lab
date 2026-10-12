@@ -22,6 +22,8 @@ for(const file of htmlFiles){
  check(ids.length===new Set(ids).size,'Duplicate element IDs');
  for(const m of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){
   const ref=m[1].replace(/&amp;/g,'&');if(/^(?:https?:|mailto:|data:|blob:)/.test(ref))continue;
+  // Skip Vercel-provided paths (analytics, speed insights, etc.)
+  if(ref.startsWith('/_vercel/'))continue;
   const [pathname,fragment]=ref.split('#');
   const target=pathname?(pathname.startsWith('/')?path.join(out,pathname):path.resolve(path.dirname(file),pathname)):file;
   refs++;
