@@ -1,5 +1,38 @@
 [
   {
+    "slug": "antisemitism-english-schools-bell-review",
+    "title": "Addressing antisemitism in English schools and colleges: the Bell review",
+    "category": "Government review",
+    "deck": "Sir David Bell’s independent review, published by the UK Department for Education on 21 October 2026, recommends clearer guidance, staff training, and accessible reporting.",
+    "sections": [
+      {
+        "heading": "An independent review for England",
+        "text": "On 21 October 2026, the UK Department for Education published Sir David Bell’s independent review of antisemitism in schools and colleges in England. The government accepted all 27 recommendations, including staff training, clearer guidance, and improved recording and reporting of incidents."
+      },
+      {
+        "heading": "Reading the survey evidence",
+        "text": "The review reports that almost three in five Jewish respondents to its student survey had experienced or witnessed antisemitism. Conducted through UCAS among applicants living in England, the survey included 92 respondents who identified as Jewish. The review cautions that these data are not representative of all school and college students (pp. 27–28)."
+      },
+      {
+        "heading": "Implications for schools",
+        "text": "The recommendations focus on recognising antisemitism, responding consistently to reports, and supporting pupils and staff. The government response distinguishes criticism of Israeli government policy from holding Jewish people collectively responsible for a state’s actions. For our work on discrimination, belonging, and well-being, the review raises questions about how institutional responses shape people’s willingness to report incidents and participate in educational life."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Bell, D. (2026). Independent review: antisemitism in schools and colleges in England. Department for Education. Published 21 October 2026.",
+        "url": "https://www.gov.uk/government/publications/independent-review-into-antisemitism-in-schools-and-colleges"
+      },
+      {
+        "label": "Department for Education (2026). Government response to the independent review. Published 21 October 2026.",
+        "url": "https://www.gov.uk/government/calls-for-evidence/independent-review-into-antisemitism"
+      }
+    ],
+    "related": "",
+    "visual": "network",
+    "date": "2026-10-26"
+  },
+  {
     "slug": "hope-for-what",
     "title": "Hope for peace and victory in intergroup conflict",
     "category": "Research insight",
@@ -249,15 +282,15 @@
     "slug": "welcome-to-iei",
     "title": "SERI Lab at Ariel University",
     "category": "Lab news",
-    "deck": "The Social Experiences, Resilience, and Identity Lab begins its work at Ariel University in October 2026.",
+    "deck": "The Social Experiences, Resilience, and Identity Lab is based in the Department of Psychology at Ariel University.",
     "sections": [
       {
         "heading": "Research areas",
-        "text": "What makes people feel that they belong? How do group identities shape conflict, discrimination, and cooperation? How do people cope with social and health-related challenges? These questions connect our work at SERI Lab — Social Experiences, Resilience, and Identity — directed by Dr. Maor Shani."
+        "text": "What makes people feel that they belong? How do group identities shape conflict, discrimination, and cooperation? How do people cope with social and health-related challenges? These questions connect our work at SERI Lab (Social Experiences, Resilience, and Identity), directed by Dr. Maor Shani."
       },
       {
         "heading": "Building on earlier research",
-        "text": "The lab’s new institutional home brings together research developed through work in Germany, Israel, and international collaborations. The website connects that work across three broad areas: conflict and society; antisemitism, identity, and inclusion; and health and wellbeing. It also makes space for the students whose thesis projects contribute to these questions."
+        "text": "The lab brings together research developed through work in Germany, Israel, and international collaborations. The website connects that work across three broad areas: conflict and society; antisemitism, identity, and inclusion; and health and wellbeing. It also makes space for the students whose thesis projects contribute to these questions."
       },
       {
         "heading": "Website resources",
@@ -271,6 +304,7 @@
     "sources": [],
     "related": "",
     "visual": "network",
-    "date": "2026-09-08"
+    "date": "2026-09-08",
+    "updated": "2026-10-26"
   }
 ]
