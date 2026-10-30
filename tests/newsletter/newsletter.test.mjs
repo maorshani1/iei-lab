@@ -40,6 +40,6 @@ test('operator requests share durable recipient limits and expose no private err
  const result=await request(broken,checkReq);assert.equal(result.status,503);assert.ok(!JSON.stringify(result).includes('private credentials'));
 });
 test('read-only operator checks validate configuration without sending or exposing secrets',async()=>{
- let sent=0;const h=verificationHandler({env:checkEnv,now:()=>checkNow,create:()=>{sent++;},fetcher:async url=>({ok:true,json:async()=>url.includes('/lists/')?{id:42}:url.includes('/templates/')?{isActive:true,sender:{email:'lab@maorshani.com'},htmlContent:'<a href="{{ params.DOIurl }}">Confirm</a>'}:{attributes:['SERI_CONSENT_VERSION','SERI_SIGNUP_SOURCE','SERI_REQUESTED_AT'].map(name=>({name,type:'text'}))}})});
+ let sent=0;const h=verificationHandler({env:checkEnv,now:()=>checkNow,create:()=>{sent++;},fetcher:async url=>({ok:true,json:async()=>url.includes('/lists/')?{id:42}:url.includes('/templates/')?{isActive:true,doiTemplate:true,sender:{email:'lab@maorshani.com'},htmlContent:'<a href="{{ params.DOIurl }}">Confirm</a>'}:{attributes:['SERI_CONSENT_VERSION','SERI_SIGNUP_SOURCE','SERI_REQUESTED_AT'].map(name=>({name,type:'text'}))}})});
  const result=await request(h,{...checkReq,method:'GET'});assert.equal(result.status,200);assert.ok(Object.values(result.body).every(Boolean));assert.equal(sent,0);assert.ok(!JSON.stringify(result).includes(checkEnv.BREVO_API_KEY));
 });

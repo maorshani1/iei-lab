@@ -18,7 +18,7 @@ export function verificationHandler({env=process.env,fetcher=fetch,now=()=>Date.
    if(req.method==='GET'){
     const get=async path=>{const r=await fetcher('https://api.brevo.com/v3'+path,{headers:{'api-key':config.apiKey},redirect:'error',signal:AbortSignal.timeout(15000)});if(!r.ok)throw new NewsletterError('PROVIDER_CHECK_FAILED',503);return r.json();};
     const [list,template,attributes]=await Promise.all([get('/contacts/lists/'+config.listId),get('/smtp/templates/'+config.templateId),get('/contacts/attributes')]);
-    const result={listExists:list.id===config.listId,templateActive:template.isActive===true,confirmationLink:/\{\{\s*params\.DOIurl\s*\}\}/.test(template.htmlContent||''),senderMatches:template.sender?.email==='lab@maorshani.com',consentAttributes:['SERI_CONSENT_VERSION','SERI_SIGNUP_SOURCE','SERI_REQUESTED_AT'].every(n=>attributes.attributes?.some(a=>a.name===n&&a.type==='text'))};
+    const result={listExists:list.id===config.listId,templateActive:template.isActive===true,doiTemplate:template.doiTemplate===true,confirmationLink:/\{\{\s*params\.DOIurl\s*\}\}/.test(template.htmlContent||''),senderMatches:template.sender?.email==='lab@maorshani.com',consentAttributes:['SERI_CONSENT_VERSION','SERI_SIGNUP_SOURCE','SERI_REQUESTED_AT'].every(n=>attributes.attributes?.some(a=>a.name===n&&a.type==='text'))};
     return reply(Object.values(result).every(Boolean)?200:503,result);
    }
    // Reject payloads so callers cannot supply an address, list, template or action.
