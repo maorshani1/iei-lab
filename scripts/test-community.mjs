@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const read=file=>fs.readFileSync(path.join(root,'dist',file),'utf8');
+const ready=process.env.NEWSLETTER_ENABLED==='true'&&process.env.NEWSLETTER_CONFIG_VERIFIED==='true';
+const home=read('index.html'),privacy=read('privacy.html'),signup=read('newsletter.html');
+const search=read('assets/search-index.js'),sitemap=read('sitemap.xml');
+assert.equal(home.includes('newsletter.html'),ready,'Public signup invitation must follow the launch gate');
+assert.equal(search.includes('newsletter.html'),ready,'Closed signup must not appear in website search');
+assert.equal(sitemap.includes('<loc>https://www.maorshani.com/newsletter</loc>'),ready);
+assert.ok(!search.includes('newsletter/confirmed.html'),'Confirmation page is not a search result');
+assert.ok(!sitemap.includes('/newsletter/confirmed'),'Confirmation page is not indexed');
+assert.equal(privacy.includes('No newsletter addresses are being collected'),!ready);
+assert.ok(signup.includes('<fieldset disabled>'),'Registration starts closed until the API confirms availability');
+assert.ok(!signup.includes('data-seri-analytics'),'Subscription pages do not collect page analytics');
+assert.ok(read('newsletter/confirmed.html').includes('noindex,nofollow'));
+assert.ok(home.indexOf('assets/privacy.js')<home.indexOf('assets/analytics.js'),'Consent loads before analytics');
+assert.ok(home.includes('accessibility.html')&&home.includes('data-privacy-choices'));
+assert.ok(read('accessibility.html').includes('maorsha@ariel.ac.il'));
+console.log('PASS: public newsletter launch gate, confirmation privacy, consent order, and accessibility links.');

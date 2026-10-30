@@ -1,0 +1,33 @@
+# SERI Lab newsletter
+
+The newsletter sends occasional research, opportunity, and important lab updates. There is no recurring sending schedule. Dr. Maor Shani operates the website and mailing list personally. Newsletter subscribers are separate from course, research-participant, and contact-inquiry records.
+
+## Subscription flow
+
+The same-origin `/api/newsletter` endpoint requests a Brevo double-opt-in email. Brevo adds the address to the configured newsletter list only after the recipient confirms. The endpoint never directly creates an active subscription. Every campaign must retain Brevo's personalized `{{ unsubscribe }}` link. A separate hosted unsubscribe form is linked from `/newsletter` so a recipient can also remove themselves without finding an earlier email. Removal must take effect in the provider's suppression system, rather than merely deleting a local display row.
+
+Addresses are held by Brevo, not in the website's static build or coursework records. The website stores encrypted anti-abuse counters in the separate `seri_newsletter_limits` Firestore collection, keyed with HMAC digests. Limits are three confirmation requests per address per day, eight per IP per hour, and 200 globally per day. Requests are not automatically retried after uncertain provider responses. Logs exclude addresses, IPs, tokens, and provider bodies.
+
+## Mailing-service connection
+
+1. Use a Brevo account owned by the website operator. Review the processor agreement, subprocessors, retention settings, and transfer arrangements. Verify a sender address and authenticate a domain the operator controls. Using `maorshani.com` requires its proper mail/DKIM/DMARC records; do not change institutional domains or invent an existing mailbox.
+2. Create a dedicated SERI Lab newsletter list and three text contact attributes: `SERI_CONSENT_VERSION`, `SERI_SIGNUP_SOURCE`, and `SERI_REQUESTED_AT`. The timestamp describes the request, not confirmation. Preserve Brevo's separate confirmation evidence.
+3. Import `templates/newsletter/confirm-subscription.html` as the DOI template. Keep its `{{ params.DOIurl }}` link, choose the verified sender, and activate the template. Use the approved `templates/newsletter/lab-news.html` design for future campaign drafts, replacing every bracketed content placeholder before use.
+4. Create and publish a Brevo hosted unsubscribe form on its `sibforms.com` domain, requiring only an email address and no account or mandatory reason. Configure a clear success message. Test that a removed contact is suppressed from later campaigns, including after an attempted unconfirmed re-subscription.
+5. Enable per-contact tracking consent and set unknown consent to No. The DOI request explicitly passes `contactPixelTrackingConsent:false`. Brevo documentation describes different behavior for aggregate and individual tracking in different flows, so inspect a received DOI email and a campaign test email. Disable open pixels and tracked content links through account/provider settings where necessary. Functional confirmation and unsubscribe links remain. Do not claim that anonymization alone disables tracking.
+6. Set a retention process for unconfirmed contacts, consent evidence, and suppression records. Review unconfirmed requests after 30 days; retain only what is needed. Set Firestore TTL on `seri_newsletter_limits.deleteAfter` so expired anti-abuse counters are deleted. Review operator details, sender/postal identification, privacy text, and unsubscribe wording against the final setup before enabling registrations.
+7. Add production-only credentials and identifiers in Vercel's secure settings. Never place the API key in source, a client bundle, a URL, or chat. Required: `BREVO_API_KEY`, `BREVO_NEWSLETTER_LIST_ID`, `BREVO_NEWSLETTER_TEMPLATE_ID`, `NEWSLETTER_UNSUBSCRIBE_URL`. The existing Firestore service account and server secrets support the separate rate-limit collection. Keep `NEWSLETTER_ENABLED` unset until the connection is tested. `NEWSLETTER_CONFIG_VERIFIED=true` records completion of the connection checks, and is not a substitute for them.
+8. Test using an operator-controlled address: confirmation email accepted and received; not active before confirmation; active afterward; duplicate signup; unsubscribe from the campaign link and hosted form; suppression after removal; deliberate re-subscription requires a new confirmation; provider failure; no tracking beyond the approved configuration. Then set both launch flags and redeploy. Preview deployments never use the production signup service.
+
+The provider account, sender, list, template, unsubscribe form and live delivery/unsubscribe checks remain necessary before activation. Unit and intercepted-browser tests verify the local integration but cannot establish those external outcomes.
+
+## Routine sending
+
+Write each issue only when there is substantial news. Review the subject, links, claims, recipients and unsubscribe behavior, then explicitly send the approved campaign from the mailing-service dashboard. This website change creates no automatic campaign schedule and authorizes no import of existing contacts. Brevo handles subscription status, delivery failures and campaign suppression. Before sending, confirm that only the dedicated confirmed list is selected and suppression remains enabled.
+
+## Relevant provider documentation
+
+- DOI API: https://developers.brevo.com/reference/create-doi-contact
+- Hosted unsubscribe form: https://help.brevo.com/hc/en-us/articles/360022160120-Customize-an-unsubscribe-form-to-embed-on-a-website-or-share-through-a-hosted-page
+- Campaign unsubscribe link: https://help.brevo.com/hc/en-us/articles/209553645-Insert-a-custom-unsubscribe-link-in-your-emails
+- Tracking configuration: https://help.brevo.com/hc/en-us/articles/37114679474706-About-email-tracking-pixels-and-the-CNIL-recommendation-in-Brevo
