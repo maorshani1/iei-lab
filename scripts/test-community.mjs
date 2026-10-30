@@ -17,7 +17,14 @@ assert.equal(privacy.includes('No newsletter addresses are being collected'),!re
 assert.ok(signup.includes('<fieldset disabled>'),'Registration starts closed until the API confirms availability');
 assert.ok(!signup.includes('data-seri-analytics'),'Subscription pages do not collect page analytics');
 assert.ok(read('newsletter/confirmed.html').includes('noindex,nofollow'));
-assert.ok(home.indexOf('assets/privacy.js')<home.indexOf('assets/analytics.js'),'Consent loads before analytics');
+const consentScript=home.indexOf('assets/privacy.js'),analyticsScript=home.indexOf('assets/analytics.js');
+assert.ok(consentScript>=0,'Privacy controls are available in every build');
+if(home.includes('data-mode="production"')) {
+  assert.ok(analyticsScript>consentScript,'Production loads consent before analytics');
+} else {
+  assert.ok(home.includes('data-mode="review"'),'Expected a production or review build');
+  assert.equal(analyticsScript,-1,'Review builds do not include analytics');
+}
 assert.ok(home.includes('accessibility.html')&&home.includes('data-privacy-choices'));
 assert.ok(read('accessibility.html').includes('maorsha@ariel.ac.il'));
 console.log('PASS: public newsletter launch gate, confirmation privacy, consent order, and accessibility links.');
