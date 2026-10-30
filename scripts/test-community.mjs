@@ -8,7 +8,17 @@ const read=file=>fs.readFileSync(path.join(root,'dist',file),'utf8');
 const ready=process.env.NEWSLETTER_ENABLED==='true'&&process.env.NEWSLETTER_CONFIG_VERIFIED==='true';
 const home=read('index.html'),privacy=read('privacy.html'),signup=read('newsletter.html');
 const search=read('assets/search-index.js'),sitemap=read('sitemap.xml');
-assert.equal(home.includes('newsletter.html'),ready,'Public signup invitation must follow the launch gate');
+const visible=ready||home.includes('data-mode="review"');
+assert.equal(home.includes('newsletter.html'),visible,'Public signup invitation must follow the launch gate');
+for(const file of ['index','research','contact','publications','antisemitism','people','about','supervision','join','blog']) {
+ const html=read(file+'.html');
+ assert.equal(html.includes('id="newsletter-form"'),visible,'Inline signup visibility: '+file);
+ assert.equal((html.match(/id="newsletter-form"/g)||[]).length,visible?1:0,'One signup form per page: '+file);
+}
+for(const file of ['teaching.html','teaching/submissions.html','submissions-info.html','submissions-privacy.html']) {
+ assert.ok(!read(file).includes('id="newsletter-form"'),'No newsletter form on coursework pages');
+ assert.ok(!read(file).includes('href="./newsletter.html"')&&!read(file).includes('href="../newsletter.html"'),'No newsletter invitation on coursework pages');
+}
 assert.equal(search.includes('newsletter.html'),ready,'Closed signup must not appear in website search');
 assert.equal(sitemap.includes('<loc>https://www.maorshani.com/newsletter</loc>'),ready);
 assert.ok(!search.includes('newsletter/confirmed.html'),'Confirmation page is not a search result');
