@@ -24,6 +24,7 @@ for(const file of pages){const html=fs.readFileSync(file,'utf8');
 }
 const p=fs.readFileSync(path.join(out,'teaching/submissions.html'),'utf8');assert.ok(p.includes('noindex, nofollow'));
 for(const dir of ['server/submissions','site/assets'])for(const file of fs.readdirSync(path.join(root,dir))){if((dir==='server/submissions'||file==='submissions.js')&&/\.(?:mjs|js)$/.test(file))execFileSync(process.execPath,['--check',path.join(root,dir,file)]);}
+execFileSync(process.execPath,[path.join(root,'scripts/test-analytics.mjs')],{cwd:root,stdio:'inherit'});
 const tests=fs.readdirSync(path.join(root,'tests/submissions')).filter(f=>f.endsWith('.test.mjs')).map(f=>path.join(root,'tests/submissions',f));
 execFileSync(process.execPath,['--test',...tests],{cwd:root,stdio:'inherit'});
 console.log('PASS: original pages preserved; 44-page reference checks; assignment module tests. Intake remains disabled unless all server launch gates are met.');

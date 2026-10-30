@@ -11,7 +11,7 @@ let shell=fs.readFileSync(teaching,'utf8');assert.equal([...shell.matchAll(/<mai
 const cta='<section class="container ser-section" id="assignment-submissions"><p class="eyebrow">Teaching · 2026–27</p><h2>Assignment submissions / הגשת מטלות</h2><p>Submit coursework, retain a confirmation, or request an extension. / הגשת עבודות, שמירת אישורי הגשה ובקשות ארכה.</p><a class="button" href="./teaching/submissions.html">Open submission area / מעבר להגשה →</a></section>';
 assert.ok(!shell.includes('id="assignment-submissions"'),'Submission link already exists; refusing a duplicate.');
 fs.writeFileSync(teaching,shell.replace('</main>',cta+'</main>'));
-let html=shell.replace(/<main id="main"[^>]*>[\s\S]*?<\/main>/,`<main id="main" tabindex="-1">${portalContent()}</main>`)
+let html=shell.replace(/<script\b[^>]*\bdata-seri-analytics\b[^>]*><\/script>/g,'').replace(/<main id="main"[^>]*>[\s\S]*?<\/main>/,`<main id="main" tabindex="-1">${portalContent()}</main>`)
  .replaceAll('href="./','href="../').replaceAll('src="./','src="../').replace('data-base="./"','data-base="../"')
  .replace(/data-page="[^"]*"/,'data-page="teaching/submissions"').replace(/<title>[\s\S]*?<\/title>/,'<title>Assignment submissions | SERI Lab</title>')
  .replace(/<link rel="canonical"[^>]*>/,'<link rel="canonical" href="https://www.maorshani.com/teaching/submissions">')

@@ -32,7 +32,7 @@ export const submissionInformationPages=[{
 
 export function renderSubmissionInformationPage(shell,page){
  const url='https://www.maorshani.com/'+page.path;
- return shell.replace(/<main id="main"[^>]*>[\s\S]*?<\/main>/,`<main id="main" tabindex="-1">${page.content}</main>`)
+ return shell.replace(/<script\b[^>]*\bdata-seri-analytics\b[^>]*><\/script>/g,'').replace(/<main id="main"[^>]*>[\s\S]*?<\/main>/,`<main id="main" tabindex="-1">${page.content}</main>`)
   .replace(/data-page="[^"]*"/,`data-page="${page.path}"`)
   .replace(/<title>[\s\S]*?<\/title>/,`<title>${page.title}</title>`)
   .replace(/<meta name="description"[^>]*>/,`<meta name="description" content="${page.description}">`)
