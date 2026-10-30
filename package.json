@@ -5,7 +5,7 @@
   "type": "module",
   "description": "SERI Lab academic website: static, accessible, and dependency-free.",
   "engines": {
-    "node": ">=20"
+    "node": "24.x"
   },
   "scripts": {
     "build": "node scripts/elegant-build.mjs",

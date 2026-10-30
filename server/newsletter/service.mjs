@@ -5,8 +5,12 @@ export class NewsletterError extends Error { constructor(code,status=400){super(
 const check=(test,code,status)=>{if(!test)throw new NewsletterError(code,status);};
 export function newsletterConfig(env=process.env){
  if(env.NEWSLETTER_ENABLED!=='true'||env.VERCEL_ENV!=='production')return {enabled:false};
+ check(env.NEWSLETTER_CONFIG_VERIFIED==='true','NEWSLETTER_UNAVAILABLE',503);
+ return providerConfig(env);
+}
+export function providerConfig(env=process.env){
  const positive=v=>/^\d{1,10}$/.test(v||'')&&Number(v)>0;
- check(env.BREVO_API_KEY?.length>20&&positive(env.BREVO_NEWSLETTER_LIST_ID)&&positive(env.BREVO_NEWSLETTER_TEMPLATE_ID)&&env.NEWSLETTER_CONFIG_VERIFIED==='true','NEWSLETTER_UNAVAILABLE',503);
+ check(env.BREVO_API_KEY?.length>20&&positive(env.BREVO_NEWSLETTER_LIST_ID)&&positive(env.BREVO_NEWSLETTER_TEMPLATE_ID),'NEWSLETTER_UNAVAILABLE',503);
  let url;try{url=new URL(env.NEWSLETTER_UNSUBSCRIBE_URL);}catch{throw new NewsletterError('NEWSLETTER_UNAVAILABLE',503);}
  check(url.protocol==='https:'&&!url.username&&!url.password&&!url.port&&(url.hostname==='sibforms.com'||url.hostname.endsWith('.sibforms.com')),'NEWSLETTER_UNAVAILABLE',503);
  return {enabled:true,apiKey:env.BREVO_API_KEY,listId:Number(env.BREVO_NEWSLETTER_LIST_ID),templateId:Number(env.BREVO_NEWSLETTER_TEMPLATE_ID),unsubscribeUrl:url.href};
