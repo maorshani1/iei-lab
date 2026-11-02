@@ -81,7 +81,7 @@
     "topic": "Antisemitism",
     "language": "English",
     "url": "https://blogs.timesofisrael.com/how-are-you-doing-the-toll-antisemitism-takes-on-us/",
-    "description": "Essay by Wendy Kalman discussing antisemitism and referring to Maor Shani’s research. The linked page’s author and date differ from the earlier CV description.",
+    "description": "Essay by Wendy Kalman discussing antisemitism and referring to Maor Shani’s research.",
     "verification": "Page checked"
   },
   {
@@ -120,7 +120,7 @@
     "topic": "Antisemitism",
     "language": "German",
     "url": "https://www.noz.de/lokales/osnabrueck/artikel/hamas-angriff-2023-psychische-folgen-fuer-juden-in-deutschland-47836282",
-    "description": "Research coverage listed in the CV. A subscription may be required.",
+    "description": "Research coverage on the psychological impact of the October 7 attacks on Jews in Germany. A subscription may be required.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -185,7 +185,7 @@
     "topic": "Health psychology",
     "language": "Swedish",
     "url": null,
-    "description": "February 2023 feature recorded in the CV. No direct article link was supplied.",
+    "description": "Feature on celiac research in the February 2023 issue.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -198,7 +198,7 @@
     "topic": "Health psychology",
     "language": "German",
     "url": "https://www.zoeliakie.ch/de/news/details/webinar-verbessern-z%C3%B6likids-lager-die-lebensqualit%C3%A4t.html",
-    "description": "Webinar on celiac camps and quality of life, recorded in the CV.",
+    "description": "Webinar on celiac camps and quality of life.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -211,7 +211,7 @@
     "topic": "Health psychology",
     "language": "German",
     "url": "https://www.linkedin.com/posts/ig-z%C3%B6liakie-der-deutschen-schweiz_medizin-osteoporoserisiko-politik-activity-6936690214589370368-2sUZ/",
-    "description": "May 2022 issue recorded in the CV. Link points to the association’s issue announcement, not a full article.",
+    "description": "Feature in the May 2022 issue. The link opens the association’s issue announcement.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -224,7 +224,7 @@
     "topic": "Research profile",
     "language": "German",
     "url": "https://taz.de/Als-Israeli-in-Deutschland/!5062378/",
-    "description": "Interview by Eiken Bruhn. Title and date follow the linked page, which differs from the CV entry.",
+    "description": "Interview by Eiken Bruhn about life as an Israeli in Germany.",
     "verification": "Page checked"
   },
   {
@@ -237,7 +237,7 @@
     "topic": "Antisemitism",
     "language": "German",
     "url": "https://www.ndr.de/fernsehen/sendungen/hallo_niedersachsen/Wie-hat-sich-Leben-von-Juden-in-Deutschland-veraendert,hallonds90574.html",
-    "description": "Television link supplied in the October 2024 media list. Exact broadcast date needs confirmation; older video links may expire.",
+    "description": "Television coverage of changes in Jewish life in Germany.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -250,7 +250,7 @@
     "topic": "Antisemitism",
     "language": "German",
     "url": "https://www.ndr.de/nachrichten/niedersachsen/Jahrestag-Niedersachsen-gedenkt-des-Hamas-Ueberfalls-auf-Israel,israel2054.html",
-    "description": "Anniversary coverage supplied in the media list; exact date needs confirmation.",
+    "description": "Coverage of commemorations in Lower Saxony marking the anniversary of the October 7 attacks.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -263,7 +263,7 @@
     "topic": "Health psychology",
     "language": "English",
     "url": "https://www.psychologie.uni-osnabrueck.de/en/subfields/developmental_psychology/current_studies/celiac_disease_and_leisure_participation.html",
-    "description": "Institutional study-information page from the supplied archive.",
+    "description": "Osnabrück University information on celiac disease and leisure participation.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -276,7 +276,7 @@
     "topic": "Antisemitism",
     "language": "German",
     "url": "https://juedisches-niedersachsen.de/themen/juedisch-jetzt/alltagsleben/juedische-perspektiven/maor-shani",
-    "description": "Profile link supplied in the media archive.",
+    "description": "Profile of Maor Shani in Jüdisches Niedersachsen.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -289,7 +289,7 @@
     "topic": "Health psychology",
     "language": "English",
     "url": "https://www.facebook.com/story.php?id=100064765294114&story_fbid=874876358014533",
-    "description": "Supplied social-media link. Login may be required.",
+    "description": "Celiac Disease Foundation social-media post about the research. Login may be required.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
@@ -302,12 +302,12 @@
     "topic": "Health psychology",
     "language": "Czech",
     "url": "https://www.facebook.com/story.php?story_fbid=942994697869822&id=100064779004030&_rdr",
-    "description": "Supplied social-media link; duplicate removed from the original list.",
+    "description": "Czech celiac society social-media post about the research. Login may be required.",
     "verification": "Supplied link; availability not fully verified"
   },
   {
     "id": "israel-germany-fb",
-    "title": "Research-profile link in the supplied media archive",
+    "title": "Research profile: Maor Shani",
     "outlet": "Israel in Germany",
     "year": null,
     "date": null,
@@ -315,7 +315,7 @@
     "topic": "Research profile",
     "language": "German",
     "url": "https://www.facebook.com/IsraelinGermany/photos/a.551565734899378/551565938232691/?type=3",
-    "description": "Archival social-media link. Context and date await an updated media record.",
+    "description": "Research-profile post from Israel in Germany. Login may be required.",
     "verification": "Supplied link; availability not fully verified"
   }
 ]
