@@ -14,11 +14,22 @@ const groups = [
 ];
 const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
 const link = (slug, label, current) => `<a href="./${slug}.html"${slug === current ? ' aria-current="page"' : ''}>${escape(label)}</a>`;
+const externalIcon = '<svg class="academic-external-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3h7v7M21 3 11 13M10 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-5"/></svg>';
+
+function styleLinks(html) {
+  return html.replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/g, (original, attributes, content) => {
+    const href = attributes.match(/\bhref="([^"]+)"/)?.[1];
+    if (!href || /<(?:img|svg)\b/.test(content)) return original;
+    const label = content.replace(/\s*<span\b[^>]*aria-hidden="true"[^>]*>[→↗]<\/span>/g, '').replace(/\s*[→↗]\s*$/, '');
+    const external = /^https?:\/\//.test(href) && !/^https?:\/\/(?:www\.)?maorshani\.com(?:[/:?#]|$)/.test(href);
+    return `<a${attributes}>${external ? `<span class="academic-link-label">${label}</span>${externalIcon}` : label}</a>`;
+  });
+}
 
 function navigation(slug, brand, search) {
   const items = groups.map(([title, children], i) => typeof children === 'string'
-    ? link(children, title, slug)
-    : `<details class="academic-menu${children.some(([p]) => p === slug) ? ' academic-current' : ''}"><summary aria-controls="academic-menu-${i}">${title}<span aria-hidden="true" class="academic-chevron"></span></summary><ul id="academic-menu-${i}">${children.map(([p, label]) => `<li>${link(p, label, slug)}</li>`).join('')}</ul></details>`).join('');
+    ? link(children, title, slug).replace(`>${title}</a>`, `><span class="academic-nav-label">${title}</span></a>`)
+    : `<details class="academic-menu${children.some(([p]) => p === slug) ? ' academic-current' : ''}"><summary aria-controls="academic-menu-${i}"><span class="academic-nav-label">${title}</span><span aria-hidden="true" class="academic-chevron"></span></summary><ul id="academic-menu-${i}">${children.map(([p, label]) => `<li>${link(p, label, slug)}</li>`).join('')}</ul></details>`).join('');
   return `<header class="site-header academic-header"><div class="container academic-masthead">${brand}<p class="academic-affiliation">Social Experiences, Resilience, and Identity<br><span>Department of Psychology · Ariel University</span></p><div class="academic-tools">${search}<button class="academic-menu-toggle" aria-controls="main-nav" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Menu</span></button></div></div><div class="academic-nav-wrap"><nav id="main-nav" class="container academic-nav" aria-label="Main navigation">${items}</nav></div></header>`;
 }
 
@@ -59,6 +70,9 @@ export function applyAcademicPreview(out) {
     }
     for (const form of original.matchAll(/<form\b[\s\S]*?<\/form>/g)) assert.ok(html.includes(form[0]), 'A form changed: ' + slug);
     for (const record of original.matchAll(/<article\b[\s\S]*?<\/article>/g)) assert.ok(html.includes(record[0]), 'A record changed: ' + slug);
+    const originalHrefs = [...html.matchAll(/\bhref="([^"]*)"/g)].map(match => match[1]);
+    html = styleLinks(html);
+    assert.deepEqual([...html.matchAll(/\bhref="([^"]*)"/g)].map(match => match[1]), originalHrefs, 'A link destination changed: ' + slug);
     assert.equal((html.match(/<h1\b/g) || []).length, 1);
     fs.writeFileSync(file, html);
   }
