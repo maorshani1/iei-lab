@@ -1,7 +1,7 @@
-/* Source Sans is served locally; this preview makes no font-service requests. */
+/* Source Sans is served locally without font-service requests. */
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url('./fonts/SourceSans3-Regular.ttf.woff2') format('woff2')}
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600 900;font-display:swap;src:url('./fonts/SourceSans3-Semibold.ttf.woff2') format('woff2')}
-body[data-academic]{--sans:'Source Sans 3',Arial,Helvetica,sans-serif;--serif:var(--sans);--ink:#172D3C;--muted:#52626C;--teal:#426E66;--blue:#245D81;--paper:#F7F6F1;--accent:#A65F43;--line:#D9DFDA;--soft:var(--paper);--max:1160px;font:400 17px/1.65 var(--sans);color:var(--ink)}
+body[data-academic]{--sans:'Source Sans 3',Arial,Helvetica,sans-serif;--serif:var(--sans);--ink:#172D3C;--muted:#52626C;--teal:#426E66;--blue:#245D81;--paper:#F7F6F1;--accent:#A65F43;--line:#D9DFDA;--soft:var(--paper);--blue-soft:var(--paper);--max:1160px;font:400 17px/1.65 var(--sans);color:var(--ink)}
 body[data-academic] .container{width:min(var(--max),calc(100% - 80px))}
 body[data-academic] :is(h1,h2,h3,h4){font-family:var(--sans);letter-spacing:0;color:var(--ink)}
 body[data-academic] h1{font-size:36px;font-weight:400;line-height:1.25}
@@ -154,20 +154,22 @@ body[data-academic] .button.secondary{background:#fff;color:var(--blue);border-c
 body[data-academic] .button.secondary:hover,body[data-academic] .button.secondary:focus-visible{background:var(--paper);color:var(--ink)}
 /* Only link labels gain an underline. Icons never receive a separate underline. */
 body[data-academic] a{text-decoration:none}
-body[data-academic] .text-link{border-bottom:0;padding-bottom:0;gap:6px}
+body[data-academic] .text-link{border-bottom:0;padding-bottom:0;gap:6px;font-weight:600}
 body[data-academic] :is(main,.site-footer,.academic-breadcrumb) a:not(.button):not(.brand){color:var(--blue)}
-body[data-academic] :is(p,li,figcaption) a:not(.button):not(.brand){font-weight:600}
+body[data-academic] :is(p,li,figcaption,.notice) a:not(.button):not(.brand){font-weight:600}
 body[data-academic] .academic-sidebar nav a{color:var(--ink)}
 body[data-academic] a:not(.button):not(.brand):is(:hover,:focus-visible){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-skip-ink:auto}
 body[data-academic] a:has(>.academic-link-label){text-decoration:none!important}
 body[data-academic] a:is(:hover,:focus-visible)>.academic-link-label{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .academic-external-icon{display:inline-block;width:1em;height:1em;min-width:1em;margin-left:.25em;vertical-align:-.13em;color:currentColor}
-body[data-academic] .academic-nav>a:is(:hover,:focus-visible){text-decoration:none}
+/* The label border is the single menu underline, including reading preferences. */
+body[data-academic] .academic-nav>a,body[data-academic].reading-links .academic-nav>a{text-decoration:none!important}
 .academic-nav-label{border-bottom:3px solid transparent;padding-bottom:5px;margin-bottom:-8px}
 .academic-nav>a:is(:hover,:focus-visible) .academic-nav-label,.academic-menu>summary:is(:hover,:focus-visible) .academic-nav-label,.academic-menu[open] .academic-nav-label{border-bottom-color:var(--accent)}
 body[data-academic] .academic-menu li a:is(:hover,:focus-visible){background:var(--paper)}
 body[data-academic].reading-links a,body[data-academic].reading-links .academic-link-label{text-decoration:underline!important}
-body[data-academic].reading-links .academic-nav-label{border-bottom-color:currentColor}
+body[data-academic].reading-links a:has(>.academic-link-label){text-decoration:none!important}
+body[data-academic].reading-links .academic-nav-label{border-bottom-color:currentColor;text-decoration:none!important}
 
 @media(max-width:1000px){
   body[data-academic] .container{width:calc(100% - 48px)}
