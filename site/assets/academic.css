@@ -171,6 +171,11 @@ body[data-academic].reading-links a,body[data-academic].reading-links .academic-
 body[data-academic].reading-links a:has(>.academic-link-label){text-decoration:none!important}
 body[data-academic].reading-links .academic-nav-label{border-bottom-color:currentColor;text-decoration:none!important}
 
+/* Headings stand on their own; source details use ordinary sentence-case text. */
+body[data-academic] .academic-detail{font:400 15px/1.5 var(--sans);letter-spacing:0;text-transform:none;color:var(--muted);margin:0 0 12px}
+body[data-academic] .ser-hero h1:first-child,body[data-academic] .newsletter-invite h2:first-child,body[data-academic] .ser-project-hero h1:first-child{margin-top:0}
+body[data-academic] .section-heading h2:first-child{margin-top:0}
+
 @media(max-width:1000px){
   body[data-academic] .container{width:calc(100% - 48px)}
   .academic-masthead{min-height:82px;gap:18px}

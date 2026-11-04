@@ -9,11 +9,15 @@ const groups = [
   ['Publications', 'publications'],
   ['People', [['people', 'Lab members'], ['about', 'About Maor'], ['supervision', 'Supervision'], ['join', 'Join the lab']]],
   ['Media', [['media', 'Media coverage'], ['conferences', 'Conferences & talks']]],
-  ['Teaching', 'teaching'],
+  ['Teaching', [['teaching', 'Teaching overview'], ['teaching#approach', 'Our teaching approach'], ['teaching#antisemitism-trauma', 'Antisemitism & trauma'], ['teaching#ariel-courses', 'Ariel University courses'], ['teaching#osnabrueck-courses', 'Osnabrück University courses'], ['teaching/submissions', 'Assignment submissions']]],
   ['Contact', [['contact', 'Contact the lab'], ['participate', 'Participate in research'], ['newsletter', 'Newsletter'], ['ask', 'Ask the lab'], ['resources', 'Useful links']]],
 ];
 const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
-const link = (slug, label, current, base = './') => `<a href="${base}${slug}.html"${slug === current ? ' aria-current="page"' : current.startsWith(slug + '/') ? ' aria-current="location"' : ''}>${escape(label)}</a>`;
+const link = (slug, label, current, base = './') => {
+  const [page, fragment] = slug.split('#');
+  const state = !fragment && page === current ? ' aria-current="page"' : !fragment && current.startsWith(page + '/') ? ' aria-current="location"' : '';
+  return `<a href="${base}${page}.html${fragment ? '#' + fragment : ''}"${state}>${escape(label)}</a>`;
+};
 const externalIcon = '<svg class="academic-external-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3h7v7M21 3 11 13M10 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-5"/></svg>';
 
 export function styleAcademicLinks(html) {
@@ -26,12 +30,12 @@ export function styleAcademicLinks(html) {
   });
 }
 
-function navigation(slug, brand, search, base, newsletterVisible) {
+function navigation(slug, brand, search, base, newsletterVisible, includeSubmissions) {
   const teaching = slug === 'teaching' || slug.startsWith('teaching/') || slug.startsWith('submissions-');
-  const active = p => p === slug || slug.startsWith(p + '/') || (p === 'research' && slug.startsWith('projects/'));
+  const active = p => (p === 'teaching' && teaching) || p === slug || slug.startsWith(p + '/') || (p === 'research' && slug.startsWith('projects/'));
   const items = groups.map(([title, children], i) => typeof children === 'string'
     ? link(children, title, slug, base).replace(`>${title}</a>`, `><span class="academic-nav-label">${title}</span></a>`)
-    : `<details class="academic-menu${children.some(([p]) => active(p)) ? ' academic-current' : ''}"><summary aria-controls="academic-menu-${i}"><span class="academic-nav-label">${title}</span><span aria-hidden="true" class="academic-chevron"></span></summary><ul id="academic-menu-${i}">${children.filter(([p]) => p !== 'newsletter' || (newsletterVisible && !teaching)).map(([p, label]) => `<li>${link(p, label, slug, base)}</li>`).join('')}</ul></details>`).join('');
+    : `<details class="academic-menu${children.some(([p]) => active(p)) ? ' academic-current' : ''}"><summary aria-controls="academic-menu-${i}"><span class="academic-nav-label">${title}</span><span aria-hidden="true" class="academic-chevron"></span></summary><ul id="academic-menu-${i}">${children.filter(([p]) => (p !== 'newsletter' || (newsletterVisible && !teaching)) && (p !== 'teaching/submissions' || includeSubmissions)).map(([p, label]) => `<li>${link(p, label, slug, base)}</li>`).join('')}</ul></details>`).join('');
   return `<header class="site-header academic-header"><div class="container academic-masthead">${brand}<p class="academic-affiliation">Social Experiences, Resilience, and Identity<br><span>Department of Psychology · Ariel University</span></p><div class="academic-tools">${search}<button class="academic-menu-toggle" aria-controls="main-nav" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Menu</span></button></div></div><div class="academic-nav-wrap"><nav id="main-nav" class="container academic-nav" aria-label="Main navigation">${items}</nav></div></header>`;
 }
 
@@ -44,6 +48,27 @@ function sidebar(slug) {
   return `<aside class="academic-sidebar"><button class="academic-section-toggle" aria-expanded="true" aria-controls="academic-section-links">${title}<span class="academic-chevron" aria-hidden="true"></span></button><nav id="academic-section-links" aria-label="${title}">${sections.map(([p, label]) => link(p, label, slug)).join('')}</nav><div class="academic-sidebar-note"><p>${research ? 'Interested in our work?' : 'From research to conversation'}</p><p>${research ? 'Explore opportunities for research and collaboration.' : 'Interviews, research coverage, and public discussions.'}</p>${link(research ? 'join' : 'contact', research ? 'Join the lab' : 'Get in touch', slug)}</div></aside>`;
 }
 
+// Retain dates and source details as ordinary metadata; remove decorative pre-headings.
+export function simplifyHeadingLabels(html) {
+  return html.replace(/<(p|div) class="(eyebrow|portal-eyebrow)">([\s\S]*?)<\/\1>/g, (original, tag, css, text) => {
+    if (/20\d{2}|Methods demonstration/.test(text)) {
+      return `<${tag} class="academic-detail">${text.replace(/^TEACHING · /, 'Academic year ')}</${tag}>`;
+    }
+    return '';
+  });
+}
+
+export function refreshAcademicNavigation(html, includeSubmissions = false) {
+  const slug = html.match(/data-page="([^"]+)"/)?.[1];
+  const base = html.match(/data-base="([^"]+)"/)?.[1];
+  const header = html.match(/<header class="site-header(?: academic-header)?">[\s\S]*?<\/header>/)?.[0];
+  assert.ok(slug && base && header, 'Missing page or header for navigation');
+  const brand = header.match(/<a class="brand"[\s\S]*?<\/a>/)?.[0];
+  const search = header.match(/<button class="icon-btn" data-open-search[\s\S]*?<\/button>/)?.[0];
+  assert.ok(brand && search, 'Missing logo or search: ' + slug);
+  return html.replace(header, navigation(slug, brand, search, base, header.includes('newsletter.html'), includeSubmissions));
+}
+
 export function applyAcademicPreview(out) {
   const files = walk(out).filter(file => file.endsWith('.html'));
   for (const file of files) {
@@ -52,12 +77,7 @@ export function applyAcademicPreview(out) {
     const original = html;
     const base = html.match(/data-base="([^"]+)"/)?.[1];
     assert.ok(base, 'Missing route base: ' + slug);
-    const header = html.match(/<header class="site-header">[\s\S]*?<\/header>/)?.[0];
-    assert.ok(header, 'Missing shared header: ' + slug);
-    const brand = header.match(/<a class="brand"[\s\S]*?<\/a>/)?.[0];
-    const search = header.match(/<button class="icon-btn" data-open-search[\s\S]*?<\/button>/)?.[0];
-    assert.ok(brand && search, 'Missing logo or search: ' + slug);
-    html = html.replace(header, navigation(slug, brand, search, base, header.includes('newsletter.html')));
+    html = refreshAcademicNavigation(html);
     html = html.replace('<body ', '<body data-academic="true" ');
     html = html.replace('</head>', `<link rel="preload" href="${base}assets/fonts/SourceSans3-Regular.ttf.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${base}assets/academic.css"><script defer src="${base}assets/academic.js"></script></head>`);
     if (slug === 'research' || slug === 'media') {
@@ -77,7 +97,7 @@ export function applyAcademicPreview(out) {
     for (const record of original.matchAll(/<article\b[\s\S]*?<\/article>/g)) assert.ok(html.includes(record[0]), 'A record changed: ' + slug);
     const originalHrefs = [...html.matchAll(/\bhref="([^"]*)"/g)].map(match => match[1]);
     html = html.replaceAll('<div class="table-wrap">', '<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable data table">');
-    html = styleAcademicLinks(html);
+    html = styleAcademicLinks(simplifyHeadingLabels(html));
     assert.deepEqual([...html.matchAll(/\bhref="([^"]*)"/g)].map(match => match[1]), originalHrefs, 'A link destination changed: ' + slug);
     assert.equal((html.match(/<h1\b/g) || []).length, 1);
     fs.writeFileSync(file, html);
