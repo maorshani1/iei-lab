@@ -4,6 +4,7 @@
  */
 import './build.mjs';
 import {newsletterInvite} from './community-pages.mjs';
+import {applyAcademicPreview} from './academic-preview.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -66,3 +67,4 @@ for(const file of files){let html=fs.readFileSync(file,'utf8');const original=ht
  fs.writeFileSync(file,html);
 }
 console.log(`Applied the approved elegant layout to ${files.length} pages; content, citations and forms preserved.`);
+applyAcademicPreview(out);
