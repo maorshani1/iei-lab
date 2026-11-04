@@ -20,20 +20,20 @@ body[data-academic] .academic-header{position:relative;top:auto;background:var(-
 .academic-affiliation span{font-size:14px;color:var(--muted)}
 .academic-tools{display:flex;gap:8px;margin-left:auto;align-items:center}
 .academic-tools .icon-btn{width:44px;height:44px;justify-content:center;border:1px solid var(--line);background:white}
-.academic-nav-wrap{border-top:1px solid var(--line);background:white}
+.academic-nav-wrap{border-top:1px solid var(--blue);background:var(--blue)}
 .academic-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:stretch}
-.academic-nav>a,.academic-menu>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 22px;font:600 16px/1.5 var(--sans);color:var(--ink);text-decoration:none;min-height:54px;cursor:pointer;list-style:none}
+.academic-nav>a,.academic-menu>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 22px;font:600 16px/1.5 var(--sans);color:#fff;background:var(--blue);text-decoration:none;min-height:54px;cursor:pointer;list-style:none}
 .academic-nav>a{justify-content:center}
-.academic-nav>*,.academic-nav>*:last-child{border-right:1px solid var(--line)}
-.academic-nav>:first-child{border-left:1px solid var(--line)}
+.academic-nav>*,.academic-nav>*:last-child{border-right:1px solid #ffffff30}
+.academic-nav>:first-child{border-left:1px solid #ffffff30}
 details.academic-menu{position:relative;background:transparent;border-radius:0;padding:0;margin:0;box-shadow:none;border-top:0;border-bottom:0;border-left:0}
 .academic-menu>summary::-webkit-details-marker{display:none}
 .academic-menu>summary::marker{content:''}
 .academic-chevron{width:7px;height:7px;display:inline-block;flex-shrink:0;border-bottom:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg);margin-top:-4px}
 .academic-menu[open]>summary .academic-chevron,.academic-section-toggle[aria-expanded=true] .academic-chevron{transform:rotate(225deg);margin-top:4px}
-.academic-menu[open]>summary,.academic-menu>summary:hover,.academic-nav>a:hover{background:#fff}
-.academic-nav .academic-current>summary,.academic-nav>a[aria-current]{box-shadow:none;background:var(--paper)}
-.academic-menu>ul{position:absolute;top:100%;left:-1px;z-index:5;margin:0;padding:8px 0;list-style:none;width:260px;max-width:calc(100vw - 40px);border:1px solid var(--line);background:white;box-shadow:0 8px 18px #172d3c10}
+.academic-menu[open]>summary,.academic-menu>summary:is(:hover,:focus-visible),.academic-nav>a:is(:hover,:focus-visible){background:var(--ink);color:#fff}
+.academic-nav .academic-current>summary,.academic-nav>a[aria-current]{box-shadow:none;background:var(--ink);color:#fff}
+.academic-menu>ul{position:absolute;top:100%;left:-1px;z-index:5;margin:0;padding:8px 0;list-style:none;width:260px;max-width:calc(100vw - 40px);border:1px solid var(--line);border-top:2px solid var(--blue);background:white;box-shadow:0 10px 24px #172d3c18}
 .academic-menu:last-child>ul{left:auto;right:-1px}
 .academic-menu li{margin:0;padding:0}
 .academic-menu li a{display:block;white-space:normal;padding:11px 19px;min-height:44px;font-size:16px;line-height:1.45;text-decoration:none;color:var(--ink)}
@@ -129,6 +129,7 @@ body[data-academic] .media-featured .actions{font-size:16px;gap:12px 24px;margin
 body[data-academic] .site-footer{padding-top:35px;margin-top:20px;background:var(--paper)}
 body[data-academic] .privacy-panel h2{font-size:23px}
 body[data-academic] :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+body[data-academic] .academic-nav>a:focus-visible,body[data-academic] .academic-menu>summary:focus-visible{outline:2px solid #fff;outline-offset:-5px}
 /* Brand palette: navy structure, blue links, restrained sage and terracotta accents. */
 body[data-academic] .eyebrow{color:var(--muted)}
 body[data-academic] .ser-tagline{color:var(--blue)}
@@ -165,7 +166,7 @@ body[data-academic] a:is(:hover,:focus-visible)>.academic-link-label{text-decora
 /* The label border is the single menu underline, including reading preferences. */
 body[data-academic] .academic-nav>a,body[data-academic].reading-links .academic-nav>a{text-decoration:none!important}
 .academic-nav-label{border-bottom:3px solid transparent;padding-bottom:5px;margin-bottom:-8px}
-.academic-nav>a:is(:hover,:focus-visible) .academic-nav-label,.academic-menu>summary:is(:hover,:focus-visible) .academic-nav-label,.academic-menu[open] .academic-nav-label{border-bottom-color:var(--accent)}
+.academic-nav>a:is(:hover,:focus-visible) .academic-nav-label,.academic-menu>summary:is(:hover,:focus-visible) .academic-nav-label,.academic-menu[open] .academic-nav-label{border-bottom-color:var(--paper)}
 body[data-academic] .academic-menu li a:is(:hover,:focus-visible){background:var(--paper)}
 body[data-academic].reading-links a,body[data-academic].reading-links .academic-link-label{text-decoration:underline!important}
 body[data-academic].reading-links a:has(>.academic-link-label){text-decoration:none!important}
@@ -195,9 +196,9 @@ body[data-academic] .section-heading h2:first-child{margin-top:0}
   .academic-nav{display:none;grid-template-columns:1fr;padding-block:8px;max-height:calc(100dvh - 114px);overflow-y:auto}
   .academic-nav.academic-open{display:grid}
   .academic-nav-wrap{border-top:0}
-  .academic-nav>*:first-child,.academic-nav>*,.academic-nav>*:last-child{border:0;border-bottom:1px solid var(--line)}
+  .academic-nav>*:first-child,.academic-nav>*,.academic-nav>*:last-child{border:0;border-bottom:1px solid #ffffff30}
   .academic-nav>a,.academic-menu>summary{padding:13px 16px;justify-content:space-between;font-size:17px;min-height:50px}
-  .academic-nav .academic-current>summary,.academic-nav>a[aria-current]{box-shadow:inset 3px 0 var(--accent)}
+  .academic-nav .academic-current>summary,.academic-nav>a[aria-current]{box-shadow:inset 3px 0 var(--paper)}
   .academic-menu>ul{position:static;width:auto;max-width:none;box-shadow:none;border:0;border-top:1px solid var(--line);padding:6px 12px;background:#fff}
   .academic-menu li a{padding:11px 16px;min-height:44px}
   .academic-layout{grid-template-columns:1fr;gap:26px;padding-block:24px 40px}
