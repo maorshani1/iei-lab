@@ -5,7 +5,9 @@ export async function snapshotRecords({store,drive,sheets,now=()=>Date.now()}){
  const register=await drive.info(sheets.spreadsheetId);
  await drive.privateOnly(sheets.spreadsheetId);
  fail(register.parents?.length===1,'BACKUP_DESTINATION_INVALID',503);
- const root=register.parents[0];await drive.checkFolder(root);
+ const destination=await store.get('backup_config');
+ fail(!destination||typeof destination.folderId==='string'&&/^[A-Za-z0-9_-]{10,120}$/.test(destination.folderId),'BACKUP_DESTINATION_INVALID',503);
+ const root=destination?.folderId||register.parents[0];await drive.checkFolder(root);
  const day=new Date(now()).toISOString().slice(0,10),stateKey='backup_'+day.replaceAll('-','');
  const lease=randomId();
  const previous=await store.transaction([stateKey],tx=>{const old=tx.get(stateKey)||{};if(old.state==='completed')return old;fail(!old.leaseUntil||old.leaseUntil<now(),'BACKUP_BUSY',409);tx.set(stateKey,{...old,state:'pending',lease,leaseUntil:now()+300000});return old;});
